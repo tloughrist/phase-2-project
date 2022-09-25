@@ -11,7 +11,7 @@
       "phone": "555-555-5555",
       "email": "tim.loughrist@gmail.com",
       "address": "123 Fake Street, Florence, AL 35630",
-      "addnotes": "Really love Katie!",
+      "addnotes": "Really loves Katie!",
       "access": false,
       "contacts": [
         {
@@ -69,7 +69,12 @@
     {
       "username": "brussell",
       "password": "proxypassword",
-      "contacts": [],
+      "contacts": [
+        {
+          "contactid": 8,
+          "privatenotes": ""
+        }
+      ],
       "requests": [],
       "id": 4,
       "access": false,
@@ -128,6 +133,11 @@
           "contactid": 5,
           "privatenotes": "",
           "circle": "friends"
+        },
+        {
+          "contactid": 8,
+          "circle": "collegues",
+          "privatenotes": ""
         }
       ],
       "requests": [],
@@ -140,6 +150,48 @@
       "phone": "555-555-5555",
       "email": "moral@realism.com",
       "address": "123 Fake Street, Oxford",
+      "addnotes": ""
+    },
+    {
+      "username": "lwittgenstein",
+      "password": "proxypassword",
+      "contacts": [
+        {
+          "contactid": 4,
+          "circle": "friends",
+          "privatenotes": ""
+        },
+        {
+          "contactid": 7,
+          "privatenotes": ""
+        }
+      ],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/35._Portrait_of_Wittgenstein.jpg/220px-35._Portrait_of_Wittgenstein.jpg",
+      "id": 8,
+      "access": false,
+      "name": "Ludwig Wittgenstein",
+      "dob": "1889-04-26",
+      "pronouns": "he / him",
+      "phone": "555-555-5555",
+      "email": "silence@wordplay.com",
+      "address": "123 Fake Street, Cambridge",
+      "addnotes": ""
+    },
+    {
+      "username": "jbutler",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/JudithButler2013.jpg/220px-JudithButler2013.jpg",
+      "id": 9,
+      "access": false,
+      "name": "Judith Butler",
+      "dob": "1956-02-24",
+      "pronouns": "they / them",
+      "phone": "555-555-5555",
+      "email": "radical@gender.com",
+      "address": "123 Fake Street, Berkeley, CA",
       "addnotes": ""
     }
   ]

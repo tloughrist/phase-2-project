@@ -33,7 +33,8 @@ function App() {
     };
 
     function handleLogIn(loggedUser) {
-        userData.map((user) => {
+        const accessUsers = userData.filter((user) => user.access === true)
+        accessUsers.map((user) => {
             fetch(`http://localhost:3000/users/${user.id}`, {
                 method: "PATCH",
                 headers: {
@@ -61,19 +62,17 @@ function App() {
     };
 
     function logOut() {
-        userData.map((user) => {
-            fetch(`http://localhost:3000/users/${user.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    access: false
-                })
+        fetch(`http://localhost:3000/users/${currentUser.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                access: false
             })
         })
-        history.push('/');
+        history.push('/')
         return setCurrentUser();
     }
 
