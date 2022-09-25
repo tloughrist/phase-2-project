@@ -7,6 +7,7 @@ import ContactRequests from "./ContactRequests.js";
 import Header from "./Header.js";
 import Login from "./Login.js";
 import MyContactCard from "./MyContactCard.js";
+import Request from "./Request.js";
 import SignUp from "./SignUp.js";
 
 function App() {
@@ -175,6 +176,15 @@ function App() {
         .then((data) => handleUserUpdate(data))
     };
 
+    function acceptRequest() {
+        console.log('here')
+        return;
+    };
+
+    function rejectRequest() {
+        return console.log("reject");
+    };
+
     return (
         <div>
             <Header currentUser={currentUser} logOut={logOut} search={search} />
@@ -208,6 +218,8 @@ function App() {
                         currentUser={currentUser}
                         userData={userData}
                         isLoaded={isLoaded}
+                        handleAccept={acceptRequest}
+                        handleReject={rejectRequest}
                     />
                 </Route>
                 <Route path="/addcontact">

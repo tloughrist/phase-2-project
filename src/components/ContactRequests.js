@@ -3,7 +3,7 @@ import Request from "./Request"
 
 let requestDisplay = <h1>Loading...</h1>;
 
-function ContactRequests({ isLoaded, currentUser, userData }) {
+function ContactRequests({ isLoaded, currentUser, userData, handleAccept, handleReject }) {
 
     if (isLoaded) {
         requestDisplay = currentUser.requests.map((request) => {
@@ -14,6 +14,8 @@ function ContactRequests({ isLoaded, currentUser, userData }) {
                     reqId={request.userid}
                     reqPic={request.pic}
                     currentUser={currentUser}
+                    handleAccept={handleAccept}
+                    handleReject={handleReject}
                 />
             );
         });

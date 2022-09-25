@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-function Request({ reqName, reqId, reqPic, currentUser }) {
+function Request({ reqName, reqId, reqPic, currentUser, handleAccept, handleReject }) {
 
     function handleAcceptClick() {
-        console.log('accept')
+        return handleAccept();
     };
 
     function handleRejectClick() {
-        console.log('reject')
+        return handleReject();
     };
 
     return (
