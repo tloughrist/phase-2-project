@@ -16,6 +16,7 @@ function ContactRequests({ isLoaded, currentUser, userData, handleAccept, handle
                     currentUser={currentUser}
                     handleAccept={handleAccept}
                     handleReject={handleReject}
+                    requestedCircle={request.reqcirc}
                 />
             );
         });

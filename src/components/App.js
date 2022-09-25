@@ -7,7 +7,6 @@ import ContactRequests from "./ContactRequests.js";
 import Header from "./Header.js";
 import Login from "./Login.js";
 import MyContactCard from "./MyContactCard.js";
-import Request from "./Request.js";
 import SignUp from "./SignUp.js";
 
 function App() {
@@ -154,11 +153,12 @@ function App() {
         return history.push('/addcontact');
     };
 
-    function request(currentUser, targetUser) {
+    function request(currentUser, targetUser, requestedCircle) {
         const request = {
             userid: currentUser.id,
             name: currentUser.name,
-            pic: currentUser.pic
+            pic: currentUser.pic,
+            reqcircle: requestedCircle
         }
         const newRequests = [...targetUser.requests, request]; 
         
@@ -176,9 +176,38 @@ function App() {
         .then((data) => handleUserUpdate(data))
     };
 
-    function acceptRequest() {
-        console.log('here')
-        return;
+    function acceptRequest(currentUser, requestingUserId, currentUserCircle, requestedCircle) {
+        const currentUserObj = {contactid: currentUser.id, circle: requestedCircle, privatenotes: ""};
+        const requestingUserObj = {contactid: requestingUserId, circle: currentUserCircle, privatenotes: ""};
+        const requestingUser = userData.filter((user) => user.id === requestingUserId);
+        const currentUserContacts = [...currentUser.contacts, requestingUserObj];
+        const requestingUserContacts = [...requestingUser[0].contacts, currentUserObj];
+        const currentUserRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
+        fetch(`http://localhost:3000/users/${requestingUserId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    contacts: requestingUserContacts
+                })
+        })
+        .then((response) => response.json())
+        .then((data) => handleUserUpdate(data))
+        fetch(`http://localhost:3000/users/${currentUser.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    requests: currentUserRequests,
+                    contacts: currentUserContacts
+                })
+        })
+        .then((response) => response.json())
+        .then((data) => handleUserUpdate(data))
     };
 
     function rejectRequest() {

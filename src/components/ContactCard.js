@@ -29,8 +29,9 @@ function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, upda
         return setCurrentCircle(e.target.value);
     };
 
-    function handleRequestClick() {
-        return handleRequest(currentUser, user);
+    function handleRequestClick(e) {
+        const requestedCircle = e.target.previousSibling.value;
+        return handleRequest(currentUser, user, requestedCircle);
     };
 
     if (search) {
@@ -39,6 +40,11 @@ function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, upda
                 <h3>{user.name}</h3>
                 <p>{user.username}</p>
                 <img src={user.pic} alt={`${user.name} picture`} />
+                <select name="circle">
+                    <option value="family">Family</option>
+                    <option value="friends">Friends</option>
+                    <option value="collegues">Collegues</option>
+                </select>
                 <button onClick={handleRequestClick}>Request Information</button>
             </div>
         );

@@ -85,17 +85,17 @@
     {
       "username": "pfoot",
       "password": "proxypassword",
-      "contacts": [],
-      "requests": [
+      "contacts": [
         {
-          "userid": 7,
-          "name": "Iris Murdoch",
-          "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Iris_Murdoch.jpg/220px-Iris_Murdoch.jpg"
+          "contactid": 7,
+          "circle": "friends",
+          "privatenotes": ""
         }
       ],
+      "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Philippa_Foot.jpg/220px-Philippa_Foot.jpg",
       "id": 5,
-      "access": true,
+      "access": false,
       "name": "Philippa Foot",
       "dob": "1920-10-03",
       "pronouns": "she / her",
@@ -123,11 +123,17 @@
     {
       "username": "imurdoch",
       "password": "proxypassword",
-      "contacts": [],
+      "contacts": [
+        {
+          "contactid": 5,
+          "privatenotes": "",
+          "circle": "friends"
+        }
+      ],
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Iris_Murdoch.jpg/220px-Iris_Murdoch.jpg",
       "id": 7,
-      "access": false,
+      "access": true,
       "name": "Iris Murdoch",
       "dob": "1919-07-15",
       "pronouns": "she / her",
