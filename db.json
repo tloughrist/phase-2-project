@@ -18,15 +18,14 @@
           "contactid": 2,
           "privatenotes": "Likes good cigars (actual cigars)",
           "circle": "friends"
+        },
+        {
+          "contactid": 3,
+          "circle": "collegues",
+          "privatenotes": "Likes good wine"
         }
       ],
-      "requests": [
-        {
-          "userid": 3,
-          "name": "Albert Camus",
-          "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg/220px-Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg"
-        }
-      ]
+      "requests": []
     },
     {
       "username": "sfreud",
@@ -57,14 +56,14 @@
       "address": "123 Fake Rue, Paris",
       "addnotes": "",
       "access": false,
-      "contacts": [],
-      "requests": [
+      "contacts": [
         {
-          "userid": 1,
-          "name": "Tim Loughrist",
-          "pic": "https://timloughrist.files.wordpress.com/2022/06/about_me_pic.png"
+          "contactid": 1,
+          "privatenotes": "",
+          "circle": "collegues"
         }
-      ]
+      ],
+      "requests": []
     },
     {
       "username": "brussell",
@@ -143,7 +142,7 @@
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Iris_Murdoch.jpg/220px-Iris_Murdoch.jpg",
       "id": 7,
-      "access": true,
+      "access": false,
       "name": "Iris Murdoch",
       "dob": "1919-07-15",
       "pronouns": "she / her",
@@ -192,6 +191,22 @@
       "phone": "555-555-5555",
       "email": "radical@gender.com",
       "address": "123 Fake Street, Berkeley, CA",
+      "addnotes": ""
+    },
+    {
+      "username": "ebohemia",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/1636_Elisabeth_of_Bohemia.jpg/220px-1636_Elisabeth_of_Bohemia.jpg",
+      "id": 10,
+      "access": false,
+      "name": "Elisabeth of Bohemia",
+      "dob": "1618-12-26",
+      "pronouns": "she / her",
+      "phone": "555-555-5555",
+      "email": "antidualist@palatinate.com",
+      "address": "123 Fake Strasse, Heidelberg",
       "addnotes": ""
     }
   ]

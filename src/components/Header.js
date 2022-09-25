@@ -30,6 +30,7 @@ function Header({ currentUser, logOut, search }) {
                     <input type="text" name="search" />
                     <input type="submit" />
                 </form>
+                <h3>Logged in as: {currentUser.username}</h3>
                 <SideNavBar />
             </div>
         );
