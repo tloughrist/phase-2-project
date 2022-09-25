@@ -15,7 +15,6 @@ function SideNavBar() {
     return (
         <div className="navbar" id="side-navbar">
             <NavLink to="/contacts" exact>Contacts</NavLink>
-            <NavLink to="/addcontact" exact>Add Contact</NavLink>
             <NavLink to="/requests" exact>Contact Requests</NavLink>
             <NavLink to="/mycard" exact>My Information</NavLink>
         </div>

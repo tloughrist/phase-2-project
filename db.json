@@ -12,7 +12,7 @@
       "email": "tim.loughrist@gmail.com",
       "address": "123 Fake Street, Florence, AL 35630",
       "addnotes": "Really love Katie!",
-      "access": true,
+      "access": false,
       "contacts": [
         {
           "contactid": 2,
@@ -65,6 +65,70 @@
           "pic": "https://timloughrist.files.wordpress.com/2022/06/about_me_pic.png"
         }
       ]
+    },
+    {
+      "username": "brussell",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "id": 4,
+      "access": false,
+      "name": "Bertrand Russell",
+      "dob": "1872-05-17",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bertrand_Russell_1957.jpg/220px-Bertrand_Russell_1957.jpg",
+      "pronouns": "he / him",
+      "phone": "555-555-5555",
+      "email": "principia@mathematica.com",
+      "address": "123 Fake St., Cambridge",
+      "addnotes": ""
+    },
+    {
+      "username": "pfoot",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Philippa_Foot.jpg/220px-Philippa_Foot.jpg",
+      "id": 5,
+      "access": false,
+      "name": "Philippa Foot",
+      "dob": "1920-10-03",
+      "pronouns": "she / her",
+      "phone": "555-555-5555",
+      "email": "naturalgoodness@virtue.com",
+      "address": "123 Fake Street, Los Angeles, CA",
+      "addnotes": "I love to read"
+    },
+    {
+      "username": "aturing",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alan_Turing_Aged_16.jpg/220px-Alan_Turing_Aged_16.jpg",
+      "id": 6,
+      "access": false,
+      "name": "Alan Turing",
+      "dob": "1912-06-23",
+      "pronouns": "he / him",
+      "phone": "555-555-5555",
+      "email": "bombe@machine.com",
+      "address": "123 Fake Street, Bletchley Park",
+      "addnotes": ""
+    },
+    {
+      "username": "imurdoch",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Iris_Murdoch.jpg/220px-Iris_Murdoch.jpg",
+      "id": 7,
+      "access": true,
+      "name": "Iris Murdoch",
+      "dob": "1919-07-15",
+      "pronouns": "she / her",
+      "phone": "555-555-5555",
+      "email": "moral@realism.com",
+      "address": "123 Fake Street, Oxford",
+      "addnotes": ""
     }
   ]
 }

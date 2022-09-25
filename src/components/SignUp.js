@@ -6,14 +6,14 @@ function SignUp({ handleLogIn, userData, handleSignUp }) {
 
     function submitSignUp(e) {
         e.preventDefault();
-        const newUsername = e.target.firstChild.firstChild.value;
-        const newPassword = e.target.firstChild.nextSibling.firstChild.value;
+        const newUsername = e.target.username.value;
+        const newPassword = e.target.password.value;
         const userMatch = userData.filter((user) => user.username === newUsername);
-        userMatch[0] !== newUsername? alert("Username already in use") : createNewUser(newUsername, newPassword);
+        userMatch[0] === newUsername? alert("Username already in use") : createNewUser(newUsername, newPassword);
     };
 
     function createNewUser(newUsername, newPassword) {
-        const newUserObj = {username: newUsername, password: newPassword}
+        const newUserObj = {username: newUsername, password: newPassword, contacts: [], requests: [], pic: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/220px-Aristotle_Altemps_Inv8575.jpg"}
         fetch("http://localhost:3000/users", {
             method: 'POST',
             headers: {
