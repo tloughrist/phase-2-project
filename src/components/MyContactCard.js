@@ -4,7 +4,7 @@ import ContactCard from "./ContactCard";
 
 let contactCardsDisplay = <h1>Loading...</h1>;
 
-function MyContactCard({ currentUser, handleUserUpdate, isLoaded }) {
+function MyContactCard({ currentUser, updateCurrentUser, isLoaded }) {
 
     if (isLoaded) {
         contactCardsDisplay = <ContactCard user={currentUser} currentUser={currentUser}/>;
@@ -33,7 +33,7 @@ function MyContactCard({ currentUser, handleUserUpdate, isLoaded }) {
             body: JSON.stringify(newUserObj)
         })
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
+        .then((data) => updateCurrentUser(data))
     };
 
     if (isLoaded) {

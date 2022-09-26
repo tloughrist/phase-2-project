@@ -8,7 +8,6 @@ import Header from "./Header.js";
 import Login from "./Login.js";
 import MyContactCard from "./MyContactCard.js";
 import SignUp from "./SignUp.js";
-import patchUser from "./funcPatchUser.js";
 
 function App() {
     const [currentUser, setCurrentUser] = useState();
@@ -44,13 +43,17 @@ function App() {
     };
 
     function grantAccess(userObj) {
+        setIsLoaded(false)
         return (patchUser(userObj, {access: true})
         .then((response) => response.json())
-        .then((data) => updateUserData(data)))
+        .then((data) => updateUserData(data))
+        .then(() => setIsLoaded(true)))
     };
 
     function logOut() {
-        patchUser(currentUser, {access: false});
+        setIsLoaded(false);
+        patchUser(currentUser, {access: false})
+        .then(() => setIsLoaded(true));
         history.push('/')
         return setCurrentUser();
     };
@@ -77,10 +80,11 @@ function App() {
         const updatedContact = oldContactsObj.filter((contact) => contact.contactid === alteredContactId);
         updatedContact[0].privatenotes = newNote;
         const newContactsObj = [...filteredContacts, updatedContact[0]];
-
-        patchUser(currentUser, {contacts: newContactsObj})
+        setIsLoaded(false);
+        return (patchUser(currentUser, {contacts: newContactsObj})
         .then((response) => response.json())
         .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
     };
 
     function updateCircle(newCircle, currentUser, alteredContactId) {
@@ -89,20 +93,22 @@ function App() {
         const updatedContact = oldContactsObj.filter((contact) => contact.contactid === alteredContactId);
         updatedContact[0].circle = newCircle;
         const newContactsObj = [...filteredContacts, updatedContact[0]];
-
-        patchUser(currentUser, {contacts: newContactsObj})
+        setIsLoaded(false);
+        return (patchUser(currentUser, {contacts: newContactsObj})
         .then((response) => response.json())
         .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
     };
 
     function deleteContact(currentUser, alteredContactId) {
         const oldContactsObj = currentUser.contacts;
         const filteredContacts = oldContactsObj.filter((contact) => contact.contactid !== alteredContactId);
         const newContactsObj = [...filteredContacts];
-
-        patchUser(currentUser, {contacts: newContactsObj})
+        setIsLoaded(false);
+        return (patchUser(currentUser, {contacts: newContactsObj})
         .then((response) => response.json())
         .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
     };
 
     function search(value) {
@@ -110,17 +116,19 @@ function App() {
         return history.push('/addcontact');
     };
 
-    function request(currentUser, targetUser, requestedCircle) {
+    function makeRequest(currentUser, targetUser, requestedCircle) {
         const request = {
             userid: currentUser.id,
             name: currentUser.name,
             pic: currentUser.pic,
             reqcircle: requestedCircle
         }
-        const newRequests = [...targetUser.requests, request]; 
-        patchUser(currentUser, {requests: newRequests})
+        const newRequests = [...targetUser.requests, request];
+        setIsLoaded(false); 
+        return (patchUser(currentUser, {requests: newRequests})
         .then((response) => response.json())
         .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
     };
 
     function acceptRequest(currentUser, requestingUserId, currentUserCircle, requestedCircle) {
@@ -130,16 +138,29 @@ function App() {
         const currentUserContacts = [...currentUser.contacts, requestingUserObj];
         const requestingUserContacts = [...requestingUser[0].contacts, currentUserObj];
         const currentUserRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
+        setIsLoaded(false); 
         patchUser(requestingUser, {contacts: requestingUserContacts})
         .then((response) => response.json())
         .then((data) => updateUserData(data))
-        patchUser(currentUser, {requests: currentUserRequests, contacts: currentUserContacts})
+        return (patchUser(currentUser, {requests: currentUserRequests, contacts: currentUserContacts})
         .then((response) => response.json())
         .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
     };
 
     function rejectRequest() {
         return console.log("reject");
+    };
+
+    function patchUser(userObj, patchObj) {
+        return fetch(`http://localhost:3000/users/${userObj.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(patchObj)
+        });
     };
 
     return (
@@ -166,7 +187,7 @@ function App() {
                 <Route path="/mycard">
                     <MyContactCard
                         currentUser={currentUser}
-                        handleUserUpdate={updateCurrentUser}
+                        updateCurrentUser={updateCurrentUser}
                         isLoaded={isLoaded}
                     />
                 </Route>
@@ -175,8 +196,8 @@ function App() {
                         currentUser={currentUser}
                         userData={userData}
                         isLoaded={isLoaded}
-                        handleAccept={acceptRequest}
-                        handleReject={rejectRequest}
+                        acceptRequest={acceptRequest}
+                        rejectRequest={rejectRequest}
                     />
                 </Route>
                 <Route path="/addcontact">
@@ -185,7 +206,7 @@ function App() {
                         isLoaded={isLoaded}
                         userData={userData}
                         searchValue={searchValue}
-                        handleRequest={request}
+                        makeRequest={makeRequest}
                     />
                 </Route>
                 <Route path="/signup">

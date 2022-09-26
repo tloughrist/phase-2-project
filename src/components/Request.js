@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function Request({ reqName, reqId, reqPic, currentUser, handleAccept, handleReject, requestedCircle }) {
+function Request({ reqName, reqId, reqPic, currentUser, acceptRequest, rejectRequest, requestedCircle }) {
 
     function handleAcceptClick(e) {
         const currentUserCircle = e.target.previousSibling.value;
-        return handleAccept(currentUser, reqId, currentUserCircle, requestedCircle);
+        return acceptRequest(currentUser, reqId, currentUserCircle, requestedCircle);
     };
 
     function handleRejectClick() {
-        return handleReject();
+        return rejectRequest();
     };
 
     return (

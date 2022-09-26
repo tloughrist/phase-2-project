@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, updateCircle, deleteContact, search, handleRequest }) {
+function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, updateCircle, deleteContact, search, makeRequest }) {
 
     const [privateNotes, setPrivateNotes] = useState(notes);
     const [currentCircle, setCurrentCircle] = useState(circle);
@@ -31,7 +31,7 @@ function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, upda
 
     function handleRequestClick(e) {
         const requestedCircle = e.target.previousSibling.value;
-        return handleRequest(currentUser, user, requestedCircle);
+        return makeRequest(currentUser, user, requestedCircle);
     };
 
     if (search) {

@@ -3,7 +3,7 @@ import ContactCard from "./ContactCard";
 
 let searchDisplay = <h1>Loading...</h1>;
 
-function AddContact({ currentUser, isLoaded, userData, searchValue, handleRequest }) {
+function AddContact({ currentUser, isLoaded, userData, searchValue, makeRequest }) {
     
     if (isLoaded) {
         const searchedUsers = userData.filter((user) => {
@@ -15,7 +15,7 @@ function AddContact({ currentUser, isLoaded, userData, searchValue, handleReques
                     key={`${searchedUser.username}card`}
                     user={searchedUser}
                     currentUser={currentUser}
-                    handleRequest={handleRequest}
+                    makeRequest={makeRequest}
                     search={true}
                 />
             );
