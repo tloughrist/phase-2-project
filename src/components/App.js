@@ -8,6 +8,7 @@ import Header from "./Header.js";
 import Login from "./Login.js";
 import MyContactCard from "./MyContactCard.js";
 import SignUp from "./SignUp.js";
+import patchUser from "./funcPatchUser.js";
 
 function App() {
     const [currentUser, setCurrentUser] = useState();
@@ -18,70 +19,54 @@ function App() {
     const history = useHistory(); 
 
     useEffect(() => {
-        fetch("http://localhost:3000/users")
+        return (fetch("http://localhost:3000/users")
         .then((response) => response.json())
-        .then((data) => issueAccess(data))
-        .then(() => setIsLoaded(true))
+        .then((data) => initialSetUp(data))
+        .then(() => setIsLoaded(true)))
     }, []);
 
-    function issueAccess(data) {
+    function initialSetUp(data) {
         setUserData(data);
-        const accessUser = data.filter((user) => {
-            return user.access;
-        })
-        return accessUser !== undefined ? setCurrentUser(accessUser[0]) : setCurrentUser({});
+        const accessUser = data.filter((user) => user.access);
+        return accessUser !== undefined ? setCurrentUser(accessUser[0]) : setCurrentUser();
     };
 
     function handleLogIn(loggedUser) {
+        clearAccess(userData);
+        grantAccess(loggedUser);
+        setCurrentUser(loggedUser);
+        return history.push('/mycard');
+    };
+
+    function clearAccess() {
         const accessUsers = userData.filter((user) => user.access === true)
-        accessUsers.map((user) => {
-            fetch(`http://localhost:3000/users/${user.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    access: false
-                })
-            })
-        })
-        fetch(`http://localhost:3000/users/${loggedUser.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify({
-                access: true
-            })
-        })
+        return accessUsers.map((user) => patchUser(user, {access: false}));
+    };
+
+    function grantAccess(userObj) {
+        return (patchUser(userObj, {access: true})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
-        .then(() => history.push('/mycard'))
+        .then((data) => updateUserData(data)))
     };
 
     function logOut() {
-        fetch(`http://localhost:3000/users/${currentUser.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify({
-                access: false
-            })
-        })
+        patchUser(currentUser, {access: false});
         history.push('/')
         return setCurrentUser();
-    }
+    };
 
     function handleSignUp(user) {
+        handleLogIn(user);
         return setUserData([...userData, user]);
-    }
+    };
 
-    function handleUserUpdate(updatedUser) {
-        setCurrentUser(updatedUser);
+    function updateCurrentUser(updatedCurrentUserObj) {
+        setCurrentUser(updatedCurrentUserObj);
+        const filteredUserData = userData.filter((user) => user.id !== updatedCurrentUserObj.id);
+        return setUserData([...filteredUserData, updatedCurrentUserObj]);
+    };
+
+    function updateUserData(updatedUser) {
         const filteredUserData = userData.filter((user) => user.id !== updatedUser.id);
         return setUserData([...filteredUserData, updatedUser]);
     };
@@ -93,18 +78,9 @@ function App() {
         updatedContact[0].privatenotes = newNote;
         const newContactsObj = [...filteredContacts, updatedContact[0]];
 
-        fetch(`http://localhost:3000/users/${currentUser.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    contacts: newContactsObj
-                })
-        })
+        patchUser(currentUser, {contacts: newContactsObj})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
+        .then((data) => updateCurrentUser(data))
     };
 
     function updateCircle(newCircle, currentUser, alteredContactId) {
@@ -114,18 +90,9 @@ function App() {
         updatedContact[0].circle = newCircle;
         const newContactsObj = [...filteredContacts, updatedContact[0]];
 
-        fetch(`http://localhost:3000/users/${currentUser.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    contacts: newContactsObj
-                })
-        })
+        patchUser(currentUser, {contacts: newContactsObj})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
+        .then((data) => updateCurrentUser(data))
     };
 
     function deleteContact(currentUser, alteredContactId) {
@@ -133,18 +100,9 @@ function App() {
         const filteredContacts = oldContactsObj.filter((contact) => contact.contactid !== alteredContactId);
         const newContactsObj = [...filteredContacts];
 
-        fetch(`http://localhost:3000/users/${currentUser.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    contacts: newContactsObj
-                })
-        })
+        patchUser(currentUser, {contacts: newContactsObj})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
+        .then((data) => updateCurrentUser(data))
     };
 
     function search(value) {
@@ -160,19 +118,9 @@ function App() {
             reqcircle: requestedCircle
         }
         const newRequests = [...targetUser.requests, request]; 
-        
-        fetch(`http://localhost:3000/users/${targetUser.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    requests: newRequests
-                })
-        })
+        patchUser(currentUser, {requests: newRequests})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
+        .then((data) => updateCurrentUser(data))
     };
 
     function acceptRequest(currentUser, requestingUserId, currentUserCircle, requestedCircle) {
@@ -182,31 +130,12 @@ function App() {
         const currentUserContacts = [...currentUser.contacts, requestingUserObj];
         const requestingUserContacts = [...requestingUser[0].contacts, currentUserObj];
         const currentUserRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
-        fetch(`http://localhost:3000/users/${requestingUserId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    contacts: requestingUserContacts
-                })
-        })
+        patchUser(requestingUser, {contacts: requestingUserContacts})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
-        fetch(`http://localhost:3000/users/${currentUser.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    requests: currentUserRequests,
-                    contacts: currentUserContacts
-                })
-        })
+        .then((data) => updateUserData(data))
+        patchUser(currentUser, {requests: currentUserRequests, contacts: currentUserContacts})
         .then((response) => response.json())
-        .then((data) => handleUserUpdate(data))
+        .then((data) => updateCurrentUser(data))
     };
 
     function rejectRequest() {
@@ -237,7 +166,7 @@ function App() {
                 <Route path="/mycard">
                     <MyContactCard
                         currentUser={currentUser}
-                        handleUserUpdate={handleUserUpdate}
+                        handleUserUpdate={updateCurrentUser}
                         isLoaded={isLoaded}
                     />
                 </Route>
