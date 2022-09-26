@@ -117,18 +117,24 @@ function App() {
     };
 
     function makeRequest(currentUser, targetUser, requestedCircle) {
-        const request = {
-            userid: currentUser.id,
-            name: currentUser.name,
-            pic: currentUser.pic,
-            reqcircle: requestedCircle
+        const existingRequest = targetUser.requests.filter((request) => request.userid === currentUser.id);
+        const existingContact = targetUser.contacts.filter((contact) => contact.contactid === currentUser.id);
+        if (existingRequest.length > 0 || existingContact.length > 0) {
+            return alert("Redundant Request");
+        } else {
+            const request = {
+                userid: currentUser.id,
+                name: currentUser.name,
+                pic: currentUser.pic,
+                reqcircle: requestedCircle
+            };
+            const newRequests = [...targetUser.requests, request];
+            setIsLoaded(false); 
+            return (patchUser(targetUser, {requests: newRequests})
+            .then((response) => response.json())
+            .then((data) => updateUserData(data))
+            .then(() => setIsLoaded(true)));
         }
-        const newRequests = [...targetUser.requests, request];
-        setIsLoaded(false); 
-        return (patchUser(targetUser, {requests: newRequests})
-        .then((response) => response.json())
-        .then((data) => updateUserData(data))
-        .then(() => setIsLoaded(true)));
     };
 
     function acceptRequest(currentUser, requestingUserId, currentUserCircle, requestedCircle) {
@@ -152,6 +158,27 @@ function App() {
         const filteredRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
         setIsLoaded(false);
         return (patchUser(currentUser, {requests: filteredRequests})
+        .then((response) => response.json())
+        .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
+    };
+
+    function filterCircle(user, information, circle) {
+        const filterKey = `${information}filter`;
+        const previousCircleFilter = user[filterKey];
+        let newCircleFilter = [];
+        if (previousCircleFilter === undefined) {
+            newCircleFilter = [circle];
+        } else if (previousCircleFilter.includes(circle)) {
+            newCircleFilter = previousCircleFilter.filter((circleFilter) => circleFilter !== circle);
+        } else {
+            newCircleFilter = [...previousCircleFilter, circle];
+        }
+        const newCircleFilterObj = {
+            [filterKey]: newCircleFilter
+        };
+        setIsLoaded(false);
+        return (patchUser(user, newCircleFilterObj)
         .then((response) => response.json())
         .then((data) => updateCurrentUser(data))
         .then(() => setIsLoaded(true)));
@@ -198,6 +225,8 @@ function App() {
                         currentUser={currentUser}
                         updateCurrentUser={updateCurrentUser}
                         isLoaded={isLoaded}
+                        patchUser={patchUser}
+                        filterCircle={filterCircle}
                     />
                 </Route>
                 <Route path="/requests">

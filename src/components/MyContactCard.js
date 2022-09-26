@@ -2,13 +2,7 @@ import React from "react";
 import { SideNavBar } from "./Navbar";
 import ContactCard from "./ContactCard";
 
-let contactCardsDisplay = <h1>Loading...</h1>;
-
-function MyContactCard({ currentUser, updateCurrentUser, isLoaded }) {
-
-    if (isLoaded) {
-        contactCardsDisplay = <ContactCard user={currentUser} currentUser={currentUser}/>;
-    }
+function MyContactCard({ currentUser, updateCurrentUser, isLoaded, patchUser, filterCircle }) {
 
     function handleMyInfoSubmit(e) {
         e.preventDefault();
@@ -24,23 +18,16 @@ function MyContactCard({ currentUser, updateCurrentUser, isLoaded }) {
             address: e.target.address.value,
             addnotes: e.target.addnotes.value
         };
-        fetch(`http://localhost:3000/users/${currentUser.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(newUserObj)
-        })
+        return (patchUser(currentUser, newUserObj)
         .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
+        .then((data) => updateCurrentUser(data)));
     };
 
     if (isLoaded) {
         return (
-            <div>
+            <div className="form-card">
                 <h1>My Contact Card</h1>
-                {contactCardsDisplay}
+                <ContactCard user={currentUser} currentUser={currentUser} filterCircle={filterCircle} />
                 <form id="mycontactform" onSubmit={handleMyInfoSubmit}>
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" defaultValue={currentUser.name} />
@@ -69,11 +56,10 @@ function MyContactCard({ currentUser, updateCurrentUser, isLoaded }) {
     } else {
         return (
             <div>
-                {contactCardsDisplay}
+                <h1>Loading...</h1>
             </div>
         );
     }
-    
 };
 
 export default MyContactCard;

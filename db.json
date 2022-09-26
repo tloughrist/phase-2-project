@@ -12,7 +12,7 @@
       "email": "tim.loughrist@gmail.com",
       "address": "123 Fake Street, Florence, AL 35630",
       "addnotes": "Really loves Katie!",
-      "access": false,
+      "access": true,
       "contacts": [
         {
           "contactid": 2,
@@ -25,7 +25,8 @@
           "privatenotes": "Likes good cognac"
         }
       ],
-      "requests": []
+      "requests": [],
+      "pronounsfilter": []
     },
     {
       "username": "sfreud",
@@ -63,7 +64,14 @@
           "circle": "collegues"
         }
       ],
-      "requests": []
+      "requests": [
+        {
+          "userid": 13,
+          "name": "Hannah Arendt",
+          "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Hannah_Arendt_1933.jpg/220px-Hannah_Arendt_1933.jpg",
+          "reqcircle": "friends"
+        }
+      ]
     },
     {
       "username": "brussell",
@@ -190,7 +198,7 @@
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/JudithButler2013.jpg/220px-JudithButler2013.jpg",
       "id": 9,
-      "access": true,
+      "access": false,
       "name": "Judith Butler",
       "dob": "1956-02-24",
       "pronouns": "they / them",
@@ -234,7 +242,13 @@
     {
       "username": "mshelley",
       "password": "proxypassword",
-      "contacts": [],
+      "contacts": [
+        {
+          "contactid": 13,
+          "circle": "collegues",
+          "privatenotes": ""
+        }
+      ],
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Mary_Wollstonecraft_Shelley_Rothwell.tif/lossy-page1-250px-Mary_Wollstonecraft_Shelley_Rothwell.tif.jpg",
       "id": 12,
@@ -245,6 +259,22 @@
       "phone": "555-555-5555",
       "email": "themonster@frankenstein.com",
       "address": "123 Fake Street, London",
+      "addnotes": ""
+    },
+    {
+      "username": "harendt",
+      "password": "proxypassword",
+      "contacts": [],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Hannah_Arendt_1933.jpg/220px-Hannah_Arendt_1933.jpg",
+      "id": 13,
+      "access": false,
+      "name": "Hannah Arendt",
+      "dob": "1906-10-14",
+      "pronouns": "she / her",
+      "phone": "555-555-5555",
+      "email": "banality@evil.com",
+      "address": "123 Rue Fake, Paris ",
       "addnotes": ""
     }
   ]

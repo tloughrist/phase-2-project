@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import CircleSelect from "./CircleSelect";
 
-function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, updateCircle, deleteContact, search, makeRequest }) {
+function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, updateCircle, deleteContact, search, makeRequest, filterCircle }) {
 
     const [privateNotes, setPrivateNotes] = useState(notes);
     const [currentCircle, setCurrentCircle] = useState(circle);
@@ -85,12 +86,18 @@ function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, upda
                 <h3>{user.name}</h3>
                 <p>{user.username}</p>
                 <p>{user.pronouns}</p>
+                <CircleSelect currentUser={currentUser} information={"pronouns"} filterCircle={filterCircle} /> 
                 <p>{user.dob}</p>
+                <CircleSelect currentUser={currentUser} information={"dob"} filterCircle={filterCircle} /> 
                 <img src={user.pic} alt={`${user.name} picture`} />
                 <p>{user.email}</p>
+                <CircleSelect currentUser={currentUser} information={"email"} filterCircle={filterCircle} /> 
                 <p>{user.phone}</p>
+                <CircleSelect currentUser={currentUser} information={"phone"} filterCircle={filterCircle} /> 
                 <p>{user.address}</p>
+                <CircleSelect currentUser={currentUser} information={"address"} filterCircle={filterCircle} /> 
                 <p>Your Notes: {user.addnotes}</p>
+                <CircleSelect currentUser={currentUser} information={"addnotes"} filterCircle={filterCircle} /> 
             </div>
         );
     }
