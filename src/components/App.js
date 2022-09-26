@@ -125,9 +125,9 @@ function App() {
         }
         const newRequests = [...targetUser.requests, request];
         setIsLoaded(false); 
-        return (patchUser(currentUser, {requests: newRequests})
+        return (patchUser(targetUser, {requests: newRequests})
         .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
+        .then((data) => updateUserData(data))
         .then(() => setIsLoaded(true)));
     };
 
@@ -148,8 +148,13 @@ function App() {
         .then(() => setIsLoaded(true)));
     };
 
-    function rejectRequest() {
-        return console.log("reject");
+    function rejectRequest(currentUser, requestingUserId) {
+        const filteredRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
+        setIsLoaded(false);
+        return (patchUser(currentUser, {requests: filteredRequests})
+        .then((response) => response.json())
+        .then((data) => updateCurrentUser(data))
+        .then(() => setIsLoaded(true)));
     };
 
     function patchUser(userObj, patchObj) {
@@ -165,7 +170,11 @@ function App() {
 
     return (
         <div>
-            <Header currentUser={currentUser} logOut={logOut} search={search} />
+            <Header
+                currentUser={currentUser}
+                logOut={logOut}
+                search={search}
+            />
             <Switch>
                 <Route path="/login">
                     <Login

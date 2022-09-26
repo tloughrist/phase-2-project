@@ -180,11 +180,17 @@
     {
       "username": "jbutler",
       "password": "proxypassword",
-      "contacts": [],
+      "contacts": [
+        {
+          "contactid": 1,
+          "circle": "friends",
+          "privatenotes": ""
+        }
+      ],
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/JudithButler2013.jpg/220px-JudithButler2013.jpg",
       "id": 9,
-      "access": false,
+      "access": true,
       "name": "Judith Butler",
       "dob": "1956-02-24",
       "pronouns": "they / them",
@@ -232,7 +238,7 @@
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Mary_Wollstonecraft_Shelley_Rothwell.tif/lossy-page1-250px-Mary_Wollstonecraft_Shelley_Rothwell.tif.jpg",
       "id": 12,
-      "access": true,
+      "access": false,
       "name": "Mary Shelley",
       "dob": "1797-08-30",
       "pronouns": "she / her",

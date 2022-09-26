@@ -8,7 +8,7 @@ function Request({ reqName, reqId, reqPic, currentUser, acceptRequest, rejectReq
     };
 
     function handleRejectClick() {
-        return rejectRequest();
+        return rejectRequest(currentUser, reqId);
     };
 
     return (
