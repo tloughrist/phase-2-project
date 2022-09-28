@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Request({ reqName, reqId, reqPic, currentUser, acceptRequest, rejectRequest, requestedCircle }) {
 
@@ -16,7 +16,7 @@ function Request({ reqName, reqId, reqPic, currentUser, acceptRequest, rejectReq
             <h3>{reqName} wants to connect with you.</h3>
             <img src={reqPic} alt={`${reqName}pic`} />
             <label htmlFor="circle">Circle:</label>
-            <select name="circle">
+            <select name="circle" defaultValue={"family"}>
                 <option value="family">Family</option>
                 <option value="friends">Friends</option>
                 <option value="collegues">Collegues</option>

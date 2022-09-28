@@ -13,7 +13,7 @@ function App() {
     const [currentUser, setCurrentUser] = useState();
     const [userData, setUserData] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [searchValue, setSearchValue] = useState();
+    const [searchValue, setSearchValue] = useState("xyz");
 
     const history = useHistory(); 
 
@@ -145,7 +145,7 @@ function App() {
         const requestingUserContacts = [...requestingUser[0].contacts, currentUserObj];
         const currentUserRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
         setIsLoaded(false); 
-        patchUser(requestingUser, {contacts: requestingUserContacts})
+        patchUser(requestingUser[0], {contacts: requestingUserContacts})
         .then((response) => response.json())
         .then((data) => updateUserData(data))
         return (patchUser(currentUser, {requests: currentUserRequests, contacts: currentUserContacts})
@@ -167,9 +167,7 @@ function App() {
         const filterKey = `${information}filter`;
         const previousCircleFilter = user[filterKey];
         let newCircleFilter = [];
-        if (previousCircleFilter === undefined) {
-            newCircleFilter = [circle];
-        } else if (previousCircleFilter.includes(circle)) {
+        if (previousCircleFilter.includes(circle)) {
             newCircleFilter = previousCircleFilter.filter((circleFilter) => circleFilter !== circle);
         } else {
             newCircleFilter = [...previousCircleFilter, circle];
@@ -196,7 +194,7 @@ function App() {
     };
 
     return (
-        <div>
+        <div id="main-container">
             <Header
                 currentUser={currentUser}
                 logOut={logOut}
@@ -232,7 +230,6 @@ function App() {
                 <Route path="/requests">
                     <ContactRequests
                         currentUser={currentUser}
-                        userData={userData}
                         isLoaded={isLoaded}
                         acceptRequest={acceptRequest}
                         rejectRequest={rejectRequest}

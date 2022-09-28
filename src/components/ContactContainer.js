@@ -25,13 +25,13 @@ function ContactContainer({ currentUser, userData, isLoaded, updatePrivateNote, 
                 updatePrivateNote={updatePrivateNote}
                 updateCircle={updateCircle}
                 deleteContact={deleteContact}
+                isLoaded={isLoaded}
             />;
         });
     }
 
     return (
-        <div>
-            <h1>Contacts</h1>
+        <div className="display-container">
             {contactCardsDisplay}
         </div>
     );

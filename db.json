@@ -10,14 +10,29 @@
       "pronouns": "he / him",
       "phone": "555-555-5555",
       "email": "tim.loughrist@gmail.com",
-      "address": "123 Fake Street, Florence, AL 35630",
-      "addnotes": "Really loves Katie!",
+      "address": "123 Fake Street, Florence",
+      "addnotes": "Loves Katie!",
       "access": true,
       "contacts": [
         {
+          "contactid": 6,
+          "circle": "collegues",
+          "privatenotes": ""
+        },
+        {
+          "contactid": 12,
+          "circle": "family",
+          "privatenotes": ""
+        },
+        {
           "contactid": 2,
-          "privatenotes": "Likes good cigars (actual cigars)",
+          "privatenotes": "Likes (actual) cigars",
           "circle": "friends"
+        },
+        {
+          "contactid": 14,
+          "circle": "friends",
+          "privatenotes": ""
         },
         {
           "contactid": 3,
@@ -26,7 +41,36 @@
         }
       ],
       "requests": [],
-      "pronounsfilter": []
+      "pronounsfilter": [
+        "friends",
+        "collegues",
+        "family"
+      ],
+      "dobfilter": [
+        "family",
+        "friends",
+        "collegues"
+      ],
+      "emailfilter": [
+        "family",
+        "friends",
+        "collegues"
+      ],
+      "phonefilter": [
+        "family",
+        "friends",
+        "collegues"
+      ],
+      "addressfilter": [
+        "friends",
+        "collegues",
+        "family"
+      ],
+      "addnotesfilter": [
+        "family",
+        "friends",
+        "collegues"
+      ]
     },
     {
       "username": "sfreud",
@@ -41,8 +85,20 @@
       "address": "123 Fake Strasse, Vienna",
       "addnotes": "",
       "access": false,
-      "contacts": [],
-      "requests": []
+      "contacts": [
+        {
+          "contactid": 1,
+          "privatenotes": "",
+          "circle": "collegues"
+        }
+      ],
+      "requests": [],
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "acamus",
@@ -55,7 +111,7 @@
       "phone": "555-555-5555",
       "email": "sisyphus@ennui.com",
       "address": "123 Fake Rue, Paris",
-      "addnotes": "",
+      "addnotes": "I'm allergic to cats.",
       "access": false,
       "contacts": [
         {
@@ -70,7 +126,38 @@
           "name": "Hannah Arendt",
           "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Hannah_Arendt_1933.jpg/220px-Hannah_Arendt_1933.jpg",
           "reqcircle": "friends"
+        },
+        {
+          "userid": 14,
+          "name": "Jean-Michael Basquiat",
+          "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
+          "reqcircle": "collegues"
         }
+      ],
+      "pronounsfilter": [
+        "collegues",
+        "friends",
+        "family"
+      ],
+      "dobfilter": [
+        "family",
+        "friends"
+      ],
+      "emailfilter": [
+        "collegues",
+        "family",
+        "friends"
+      ],
+      "phonefilter": [
+        "family",
+        "friends"
+      ],
+      "addressfilter": [
+        "family"
+      ],
+      "addnotesfilter": [
+        "friends",
+        "family"
       ]
     },
     {
@@ -92,7 +179,13 @@
       "phone": "555-555-5555",
       "email": "principia@mathematica.com",
       "address": "123 Fake St., Cambridge",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "pfoot",
@@ -104,7 +197,14 @@
           "privatenotes": ""
         }
       ],
-      "requests": [],
+      "requests": [
+        {
+          "userid": 14,
+          "name": "Jean-Michael Basquiat",
+          "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
+          "reqcircle": "friends"
+        }
+      ],
       "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Philippa_Foot.jpg/220px-Philippa_Foot.jpg",
       "id": 5,
       "access": false,
@@ -114,12 +214,29 @@
       "phone": "555-555-5555",
       "email": "naturalgoodness@virtue.com",
       "address": "123 Fake Street, Los Angeles, CA",
-      "addnotes": "I love to read"
+      "addnotes": "I love to read",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "aturing",
       "password": "proxypassword",
-      "contacts": [],
+      "contacts": [
+        {
+          "contactid": 1,
+          "circle": "friends",
+          "privatenotes": ""
+        },
+        {
+          "contactid": 12,
+          "circle": "family",
+          "privatenotes": ""
+        }
+      ],
       "requests": [],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alan_Turing_Aged_16.jpg/220px-Alan_Turing_Aged_16.jpg",
       "id": 6,
@@ -130,7 +247,13 @@
       "phone": "555-555-5555",
       "email": "bombe@machine.com",
       "address": "123 Fake Street, Bletchley Park",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "imurdoch",
@@ -157,7 +280,13 @@
       "phone": "555-555-5555",
       "email": "moral@realism.com",
       "address": "123 Fake Street, Oxford",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "lwittgenstein",
@@ -183,7 +312,13 @@
       "phone": "555-555-5555",
       "email": "silence@wordplay.com",
       "address": "123 Fake Street, Cambridge",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "jbutler",
@@ -205,13 +340,26 @@
       "phone": "555-555-5555",
       "email": "radical@gender.com",
       "address": "123 Fake Street, Berkeley, CA",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "ebohemia",
       "password": "proxypassword",
       "contacts": [],
-      "requests": [],
+      "requests": [
+        {
+          "userid": 14,
+          "name": "Jean-Michael Basquiat",
+          "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
+          "reqcircle": "friends"
+        }
+      ],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/1636_Elisabeth_of_Bohemia.jpg/220px-1636_Elisabeth_of_Bohemia.jpg",
       "id": 10,
       "access": false,
@@ -221,13 +369,26 @@
       "phone": "555-555-5555",
       "email": "antidualist@palatinate.com",
       "address": "123 Fake Strasse, Heidelberg",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "arodin",
       "password": "proxypassword",
       "contacts": [],
-      "requests": [],
+      "requests": [
+        {
+          "userid": 14,
+          "name": "Jean-Michael Basquiat",
+          "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
+          "reqcircle": "collegues"
+        }
+      ],
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Auguste_Rodin_by_George_Charles_Beresford_%28NPG_x6573%29.jpg/220px-Auguste_Rodin_by_George_Charles_Beresford_%28NPG_x6573%29.jpg",
       "id": 11,
       "access": false,
@@ -237,7 +398,13 @@
       "phone": "555-555-5555",
       "email": "thinker@sculpt.com",
       "address": "123 Rue Fake, Paris",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "mshelley",
@@ -246,6 +413,16 @@
         {
           "contactid": 13,
           "circle": "collegues",
+          "privatenotes": ""
+        },
+        {
+          "contactid": 1,
+          "circle": "family",
+          "privatenotes": ""
+        },
+        {
+          "contactid": 6,
+          "circle": "family",
           "privatenotes": ""
         }
       ],
@@ -259,7 +436,13 @@
       "phone": "555-555-5555",
       "email": "themonster@frankenstein.com",
       "address": "123 Fake Street, London",
-      "addnotes": ""
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
     },
     {
       "username": "harendt",
@@ -275,6 +458,61 @@
       "phone": "555-555-5555",
       "email": "banality@evil.com",
       "address": "123 Rue Fake, Paris ",
+      "addnotes": "",
+      "pronounsfilter": [],
+      "dobfilter": [],
+      "emailfilter": [],
+      "phonefilter": [],
+      "addressfilter": [],
+      "addnotesfilter": []
+    },
+    {
+      "username": "jmbasquiat",
+      "password": "proxypassword",
+      "contacts": [
+        {
+          "contactid": 1,
+          "privatenotes": "",
+          "circle": "friends"
+        }
+      ],
+      "requests": [],
+      "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
+      "pronounsfilter": [
+        "family",
+        "friends",
+        "collegues"
+      ],
+      "dobfilter": [
+        "family",
+        "friends"
+      ],
+      "emailfilter": [
+        "collegues",
+        "friends",
+        "family"
+      ],
+      "phonefilter": [
+        "friends",
+        "family"
+      ],
+      "addressfilter": [
+        "friends",
+        "family"
+      ],
+      "addnotesfilter": [
+        "collegues",
+        "friends",
+        "family"
+      ],
+      "id": 14,
+      "access": false,
+      "name": "Jean-Michael Basquiat",
+      "dob": "1960-12-22",
+      "pronouns": "he / him",
+      "phone": "555-555-5555",
+      "email": "untitled@streetart.com",
+      "address": "123 Fake Street, New York City",
       "addnotes": ""
     }
   ]

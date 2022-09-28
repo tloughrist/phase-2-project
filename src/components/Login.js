@@ -13,8 +13,7 @@ function Login({ handleLogIn, userData }) {
     }; 
     
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="display-container">
             <form onSubmit={submitLogin}>
                 <div>
                     <input type="text" name="username" placeholder="Username" autoComplete="username" />

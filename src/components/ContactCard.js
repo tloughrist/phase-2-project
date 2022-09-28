@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import CircleSelect from "./CircleSelect";
 
-function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, updateCircle, deleteContact, search, makeRequest, filterCircle }) {
+function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, updateCircle, deleteContact }) {
 
     const [privateNotes, setPrivateNotes] = useState(notes);
     const [currentCircle, setCurrentCircle] = useState(circle);
@@ -30,44 +29,32 @@ function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, upda
         return setCurrentCircle(e.target.value);
     };
 
-    function handleRequestClick(e) {
-        const requestedCircle = e.target.previousSibling.value;
-        return makeRequest(currentUser, user, requestedCircle);
-    };
+    const informationDisplay = [];
 
-    if (search) {
-        return (
-            <div className="contact-card">
+    let proxy = 0;
+    const userContact = user.contacts.filter((contact) => contact.contactid === currentUser.id);
+    const userCircle = userContact[0].circle;
+    user.pronounsfilter.includes(userCircle) ? informationDisplay.push(<p key={`${user.name}pronouns`}><b>Pronouns:</b> {user.pronouns}</p>) : proxy = 0;
+    user.dobfilter.includes(userCircle) ? informationDisplay.push(<p key={`${user.name}dob`}><b>Date of Birth:</b> {user.dob}</p>) : proxy = 0;
+    user.emailfilter.includes(userCircle) ? informationDisplay.push(<p key={`${user.name}email`}><b>Email:</b> {user.email}</p>) : proxy = 0;
+    user.phonefilter.includes(userCircle) ? informationDisplay.push(<p key={`${user.name}phone`}><b>Phone:</b> {user.phone}</p>) : proxy = 0;
+    user.addressfilter.includes(userCircle) ? informationDisplay.push(<p key={`${user.name}address`}><b>Address:</b> {user.address}</p>) : proxy = 0;
+    user.addnotesfilter.includes(userCircle) ? informationDisplay.push(<p key={`${user.name}addnotes`}><b>Public Notes:</b> {user.addnotes}</p>) : proxy = 0;
+
+    return (
+        <div className="contact-card">
+            <img key={`${user.name}pic`} className="contact-image" src={user.pic} alt={`${user.name} picture`} />
+            <div key={`${user.name}contactinfo`} className="contactinfo">
                 <h3>{user.name}</h3>
-                <p>{user.username}</p>
-                <img src={user.pic} alt={`${user.name} picture`} />
-                <select name="circle">
-                    <option value="family">Family</option>
-                    <option value="friends">Friends</option>
-                    <option value="collegues">Collegues</option>
-                </select>
-                <button onClick={handleRequestClick}>Request Information</button>
-            </div>
-        );
-    } else if (user !== currentUser) {
-        return (
-            <div className="contact-card">
-                <h3>{user.name}</h3>
-                <p>{user.username}</p>
-                <p>{user.pronouns}</p>
-                <p>{user.dob}</p>
-                <img src={user.pic} alt={`${user.name} picture`} />
-                <p>{user.email}</p>
-                <p>{user.phone}</p>
-                <p>{user.address}</p>
-                <p>Their Notes: {user.addnotes}</p>
-                <form onSubmit={handlePrivNoteSubmit}>
-                    <label htmlFor="privnotes">Your Notes:</label>
+                <p><b>Username:</b> {user.username}</p>
+                {informationDisplay}
+                <form className="contact-card-form" onSubmit={handlePrivNoteSubmit}>
+                    <label htmlFor="privnotes"><b>Your Notes</b></label>
                     <textarea name="privnotes" value={privateNotes} onChange={handleNoteChange} />
                     <input type="submit" value="Submit Changes" />
                 </form>
-                <form onSubmit={handleCircleSubmit}>
-                    <label htmlFor="circle">Circle:</label>
+                <form className="contact-card-form" onSubmit={handleCircleSubmit}>
+                    <label htmlFor="circle"><b>Circle</b></label>
                     <select name="circle" value={currentCircle} onChange={handleCircleChange}>
                         <option value="family">Family</option>
                         <option value="friends">Friends</option>
@@ -75,32 +62,13 @@ function ContactCard({ user, notes, circle, currentUser, updatePrivateNote, upda
                     </select>
                     <input type="submit" value="Submit Changes" />
                 </form>
-                <form onSubmit={handleDeleteSubmit}>
+                <hr></hr>
+                <form className="contact-card-form delete" onSubmit={handleDeleteSubmit}>
                     <input type="submit" value="Delete Contact" /> 
                 </form>
             </div>
-        );
-    } else {
-        return (
-            <div className="contact-card">
-                <h3>{user.name}</h3>
-                <p>{user.username}</p>
-                <p>{user.pronouns}</p>
-                <CircleSelect currentUser={currentUser} information={"pronouns"} filterCircle={filterCircle} /> 
-                <p>{user.dob}</p>
-                <CircleSelect currentUser={currentUser} information={"dob"} filterCircle={filterCircle} /> 
-                <img src={user.pic} alt={`${user.name} picture`} />
-                <p>{user.email}</p>
-                <CircleSelect currentUser={currentUser} information={"email"} filterCircle={filterCircle} /> 
-                <p>{user.phone}</p>
-                <CircleSelect currentUser={currentUser} information={"phone"} filterCircle={filterCircle} /> 
-                <p>{user.address}</p>
-                <CircleSelect currentUser={currentUser} information={"address"} filterCircle={filterCircle} /> 
-                <p>Your Notes: {user.addnotes}</p>
-                <CircleSelect currentUser={currentUser} information={"addnotes"} filterCircle={filterCircle} /> 
-            </div>
-        );
-    }
+        </div>
+    );
 };
 
 export default ContactCard;

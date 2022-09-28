@@ -13,7 +13,19 @@ function SignUp({ handleLogIn, userData, handleSignUp }) {
     };
 
     function createNewUser(newUsername, newPassword) {
-        const newUserObj = {username: newUsername, password: newPassword, contacts: [], requests: [], pic: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/220px-Aristotle_Altemps_Inv8575.jpg"}
+        const newUserObj = {
+            username: newUsername,
+            password: newPassword,
+            contacts: [],
+            requests: [],
+            pic: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/220px-Aristotle_Altemps_Inv8575.jpg",
+            pronounsfilter: [],
+            dobfilter: [],
+            emailfilter: [],
+            phonefilter: [],
+            addressfilter: [],
+            addnotesfilter: []
+        };
         fetch("http://localhost:3000/users", {
             method: 'POST',
             headers: {
@@ -32,8 +44,7 @@ function SignUp({ handleLogIn, userData, handleSignUp }) {
     };
 
     return (
-        <div>
-            <h1>Sign Up</h1>
+        <div className="display-container">
             <form onSubmit={submitSignUp}>
                 <div>
                     <input type="text" name="username" placeholder="Username" autoComplete="username" />

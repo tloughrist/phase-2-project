@@ -3,7 +3,7 @@ import Request from "./Request"
 
 let requestDisplay = <h1>Loading...</h1>;
 
-function ContactRequests({ isLoaded, currentUser, userData, acceptRequest, rejectRequest }) {
+function ContactRequests({ isLoaded, currentUser, acceptRequest, rejectRequest }) {
 
     if (isLoaded) {
         requestDisplay = currentUser.requests.map((request) => {
@@ -23,8 +23,7 @@ function ContactRequests({ isLoaded, currentUser, userData, acceptRequest, rejec
     }
 
     return (
-        <div>
-            <h1>Requests</h1>
+        <div className="display-container">
             {requestDisplay}
         </div>
     );

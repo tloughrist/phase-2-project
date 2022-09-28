@@ -3,35 +3,24 @@ import { SideNavBar, TopNavBar } from "./Navbar";
 
 function Header({ currentUser, logOut, search }) {
 
-    function handleLogOut() {
-        return logOut();
-    };
 
-    function handleSearch(e) {
-        e.preventDefault();
-        return search(e.target.search.value);
-    };
 
     if (currentUser === undefined) {
         return (
-            <div id="header">
+            <div id="banner">
                 <h1 id="title">inFormation</h1>
-                <TopNavBar />
+                <div className="navbar-container">
+                    <TopNavBar />
+                </div>
             </div>
         )
     } else {
         return (
-            <div id="header">
+            <div id="banner">
                 <h1 id="title">inFormation</h1>
-                <TopNavBar />
-                <button onClick={handleLogOut}>Log Out</button>
-                <form onSubmit={handleSearch}>
-                    <label htmlFor="search">Search for User</label>
-                    <input type="text" name="search" />
-                    <input type="submit" />
-                </form>
-                <h3>Logged in as: {currentUser.username}</h3>
-                <SideNavBar />
+                <div className="navbar-container">
+                    <SideNavBar logOut={logOut} search={search} currentUser={currentUser} />
+                </div>
             </div>
         );
     }
