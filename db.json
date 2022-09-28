@@ -465,55 +465,6 @@
       "phonefilter": [],
       "addressfilter": [],
       "addnotesfilter": []
-    },
-    {
-      "username": "jmbasquiat",
-      "password": "proxypassword",
-      "contacts": [
-        {
-          "contactid": 1,
-          "privatenotes": "",
-          "circle": "friends"
-        }
-      ],
-      "requests": [],
-      "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
-      "pronounsfilter": [
-        "family",
-        "friends",
-        "collegues"
-      ],
-      "dobfilter": [
-        "family",
-        "friends"
-      ],
-      "emailfilter": [
-        "collegues",
-        "friends",
-        "family"
-      ],
-      "phonefilter": [
-        "friends",
-        "family"
-      ],
-      "addressfilter": [
-        "friends",
-        "family"
-      ],
-      "addnotesfilter": [
-        "collegues",
-        "friends",
-        "family"
-      ],
-      "id": 14,
-      "access": false,
-      "name": "Jean-Michael Basquiat",
-      "dob": "1960-12-22",
-      "pronouns": "he / him",
-      "phone": "555-555-5555",
-      "email": "untitled@streetart.com",
-      "address": "123 Fake Street, New York City",
-      "addnotes": ""
     }
   ]
 }
