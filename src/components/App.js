@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Login from "./Login.js";
-import Logout from "./Logout.js";
 import SignUp from "./SignUp.js";
 import Banner from "./Banner.js";
 import PersonalInfo from "./PersonalInfo.js";
@@ -11,57 +10,109 @@ import Home from "./Home.js";
 function App() {
     const [currentUser, setCurrentUser] = useState();
     const [userData, setUserData] = useState();
+    const [token, setToken] = useState("unchecked");
     const [isLoaded, setIsLoaded] = useState(false);
-    const [searchValue, setSearchValue] = useState("xyz");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const history = useHistory(); 
+    const history = useHistory();
 
-    /*useEffect(() => {
-        return (fetch("http://localhost:3000/users")
+    const initialLoad = useEffect(() => {
+        return fetch("http://localhost:3000/users")
         .then((response) => response.json())
-        .then((data) => initialSetUp(data))
-        .then(() => setIsLoaded(true)))
-    }, []);*/
+        .then((data) => setUserData(data))
+        .then(() => setIsLoaded(true))
+    }, []);
 
-    function logOut() {
-        return console.log('logout');
+    Promise.all([initialLoad])
+    .then(() => getToken());
+
+    function getToken() {
+        const tokenString = sessionStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+        if (userData) {
+            if (userToken) {
+                const returningUser = userData.filter((user) => user.token.username === userToken.username && user.token.password === userToken.password);
+                setCurrentUser(returningUser[0]);
+                return returningUser.length > 0 ? setToken("valid") : setToken("invalid");
+            } else {
+                return setToken("invalid");
+            }
+        } else {
+            return setToken("unchecked");
+        }
     };
 
-    function setToken(userToken) {
-        sessionStorage.setItem('token', JSON.stringify(userToken));
-    }
+    function logIn(userObj) {
+        setCurrentUser(userObj);
+        sessionStorage.setItem('token', JSON.stringify(userObj.token));
+        setToken(true);
+        return history.push("/personalinfo");
+    };
 
-    setToken();
-
-    function clearToken() {
+    function logOut() {
         sessionStorage.clear();
+        setToken(false);
+        setCurrentUser();
+        return history.push("/");
+    };
+
+    function patchUser(userId, patchObj) {
+        return fetch(`http://localhost:3000/users/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(patchObj)
+            });
+    };
+    
+    function updateUserData(userObj) {
+        const userDataSans = userData.filter((user) => user.id !==userObj.id);
+        return setUserData([...userDataSans, userObj]);
+    };
+
+    function updateCurrentUser(userObj) {
+        updateUserData(userObj)
+        return setCurrentUser(userObj);
     }
 
-    clearToken();
-
-    console.log('app')
     return (
         <div>
-            <Banner isLoggedIn={isLoggedIn} logOut={logOut} />
+            <Banner
+                token={token}
+                logOut={logOut}
+                isLoaded={isLoaded}
+            />
             <Switch>
                 <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/logout">
-                    <Logout />
+                    <Login
+                        userData={userData}
+                        setToken={setToken}
+                        logIn={logIn}
+                    />
                 </Route>
                 <Route path="/formations">
-                    <Formations />
+                    <Formations
+                        currentUser={currentUser}
+                        token={token}
+                    />
                 </Route>
                 <Route path="/personalinfo">
-                    <PersonalInfo />
+                    <PersonalInfo
+                        currentUser={currentUser}
+                        token={token}
+                        patchUser={patchUser}
+                        updateCurrentUser={updateCurrentUser}
+                    />
                 </Route>
                 <Route path="/signup">
-                    <SignUp />
+                    <SignUp
+                        userData={userData}
+                        logIn={logIn}
+                    />
                 </Route>
                 <Route path="/">
-                    <Home />
+                    <Home
+                    />
                 </Route>
             </Switch>
         </div>

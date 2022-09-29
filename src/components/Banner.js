@@ -2,12 +2,17 @@ import React from "react";
 import UserNav from "./UserNav.js";
 import VisitorNav from "./VisitorNav.js";
 
-function Banner({ isLoggedIn, logOut }) {
-    if (isLoggedIn) {
-        return <UserNav logOut={logOut} />
+function Banner({ isLoaded, token, logOut }) {
+    if (isLoaded) {
+        if (token === "valid") {
+            return <UserNav logOut={logOut} />
+        } else {
+            return <VisitorNav />;
+        }
     } else {
-        return <VisitorNav />;
+        return <h1>Loading...</h1>
     }
+    
 };
 
 export default Banner;
