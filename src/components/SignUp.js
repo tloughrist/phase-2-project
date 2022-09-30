@@ -1,61 +1,54 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
+function SignUp({ userData, logIn }) {
 
-function SignUp({ handleLogIn, userData, handleSignUp }) {
-
-    function submitSignUp(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        const newUsername = e.target.username.value;
-        const newPassword = e.target.password.value;
-        const userMatch = userData.filter((user) => user.username === newUsername);
-        userMatch[0] === newUsername? alert("Username already in use") : createNewUser(newUsername, newPassword);
-    };
-
-    function createNewUser(newUsername, newPassword) {
+        const username = e.target.username.value;
+        const password = e.target.password.value;
         const newUserObj = {
-            username: newUsername,
-            password: newPassword,
-            contacts: [],
-            requests: [],
+            token: {username: username, password: password},
+            name: "",
+            pronouns: "",
             pic: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/220px-Aristotle_Altemps_Inv8575.jpg",
-            pronounsfilter: [],
-            dobfilter: [],
-            emailfilter: [],
-            phonefilter: [],
-            addressfilter: [],
-            addnotesfilter: []
+            email: "",
+            phone: "",
+            address: "",
+            notes: "",
+            formations: []
         };
-        fetch("http://localhost:3000/users", {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(newUserObj)
-        })
-        .then((response) => response.json())
-        .then((data) => updateUsers(data))
+        const userMatch = userData === undefined ? [] : userData.filter((user) => user.token.username === username);
+        if (userMatch.length > 0) {
+            return alert("Sorry, username already in use");
+        } else {
+            return fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newUserObj)
+            })
+            .then(data => data.json())
+            .then(data => logIn(data));
+        }
     };
 
-    function updateUsers(data) {
-        handleSignUp(data);
-        return handleLogIn(data);
-    };
-
-    return (
-        <div className="display-container">
-            <form onSubmit={submitSignUp}>
-                <div>
-                    <input type="text" name="username" placeholder="Username" autoComplete="username" />
+    return(
+        <div className="login-wrapper">
+            <h1>Sign Up for inFormation</h1>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <p>Username</p>
+                    <input type="text" name="username" />
+                </label>
+                <label>
+                    <p>Password</p>
+                    <input type="password" name="password" />
+                </label>
+                    <div>
+                    <button type="submit">Submit</button>
                 </div>
-                <div>
-                    <input type="password" name="password" placeholder="Password" autoComplete="password" />
-                </div>
-                <input type="submit" value="Submit" />
             </form>
-            <p>Already a current user? <Link to={`/login`}>Login</Link></p>
-            <p>WARNING: This app is in development and data is not secured. Do not reuse a password or enter real personal information.</p>
         </div>
     );
 };

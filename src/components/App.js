@@ -1,258 +1,121 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
-import About from "./About.js";
-import AddContact from "./AddContact.js";
-import ContactContainer from "./ContactContainer.js";
-import ContactRequests from "./ContactRequests.js";
-import Header from "./Header.js";
 import Login from "./Login.js";
-import MyContactCard from "./MyContactCard.js";
 import SignUp from "./SignUp.js";
+import Banner from "./Banner/Banner.js";
+import PersonalInfo from "./PersonalInfo.js";
+import Formations from "./Formations/Formations.js";
+import Home from "./Home.js";
 
 function App() {
     const [currentUser, setCurrentUser] = useState();
     const [userData, setUserData] = useState();
+    const [token, setToken] = useState("unchecked");
     const [isLoaded, setIsLoaded] = useState(false);
-    const [searchValue, setSearchValue] = useState("xyz");
 
-    const history = useHistory(); 
+    const history = useHistory();
 
-    useEffect(() => {
-        return (fetch("http://localhost:3000/users")
+    const initialLoad = useEffect(() => {
+        return fetch("http://localhost:3000/users")
         .then((response) => response.json())
-        .then((data) => initialSetUp(data))
-        .then(() => setIsLoaded(true)))
+        .then((data) => setUserData(data))
+        .then(() => setIsLoaded(true))
     }, []);
 
-    function initialSetUp(data) {
-        setUserData(data);
-        const accessUser = data.filter((user) => user.access);
-        return accessUser !== undefined ? setCurrentUser(accessUser[0]) : setCurrentUser();
+    Promise.all([initialLoad])
+    .then(() => getToken());
+
+    function getToken() {
+        const tokenString = sessionStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+        if (userData) {
+            if (userToken) {
+                const returningUser = userData.filter((user) => user.token.username === userToken.username && user.token.password === userToken.password);
+                setCurrentUser(returningUser[0]);
+                return returningUser.length > 0 ? setToken("valid") : setToken("invalid");
+            } else {
+                return setToken("invalid");
+            }
+        } else {
+            return setToken("unchecked");
+        }
     };
 
-    function handleLogIn(loggedUser) {
-        clearAccess(userData);
-        grantAccess(loggedUser);
-        setCurrentUser(loggedUser);
-        return history.push('/mycard');
-    };
-
-    function clearAccess() {
-        const accessUsers = userData.filter((user) => user.access === true)
-        return accessUsers.map((user) => patchUser(user, {access: false}));
-    };
-
-    function grantAccess(userObj) {
-        setIsLoaded(false)
-        return (patchUser(userObj, {access: true})
-        .then((response) => response.json())
-        .then((data) => updateUserData(data))
-        .then(() => setIsLoaded(true)))
+    function logIn(userObj) {
+        setCurrentUser(userObj);
+        sessionStorage.setItem('token', JSON.stringify(userObj.token));
+        setToken(true);
+        return history.push("/personalinfo");
     };
 
     function logOut() {
-        setIsLoaded(false);
-        patchUser(currentUser, {access: false})
-        .then(() => setIsLoaded(true));
-        history.push('/')
-        return setCurrentUser();
+        sessionStorage.clear();
+        setToken(false);
+        setCurrentUser();
+        return history.push("/");
     };
 
-    function handleSignUp(user) {
-        handleLogIn(user);
-        return setUserData([...userData, user]);
+    function patchUser(userId, patchObj) {
+        return fetch(`http://localhost:3000/users/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(patchObj)
+            });
+    };
+    
+    function updateUserData(userObj) {
+        const userDataSans = userData.filter((user) => user.id !==userObj.id);
+        return setUserData([...userDataSans, userObj]);
     };
 
-    function updateCurrentUser(updatedCurrentUserObj) {
-        setCurrentUser(updatedCurrentUserObj);
-        const filteredUserData = userData.filter((user) => user.id !== updatedCurrentUserObj.id);
-        return setUserData([...filteredUserData, updatedCurrentUserObj]);
-    };
-
-    function updateUserData(updatedUser) {
-        const filteredUserData = userData.filter((user) => user.id !== updatedUser.id);
-        return setUserData([...filteredUserData, updatedUser]);
-    };
-
-    function updatePrivateNote(newNote, currentUser, alteredContactId) {
-        const oldContactsObj = currentUser.contacts;
-        const filteredContacts = oldContactsObj.filter((contact) => contact.contactid !== alteredContactId);
-        const updatedContact = oldContactsObj.filter((contact) => contact.contactid === alteredContactId);
-        updatedContact[0].privatenotes = newNote;
-        const newContactsObj = [...filteredContacts, updatedContact[0]];
-        setIsLoaded(false);
-        return (patchUser(currentUser, {contacts: newContactsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
-        .then(() => setIsLoaded(true)));
-    };
-
-    function updateCircle(newCircle, currentUser, alteredContactId) {
-        const oldContactsObj = currentUser.contacts;
-        const filteredContacts = oldContactsObj.filter((contact) => contact.contactid !== alteredContactId);
-        const updatedContact = oldContactsObj.filter((contact) => contact.contactid === alteredContactId);
-        updatedContact[0].circle = newCircle;
-        const newContactsObj = [...filteredContacts, updatedContact[0]];
-        setIsLoaded(false);
-        return (patchUser(currentUser, {contacts: newContactsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
-        .then(() => setIsLoaded(true)));
-    };
-
-    function deleteContact(currentUser, alteredContactId) {
-        const oldContactsObj = currentUser.contacts;
-        const filteredContacts = oldContactsObj.filter((contact) => contact.contactid !== alteredContactId);
-        const newContactsObj = [...filteredContacts];
-        setIsLoaded(false);
-        return (patchUser(currentUser, {contacts: newContactsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
-        .then(() => setIsLoaded(true)));
-    };
-
-    function search(value) {
-        setSearchValue(value);
-        return history.push('/addcontact');
-    };
-
-    function makeRequest(currentUser, targetUser, requestedCircle) {
-        const existingRequest = targetUser.requests.filter((request) => request.userid === currentUser.id);
-        const existingContact = targetUser.contacts.filter((contact) => contact.contactid === currentUser.id);
-        if (existingRequest.length > 0 || existingContact.length > 0) {
-            return alert("Redundant Request");
-        } else {
-            const request = {
-                userid: currentUser.id,
-                name: currentUser.name,
-                pic: currentUser.pic,
-                reqcircle: requestedCircle
-            };
-            const newRequests = [...targetUser.requests, request];
-            setIsLoaded(false); 
-            return (patchUser(targetUser, {requests: newRequests})
-            .then((response) => response.json())
-            .then((data) => updateUserData(data))
-            .then(() => setIsLoaded(true)));
-        }
-    };
-
-    function acceptRequest(currentUser, requestingUserId, currentUserCircle, requestedCircle) {
-        const currentUserObj = {contactid: currentUser.id, circle: requestedCircle, privatenotes: ""};
-        const requestingUserObj = {contactid: requestingUserId, circle: currentUserCircle, privatenotes: ""};
-        const requestingUser = userData.filter((user) => user.id === requestingUserId);
-        const currentUserContacts = [...currentUser.contacts, requestingUserObj];
-        const requestingUserContacts = [...requestingUser[0].contacts, currentUserObj];
-        const currentUserRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
-        setIsLoaded(false); 
-        patchUser(requestingUser[0], {contacts: requestingUserContacts})
-        .then((response) => response.json())
-        .then((data) => updateUserData(data))
-        return (patchUser(currentUser, {requests: currentUserRequests, contacts: currentUserContacts})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
-        .then(() => setIsLoaded(true)));
-    };
-
-    function rejectRequest(currentUser, requestingUserId) {
-        const filteredRequests = currentUser.requests.filter((request) => request.userid !== requestingUserId);
-        setIsLoaded(false);
-        return (patchUser(currentUser, {requests: filteredRequests})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
-        .then(() => setIsLoaded(true)));
-    };
-
-    function filterCircle(user, information, circle) {
-        const filterKey = `${information}filter`;
-        const previousCircleFilter = user[filterKey];
-        let newCircleFilter = [];
-        if (previousCircleFilter.includes(circle)) {
-            newCircleFilter = previousCircleFilter.filter((circleFilter) => circleFilter !== circle);
-        } else {
-            newCircleFilter = [...previousCircleFilter, circle];
-        }
-        const newCircleFilterObj = {
-            [filterKey]: newCircleFilter
-        };
-        setIsLoaded(false);
-        return (patchUser(user, newCircleFilterObj)
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
-        .then(() => setIsLoaded(true)));
-    };
-
-    function patchUser(userObj, patchObj) {
-        return fetch(`http://localhost:3000/users/${userObj.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(patchObj)
-        });
-    };
+    function updateCurrentUser(userObj) {
+        updateUserData(userObj)
+        return setCurrentUser(userObj);
+    }
 
     return (
-        <div id="main-container">
-            <Header
-                currentUser={currentUser}
+        <div>
+            <Banner
+                token={token}
                 logOut={logOut}
-                search={search}
+                isLoaded={isLoaded}
             />
             <Switch>
                 <Route path="/login">
                     <Login
-                        handleLogIn={handleLogIn}
                         userData={userData}
-                        search={search}
+                        setToken={setToken}
+                        logIn={logIn}
                     />
                 </Route>
-                <Route path="/contacts">
-                    <ContactContainer
+                <Route path="/formations">
+                    <Formations
                         currentUser={currentUser}
-                        userData={userData}
-                        isLoaded={isLoaded}
-                        updatePrivateNote={updatePrivateNote}
-                        updateCircle={updateCircle}
-                        deleteContact={deleteContact}
-                    />
-                </Route>
-                <Route path="/mycard">
-                    <MyContactCard
-                        currentUser={currentUser}
-                        updateCurrentUser={updateCurrentUser}
-                        isLoaded={isLoaded}
+                        token={token}
                         patchUser={patchUser}
-                        filterCircle={filterCircle}
-                    />
-                </Route>
-                <Route path="/requests">
-                    <ContactRequests
-                        currentUser={currentUser}
-                        isLoaded={isLoaded}
-                        acceptRequest={acceptRequest}
-                        rejectRequest={rejectRequest}
-                    />
-                </Route>
-                <Route path="/addcontact">
-                    <AddContact
-                        currentUser={currentUser}
-                        isLoaded={isLoaded}
+                        updateCurrentUser={updateCurrentUser}
                         userData={userData}
-                        searchValue={searchValue}
-                        makeRequest={makeRequest}
+                    />
+                </Route>
+                <Route path="/personalinfo">
+                    <PersonalInfo
+                        currentUser={currentUser}
+                        token={token}
+                        patchUser={patchUser}
+                        updateCurrentUser={updateCurrentUser}
                     />
                 </Route>
                 <Route path="/signup">
                     <SignUp
-                        handleLogIn={handleLogIn}
-                        handleSignUp={handleSignUp}
                         userData={userData}
+                        logIn={logIn}
                     />
                 </Route>
                 <Route path="/">
-                    <About />
+                    <Home
+                    />
                 </Route>
             </Switch>
         </div>
