@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Login from "./Login.js";
 import SignUp from "./SignUp.js";
-import Banner from "./Banner.js";
+import Banner from "./Banner/Banner.js";
 import PersonalInfo from "./PersonalInfo.js";
-import Formations from "./Formations.js";
+import Formations from "./Formations/Formations.js";
 import Home from "./Home.js";
 
 function App() {
@@ -94,6 +94,9 @@ function App() {
                     <Formations
                         currentUser={currentUser}
                         token={token}
+                        patchUser={patchUser}
+                        updateCurrentUser={updateCurrentUser}
+                        userData={userData}
                     />
                 </Route>
                 <Route path="/personalinfo">

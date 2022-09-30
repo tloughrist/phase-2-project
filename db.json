@@ -11,10 +11,40 @@
       "email": "tim.loughrist@gmail.com",
       "phone": "555-555-5555",
       "address": "123 Fake Street, Florence",
-      "notes": "",
+      "notes": "Married to Kathryn Loughrist",
       "id": 1,
       "dob": "1982-07-20",
-      "addnotes": "Married to Kathryn Loughrist"
+      "formations": [
+        {
+          "name": "College Buddies",
+          "accesscode": "proxy",
+          "color": "#071fd5",
+          "image": "https://www.geneseo.edu/themes/custom/geneseo_bootstrap5/images/geneseo-logo-new.png",
+          "uniqueid": 1,
+          "pronouns": "shared",
+          "email": "shared"
+        },
+        {
+          "name": "Graduate Cohort",
+          "accesscode": "proxy",
+          "color": "#df3030",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/270px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg",
+          "uniqueid": 0,
+          "pronouns": "unshared",
+          "email": "unshared",
+          "phone": "shared",
+          "address": "shared",
+          "notes": "unshared"
+        },
+        {
+          "name": "Family",
+          "accesscode": "proxy",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "uniqueid": 0.7232350154015408,
+          "notes": "shared"
+        }
+      ]
     }
   ]
 }

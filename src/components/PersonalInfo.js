@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-
 function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
 
     function handleMyInfoSubmit(e) {
@@ -14,7 +13,7 @@ function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
             phone: e.target.phoneno.value,
             email: e.target.email.value,
             address: e.target.address.value,
-            addnotes: e.target.addnotes.value
+            notes: e.target.addnotes.value
         };
         return (patchUser(currentUser.id, newUserObj)
         .then((response) => response.json())
@@ -24,9 +23,9 @@ function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
     if (token === "valid") {
         return (
             <div className="display-container">
-                <div className="contact-card">
-                    <img src={currentUser.pic} className="contact-image" alt={`${currentUser.name} picture`} />
-                    <div className="contactinfo">
+                <div className="user-card">
+                    <img src={currentUser.pic} className="user-image" alt={`${currentUser.name} picture`} />
+                    <div className="userinfo">
                         <h3>{currentUser.name}</h3>
                         <p><b>Username:</b> {currentUser.token.username}</p>
                         <p><b>Pronouns:</b> {currentUser.pronouns}</p>
@@ -34,10 +33,10 @@ function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
                         <p><b>Email:</b> {currentUser.email}</p>
                         <p><b>Phone:</b> {currentUser.phone}</p>
                         <p><b>Address:</b> {currentUser.address}</p>
-                        <p><b>Public Notes:</b> {currentUser.addnotes}</p>
+                        <p><b>Public Notes:</b> {currentUser.notes}</p>
                     </div>
                 </div>
-                <form className="form-card" id="mycontactform" onSubmit={handleMyInfoSubmit} >
+                <form className="form-card" id="myuserform" onSubmit={handleMyInfoSubmit} >
                     <h2 className="form-element">Change Information</h2>
                     <label className="form-label" htmlFor="name">Name</label>
                     <input className="form-element" type="text" name="name" defaultValue={currentUser.name} />
@@ -54,7 +53,7 @@ function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
                     <label className="form-label" htmlFor="picurl">Picture Url</label>
                     <input className="form-element" type="url" name="picurl" defaultValue={currentUser.pic} />
                     <label className="form-label" htmlFor="addnotes">Additional Notes</label>
-                    <input className="form-element" type="textbox" name="addnotes" defaultValue={currentUser.addnotes} />
+                    <input className="form-element" type="textbox" name="addnotes" defaultValue={currentUser.notes} />
                     <input className="form-element" type="submit"></input>
                 </form>
             </div>
