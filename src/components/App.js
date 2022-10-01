@@ -44,13 +44,13 @@ function App() {
     function logIn(userObj) {
         setCurrentUser(userObj);
         sessionStorage.setItem('token', JSON.stringify(userObj.token));
-        setToken(true);
+        setToken("valid");
         return history.push("/personalinfo");
     };
 
     function logOut() {
         sessionStorage.clear();
-        setToken(false);
+        setToken("invalid");
         setCurrentUser();
         return history.push("/");
     };
@@ -97,6 +97,7 @@ function App() {
                         patchUser={patchUser}
                         updateCurrentUser={updateCurrentUser}
                         userData={userData}
+                        updateUserData={updateUserData}
                     />
                 </Route>
                 <Route path="/personalinfo">
@@ -111,6 +112,7 @@ function App() {
                     <SignUp
                         userData={userData}
                         logIn={logIn}
+                        updateUserData={updateUserData}
                     />
                 </Route>
                 <Route path="/">

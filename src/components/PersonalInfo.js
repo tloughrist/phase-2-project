@@ -20,7 +20,7 @@ function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
         .then((data) => updateCurrentUser(data)));
     };
 
-    if (token === "valid") {
+    if (token === "valid" && currentUser) {
         return (
             <div className="display-container">
                 <div className="user-card">

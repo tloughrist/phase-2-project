@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import MyFormations from "./MyFormations.js";
 import NewFormation from "./NewFormation.js";
 import FormationBar from "./FormationBar.js";
@@ -8,9 +8,15 @@ import FormationRequests from "./FormationRequests.js";
 import FormationUsers from "./FormationUsers.js";
 import FormationInfo from "./FormationInfo.js";
 import FormationSettings from "./FormationSettings.js";
+import Users from "./Users.js";
+import AllFormations from "./AllFormations.js";
 
-function Formations({ token, currentUser, patchUser, updateCurrentUser, userData }) {
+function Formations({ token, currentUser, patchUser, updateCurrentUser, userData, updateUserData }) {
+
+    const [searchValue, setSearchValue] = useState("");
     
+    const history = useHistory();
+
     if (token === "valid") {
         const formationIds = currentUser.formations.map((formation) => formation.uniqueid);
 
@@ -33,7 +39,7 @@ function Formations({ token, currentUser, patchUser, updateCurrentUser, userData
         const formationSettings = formationIds.map((id) => {
             return (
                 <Route key={`${id}settings`} path={`/formations/${id}/settings`}>
-                    <FormationSettings currentUser={currentUser} formationId={id} patchUser={patchUser} updateCurrentUser={updateCurrentUser} userData={userData}/>
+                    <FormationSettings currentUser={currentUser} formationId={id} patchUser={patchUser} updateCurrentUser={updateCurrentUser} userData={userData} updateUserData={updateUserData} />
                 </Route> 
             );
         });
@@ -45,11 +51,20 @@ function Formations({ token, currentUser, patchUser, updateCurrentUser, userData
                 </Route> 
             );
         });
+
+        function getSearchValue(mode, value) {
+            setSearchValue(value);
+            if (mode === "formation") {
+                return history.push("/formations");
+            } else if (mode === "user") {
+                return history.push("/formations/users")
+            }
+        };
     
         return (
             <div className="display-container">
                 <h1>Formations</h1>
-                <FormationBar />
+                <FormationBar getSearchValue={getSearchValue} />
                 <Switch>
                     <Route path="/formations/invitations">
                         <Invitations />
@@ -58,7 +73,18 @@ function Formations({ token, currentUser, patchUser, updateCurrentUser, userData
                         <NewFormation currentUser={currentUser} patchUser={patchUser} updateCurrentUser={updateCurrentUser} userData={userData} />
                     </Route>
                     <Route path="/formations/users">
-                        <FormationUsers userData={userData} />
+                        <Users
+                            userData={userData}
+                            currentUser={currentUser}
+                            searchValue={searchValue}
+                        />
+                    </Route>
+                    <Route path="/formations/allformations">
+                        <AllFormations
+                            userData={userData}
+                            currentUser={currentUser}
+                            searchValue={searchValue}
+                        />
                     </Route>
                     {formationUsers}
                     {formationInfo}
@@ -67,6 +93,7 @@ function Formations({ token, currentUser, patchUser, updateCurrentUser, userData
                     <Route path="/formations">
                         <MyFormations
                             currentUser={currentUser}
+                            searchValue={searchValue}
                         />
                     </Route>
                 </Switch>

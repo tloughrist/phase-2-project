@@ -1,6 +1,6 @@
 import React from "react";
 
-function SignUp({ userData, logIn }) {
+function SignUp({ userData, logIn, updateUserData }) {
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -28,8 +28,9 @@ function SignUp({ userData, logIn }) {
                 },
                 body: JSON.stringify(newUserObj)
             })
-            .then(data => data.json())
-            .then(data => logIn(data));
+            .then((response) => response.json())
+            .then((data) => updateUserData(data))
+            .then(() => logIn(newUserObj))
         }
     };
 

@@ -16,13 +16,23 @@
       "dob": "1982-07-20",
       "formations": [
         {
+          "name": "Family",
+          "accesscode": "proxy",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "uniqueid": 0.7232350154015408,
+          "notes": "shared",
+          "admin": true
+        },
+        {
           "name": "College Buddies",
           "accesscode": "proxy",
           "color": "#071fd5",
           "image": "https://www.geneseo.edu/themes/custom/geneseo_bootstrap5/images/geneseo-logo-new.png",
           "uniqueid": 1,
           "pronouns": "shared",
-          "email": "shared"
+          "email": "shared",
+          "admin": true
         },
         {
           "name": "Graduate Cohort",
@@ -34,17 +44,122 @@
           "email": "unshared",
           "phone": "shared",
           "address": "shared",
-          "notes": "unshared"
-        },
-        {
-          "name": "Family",
-          "accesscode": "proxy",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "uniqueid": 0.7232350154015408,
-          "notes": "shared"
+          "notes": "unshared",
+          "admin": true
         }
       ]
+    },
+    {
+      "token": {
+        "username": "acamus",
+        "password": "proxy"
+      },
+      "name": "Albert Camus",
+      "pronouns": "he / him",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg/220px-Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg",
+      "email": "sisyphus@existentialism.com",
+      "phone": "555-555-5555",
+      "address": "123 Rue Fake, Paris",
+      "notes": "",
+      "formations": [],
+      "id": 2,
+      "dob": "1913-11-07"
+    },
+    {
+      "token": {
+        "username": "sfreud",
+        "password": "proxy"
+      },
+      "name": "Sigmund Freud",
+      "pronouns": "he / him",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Sigmund_Freud%2C_by_Max_Halberstadt_%28cropped%29.jpg/220px-Sigmund_Freud%2C_by_Max_Halberstadt_%28cropped%29.jpg",
+      "email": "superego@subconscious.com",
+      "phone": "555-555-5555",
+      "address": "123 Fake Strasse, Vienna",
+      "notes": "",
+      "formations": [],
+      "id": 3,
+      "dob": "1856-05-06"
+    },
+    {
+      "token": {
+        "username": "sbeauvoir",
+        "password": "proxy"
+      },
+      "name": "Simone de Beauvoir",
+      "pronouns": "she / her",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Simone_de_Beauvoir2.png/220px-Simone_de_Beauvoir2.png",
+      "email": "secondsex@feminism.com",
+      "phone": "555-555-5555",
+      "address": "123 Rue Fake, Paris",
+      "notes": "",
+      "formations": [],
+      "id": 4,
+      "dob": "1908-01-09"
+    },
+    {
+      "token": {
+        "username": "jbutler",
+        "password": "proxy"
+      },
+      "name": "Judith Butler",
+      "pronouns": "they / them",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/JudithButler2013.jpg/220px-JudithButler2013.jpg",
+      "email": "nonbinary@genderstudies.com",
+      "phone": "555-555-5555",
+      "address": "123 Fake Street, Berkeley",
+      "notes": "",
+      "formations": [],
+      "id": 5,
+      "dob": "1956-02-24"
+    },
+    {
+      "token": {
+        "username": "lwittgenstein",
+        "password": "proxy"
+      },
+      "name": "Ludwig Wittgenstein",
+      "pronouns": "he / him",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/35._Portrait_of_Wittgenstein.jpg/220px-35._Portrait_of_Wittgenstein.jpg",
+      "email": "silence@endofphilosophy.com",
+      "phone": "555-555-5555",
+      "address": "123 Fake Street, Cambridge",
+      "notes": "",
+      "formations": [],
+      "id": 6,
+      "dob": "1889-04-26"
+    },
+    {
+      "token": {
+        "username": "brussell",
+        "password": "proxy"
+      },
+      "name": "Bertrand Russell",
+      "pronouns": "he / him",
+      "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bertrand_Russell_1957.jpg/220px-Bertrand_Russell_1957.jpg",
+      "email": "principia@mathematica.com",
+      "phone": "555-555-5555",
+      "address": "123 Fake Street, Cambridge",
+      "notes": "",
+      "formations": [],
+      "id": 7,
+      "dob": "1872-05-18"
+    },
+    {
+      "token": {
+        "username": "jmbasquiat",
+        "password": "proxy"
+      },
+      "name": "Jean-Michel Basquiat",
+      "pronouns": "he / him",
+      "pic": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png/220px-Jean-Michel_Basquiat_1982_by_Andy_Warhol.png",
+      "email": "outside@inside.com",
+      "phone": "555-555-5555",
+      "address": "123 Fake Street, New York City",
+      "notes": "",
+      "formations": [],
+      "id": 8,
+      "dob": "1960-12-22"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import FormationCard from "./FormationCard.js"
 
-function MyFormations({ currentUser }) {
+function MyFormations({ currentUser, searchValue }) {
 
     let displayFormations = <h2>No formations yet.</h2>
 
