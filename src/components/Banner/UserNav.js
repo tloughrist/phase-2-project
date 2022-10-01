@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function UserNav({ logOut }) {
+function UserNav({ logout }) {
 
     return (
         <div className="banner">
@@ -12,7 +12,7 @@ function UserNav({ logOut }) {
                 <NavLink to="/" exact className="navlink">Home</NavLink>
                 <NavLink to="/formations" exact className="navlink">Formations</NavLink>
                 <NavLink to="/personalinfo" exact className="navlink">Personal Information</NavLink>
-                <button onClick={e => logOut()} className="navlink">Logout</button>
+                <button onClick={e => logout()} className="navlink">Logout</button>
             </div>
         </div>
     );

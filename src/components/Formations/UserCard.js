@@ -1,36 +1,61 @@
-import React from "react";
+import React, { useReducer } from "react";
 
-function UserCard({ user, formationId }) {
+function UserCard({ currentUser, user, formationId, currentFormation, patchCurrentUser }) {
 
-    const userFormationObj = user.formations.filter((formation) => formation.uniqueid === formationId);
+    const userFormationObjArr = user.formations.filter((formation) => formation.id === formationId);
+
+    const userFormationObj = userFormationObjArr[0];
 
     const informationDisplay = [];
-    
-    if (userFormationObj[0].pronouns === "shared") {
-        informationDisplay.push(<p key={`${user.name}pronouns`}><b>Pronouns:</b> {user.pronouns}</p>)
+
+    if (userFormationObj.pronouns) {
+        informationDisplay.push(<p key={`${user.token.username}pronouns`}><b>Pronouns:</b> {user.pronouns}</p>)
     }
-    if (userFormationObj[0].email === "shared") {
-        informationDisplay.push(<p key={`${user.name}email`}><b>Email:</b> {user.email}</p>)
+    if (userFormationObj.email) {
+        informationDisplay.push(<p key={`${user.token.username}email`}><b>Email:</b> {user.email}</p>)
     }
-    if (userFormationObj[0].phone === "shared") {
-        informationDisplay.push(<p key={`${user.name}phone`}><b>Phone:</b> {user.phone}</p>)
+    if (userFormationObj.phone) {
+        informationDisplay.push(<p key={`${user.token.username}phone`}><b>Phone:</b> {user.phone}</p>)
     }
-    if (userFormationObj[0].address === "shared") {
-        informationDisplay.push(<p key={`${user.name}address`}><b>Address:</b> {user.address}</p>)
+    if (userFormationObj.address) {
+        informationDisplay.push(<p key={`${user.token.username}address`}><b>Address:</b> {user.address}</p>)
     }
-    if (userFormationObj[0].notes === "shared") {
-        informationDisplay.push(<p key={`${user.name}notes`}><b>Notes:</b> {user.notes}</p>)
+    if (userFormationObj.notes) {
+        informationDisplay.push(<p key={`${user.token.username}notes`}><b>Notes:</b> {user.notes}</p>)
     }
 
-    return (
-        <div className="user-card">
-            <img key={`${user.name}pic`} className="user-image" src={user.pic} alt={`${user.name} picture`} />
-            <div key={`${user.name}userinfo`} className="userinfo">
-                <h3>{user.name}</h3>
-                {informationDisplay}
+    function handleRemoveUser() {
+        const sansCurrentUserFormationsArr = currentUser.formations.fiter((formation) => formation.id !== formationId);
+        const sansCurrentFormationArr = currentFormation.users.filter((formationUser) => formationUser !== user.id);
+        const newCurrentUserFormationsArr = [...sansCurrentUserFormationsArr, ...sansCurrentFormationArr];
+        patchCurrentUser({formations: newCurrentUserFormationsArr});
+    };
+
+    if (currentUser.id === currentFormation.admin) {
+        return (
+            <div className="user-card">
+                <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
+                <div className="userinfo">
+                    <h3>{user.name}</h3>
+                    {informationDisplay}
+                    <div>
+                        <button onClick={handleRemoveUser}>Remove User</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <div className="user-card">
+                <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
+                <div className="userinfo">
+                    <h3>{user.name}</h3>
+                    {informationDisplay}
+                </div>
+            </div>
+        );
+    }
+    
 };
 
 export default UserCard;

@@ -1,88 +1,47 @@
 import React, { useState, useEffect } from "react";
 
-function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser }) {
+function FormationInfo({ currentUser, formation, patchCurrentUser }) {
 
-    const [pronounsShared, setPronounsShared] = useState(false);
-    const [emailShared, setEmailShared] = useState(false);
-    const [phoneShared, setPhoneShared] = useState(false);
-    const [addressShared, setAddressShared] = useState(false);
-    const [notesShared, setNotesShared] = useState(false);
+    const [pronounsShared, setPronounsShared] = useState(formation.pronouns);
+    const [emailShared, setEmailShared] = useState(formation.email);
+    const [phoneShared, setPhoneShared] = useState(formation.phone);
+    const [addressShared, setAddressShared] = useState(formation.address);
+    const [notesShared, setNotesShared] = useState(formation.notes);
 
-    const currentFormation = currentUser.formations.filter((formation) => {
-        return formation.uniqueid === formationId;
-    });
-
-    useEffect(() => {
-        currentFormation[0].pronouns === "shared" ? setPronounsShared(true) : setPronounsShared(false);
-        currentFormation[0].email === "shared" ? setEmailShared(true) : setEmailShared(false);
-        currentFormation[0].phone === "shared" ? setPhoneShared(true) : setPhoneShared(false);
-        currentFormation[0].address === "shared" ? setAddressShared(true) : setAddressShared(false);
-        currentFormation[0].notes === "shared" ? setNotesShared(true) : setNotesShared(false);
-    }, [currentUser]);
-
-    function handlePronounChange() {
-        setPronounsShared(!pronounsShared);
-        const sansFormations = currentUser.formations.filter((formation) => {
-            return formation.uniqueid !== formationId;
-        });
-        currentFormation[0].pronouns = pronounsShared ? "unshared" : "shared";
-        const newFormationsObj = [...sansFormations, currentFormation[0]];
-        return patchUser(currentUser.id, {formations: newFormationsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data));
-    };
-
-    function handleEmailChange() {
-        setEmailShared(!emailShared);
-        const sansFormations = currentUser.formations.filter((formation) => {
-            return formation.uniqueid !== formationId;
-        });
-        currentFormation[0].email = emailShared ? "unshared" : "shared";
-        const newFormationsObj = [...sansFormations, currentFormation[0]];
-        return patchUser(currentUser.id, {formations: newFormationsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data));
-    };
-
-    function handlePhoneChange() {
-        setPhoneShared(!phoneShared);
-        const sansFormations = currentUser.formations.filter((formation) => {
-            return formation.uniqueid !== formationId;
-        });
-        currentFormation[0].phone = phoneShared ? "unshared" : "shared";
-        const newFormationsObj = [...sansFormations, currentFormation[0]];
-        return patchUser(currentUser.id, {formations: newFormationsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data));
-    };
-
-    function handleAddressChange() {
-        setAddressShared(!addressShared);
-        const sansFormations = currentUser.formations.filter((formation) => {
-            return formation.uniqueid !== formationId;
-        });
-        currentFormation[0].address = addressShared ? "unshared" : "shared";
-        const newFormationsObj = [...sansFormations, currentFormation[0]];
-        return patchUser(currentUser.id, {formations: newFormationsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data));
-    };
-
-    function handleNotesChange() {
-        setNotesShared(!notesShared);
-        const sansFormations = currentUser.formations.filter((formation) => {
-            return formation.uniqueid !== formationId;
-        });
-        currentFormation[0].notes = notesShared ? "unshared" : "shared";
-        const newFormationsObj = [...sansFormations, currentFormation[0]];
-        return patchUser(currentUser.id, {formations: newFormationsObj})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data));
+    function handleInfoChange(e) {
+        const info = e.target.name;
+        switch(info) {
+            case "pronouns":
+                setPronounsShared(!pronounsShared);
+                formation[info] = !pronounsShared
+                break;
+            case "email":
+                setEmailShared(!emailShared);
+                formation[info] = !emailShared
+                break;
+            case "phone":
+                setPhoneShared(!phoneShared);
+                formation[info] = !phoneShared
+                break;
+            case "address":
+                setAddressShared(!addressShared);
+                formation[info] = !addressShared
+                break;
+            case "notes":
+                setNotesShared(!notesShared);
+                formation[info] = !notesShared
+                break;
+            default:
+                break;
+        }
+        const sansFormations = currentUser.formations.filter((formationObj) => formationObj.id !== formation.id);
+        const newFormationsObj = [...sansFormations, formation];
+        return patchCurrentUser({formations: newFormationsObj});
     };
 
     return (
         <div id="formation-array-container">
-            <h1>Shared Information for {currentFormation[0].name}</h1>
+            <h1>Shared Information for {formation.name}</h1>
             <div>
                 <p><b>Pronouns</b></p>
                 <div>
@@ -92,7 +51,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="pronouns"
                         value="shared"
                         checked={pronounsShared ? "checked" : ""}
-                        onChange={handlePronounChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="pronounshared">Shared</label>
                     <input
@@ -101,7 +60,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="pronouns"
                         value="unshared"
                         checked={pronounsShared ? "" : "checked"}
-                        onChange={handlePronounChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="pronounsunshared">Unshared</label>
                 </div>
@@ -115,7 +74,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="email"
                         value="shared"
                         checked={emailShared ? "checked" : ""}
-                        onChange={handleEmailChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="emailshared">Shared</label>
                     <input
@@ -124,7 +83,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="email"
                         value="unshared"
                         checked={emailShared ? "" : "checked"}
-                        onChange={handleEmailChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="emailunshared">Unshared</label>
                 </div>
@@ -138,7 +97,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="phone"
                         value="shared"
                         checked={phoneShared ? "checked" : ""}
-                        onChange={handlePhoneChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="phoneshared">Shared</label>
                     <input
@@ -147,7 +106,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="phone"
                         value="unshared"
                         checked={phoneShared ? "" : "checked"}
-                        onChange={handlePhoneChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="phoneunshared">Unshared</label>
                 </div>
@@ -161,7 +120,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="address"
                         value="shared"
                         checked={addressShared ? "checked" : ""}
-                        onChange={handleAddressChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="addressshared">Shared</label>
                     <input
@@ -170,7 +129,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="address"
                         value="unshared"
                         checked={addressShared ? "" : "checked"}
-                        onChange={handleAddressChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="addressunshared">Unshared</label>
                 </div>
@@ -184,7 +143,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="notes"
                         value="shared"
                         checked={notesShared ? "checked" : ""}
-                        onChange={handleNotesChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="notesshared">Shared</label>
                     <input
@@ -193,7 +152,7 @@ function FormationInfo({ currentUser, formationId, patchUser, updateCurrentUser 
                         name="notes"
                         value="unshared"
                         checked={notesShared ? "" : "checked"}
-                        onChange={handleNotesChange}
+                        onChange={handleInfoChange}
                     />
                     <label htmlFor="notesunshared">Unshared</label>
                 </div>

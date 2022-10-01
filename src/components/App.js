@@ -41,18 +41,30 @@ function App() {
         }
     };
 
-    function logIn(userObj) {
+    function login(userObj) {
         setCurrentUser(userObj);
         sessionStorage.setItem('token', JSON.stringify(userObj.token));
         setToken("valid");
         return history.push("/personalinfo");
     };
 
-    function logOut() {
+    function logout() {
         sessionStorage.clear();
         setToken("invalid");
         setCurrentUser();
         return history.push("/");
+    };
+
+    function patchCurrentUser(patchObj) {
+        return fetch(`http://localhost:3000/users/${currentUser.id}`, {
+                method: 'PATCH',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(patchObj)
+            })
+        .then((response) => response.json())
+        .then((data) => updateCurrentUser(data));
     };
 
     function patchUser(userId, patchObj) {
@@ -62,7 +74,9 @@ function App() {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(patchObj)
-            });
+            })
+        .then((response) => response.json())
+        .then((data) => updateUserData(data));
     };
     
     function updateUserData(userObj) {
@@ -79,22 +93,21 @@ function App() {
         <div>
             <Banner
                 token={token}
-                logOut={logOut}
+                logout={logout}
                 isLoaded={isLoaded}
             />
             <Switch>
                 <Route path="/login">
                     <Login
                         userData={userData}
-                        setToken={setToken}
-                        logIn={logIn}
+                        login={login}
                     />
                 </Route>
                 <Route path="/formations">
                     <Formations
                         currentUser={currentUser}
                         token={token}
-                        patchUser={patchUser}
+                        patchCurrentUser={patchCurrentUser}
                         updateCurrentUser={updateCurrentUser}
                         userData={userData}
                         updateUserData={updateUserData}
@@ -104,14 +117,13 @@ function App() {
                     <PersonalInfo
                         currentUser={currentUser}
                         token={token}
-                        patchUser={patchUser}
-                        updateCurrentUser={updateCurrentUser}
+                        patchCurrentUser={patchCurrentUser}
                     />
                 </Route>
                 <Route path="/signup">
                     <SignUp
                         userData={userData}
-                        logIn={logIn}
+                        login={login}
                         updateUserData={updateUserData}
                     />
                 </Route>

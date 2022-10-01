@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
+function PersonalInfo({ currentUser, token, patchCurrentUser }) {
 
     function handleMyInfoSubmit(e) {
         e.preventDefault();
@@ -15,9 +15,7 @@ function PersonalInfo({ currentUser, token, patchUser, updateCurrentUser }) {
             address: e.target.address.value,
             notes: e.target.addnotes.value
         };
-        return (patchUser(currentUser.id, newUserObj)
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data)));
+        return patchCurrentUser(newUserObj);
     };
 
     if (token === "valid" && currentUser) {

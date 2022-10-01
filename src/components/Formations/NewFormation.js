@@ -1,33 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 
-function NewFormation({ currentUser, patchUser, updateCurrentUser,
-    userData }) {
+function NewFormation({ currentUser, patchCurrentUser, userData }) {
+    
+    const [pronouns, setPronouns] = useState(false);
+    const [email, setEmail] = useState(false);
+    const [phone, setPhone] = useState(false);
+    const [address, setAddress] = useState(false);
+    const [notes, setNotes] = useState(false);
 
     function handleFormationCreation(e) {
         e.preventDefault();
-        const formationIdArr = [];
-        userData.forEach((user) => {
-            return user.formations.forEach((formation) => {
-                return formationIdArr.push(formation.uniqueid);
-            });
-        });
-        console.log(formationIdArr)
-        let uniqueId = (Math.random() + Math.random());
-        while(formationIdArr.includes(uniqueId)) {
-            uniqueId = (Math.random() + Math.random());
+        const formationIdArr = userData.map((user) => user.formations.map((formation) => formation.uniqueid));
+        let formationId = (Math.random() + Math.random());
+        while(formationIdArr.includes(formationId)) {
+            formationId = (Math.random() + Math.random());
         };
+        const formationName = e.target.name.value;
+        const formationColor = e.target.color.value;
+        const formationImage = e.target.image.value ? e.target.image.value : "/inFormation.png";
         const newFormationObj = {
-            name: e.target.name.value,
-            accesscode: e.target.accesscode.value,
-            color: e.target.color.value,
-            image: e.target.image.value,
-            uniqueid: uniqueId
+            name: formationName,
+            color: formationColor,
+            image: formationImage,
+            id: formationId,
+            pronouns: pronouns,
+            email: email,
+            phone: phone,
+            address: address,
+            notes: notes,
+            admin: currentUser.id,
+            users: []
         };
         const formationsArr = [...currentUser.formations, newFormationObj];
-        return patchUser(currentUser.id, {formations: formationsArr})
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data))
+        return patchCurrentUser({formations: formationsArr})
         .then(() => e.target.reset())
         .then(() => alert("New Formation Created"));
     };
@@ -37,10 +43,32 @@ function NewFormation({ currentUser, patchUser, updateCurrentUser,
             <h1>New Formation</h1>
             <form id="newformation-form" onSubmit={handleFormationCreation}>
                 <input name="name" type="text" placeholder="formation name" />
-                <input name="accesscode" type="text" placeholder="set access code" />
                 <label htmlFor="color">Select Formation Color</label>
-                <input name="color" type="color" defaultValue="#e66465"/>
-                <input name="image" type="url" placeholder="image url" /> 
+                <input name="color" type="color" defaultValue="#ffffff"/>
+                <input name="image" type="url" placeholder="image url" />
+                <div>
+                    <h3>What would you like to share with this formation?</h3>
+                    <div>
+                        <p><b>Pronouns</b></p>
+                        <input onChange={e => setPronouns(!pronouns)} type="checkbox" />
+                    </div>
+                    <div>
+                        <p><b>Email</b></p>
+                        <input onChange={e => setEmail(!email)} type="checkbox" />
+                    </div>
+                    <div>
+                        <p><b>Phone</b></p>
+                        <input onChange={e => setPhone(!phone)} type="checkbox" />
+                    </div>
+                    <div>
+                        <p><b>Address</b></p>
+                        <input onChange={e => setAddress(!address)} type="checkbox" />
+                    </div>
+                    <div>
+                        <p><b>Notes</b></p>
+                        <input onChange={e => setNotes(!notes)} type="checkbox" />
+                    </div>
+                </div> 
                 <input type="submit" /> 
             </form>
         </div>

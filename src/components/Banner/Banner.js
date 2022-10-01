@@ -2,10 +2,10 @@ import React from "react";
 import UserNav from "./UserNav.js";
 import VisitorNav from "./VisitorNav.js";
 
-function Banner({ isLoaded, token, logOut }) {
+function Banner({ isLoaded, token, logout }) {
     if (isLoaded) {
         if (token === "valid") {
-            return <UserNav logOut={logOut} />
+            return <UserNav logout={logout} />
         } else {
             return <VisitorNav />;
         }

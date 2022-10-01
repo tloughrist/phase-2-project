@@ -1,22 +1,19 @@
 import React from "react";
 
-function Login({ userData, logIn }) {
+function Login({ userData, login }) {
 
     function handleSubmit(e) {
         e.preventDefault();
         const username = e.target.username.value;
         const password = e.target.password.value;
-        const userMatch = userData.filter((user) => user.token.username === username);
-        if (userMatch[0].token.password === password) {
-            return logIn(userMatch[0]);
-        } else {
-            return alert("Sorry, incorrect login information");
-        }
+        const userMatchArr = userData.filter((user) => user.token.username === username);
+        const userMatch = userMatchArr[0];
+        userMatch.token.password === password ? login(userMatch) : alert("Sorry, incorrect login information");
     };
     
     return(
         <div className="login-wrapper">
-            <h1>Please Log In</h1>
+            <h1>Please Login</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Username</p>
@@ -27,7 +24,7 @@ function Login({ userData, logIn }) {
                     <input type="password" name="password" />
                 </label>
                 <div>
-                    <button type="submit">Log In</button>
+                    <button type="submit">Login</button>
                 </div>
             </form>
         </div>
