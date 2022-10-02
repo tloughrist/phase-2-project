@@ -1,18 +1,29 @@
 import React from "react";
-import UserCard from "./UserCard";
+import FormationUserCard from "./FormationUserCard";
 
-function FormationUsers({ currentUser, userData, formation, patchCurrentUser }) {
-    const formationUserArr = userData.filter((user) => formation.users.includes(user.id));
+function FormationUsers({ currentUser, userData, formation, patchCurrentUser, patchUser }) {
+    const formationUserArr = userData.filter((el) => formation.users.includes(el.id));
 
-    const formationOwnerArr = userData.filter((user) => user.id === formation.admin);
-
-    const formationOwner = formationOwnerArr[0];
-    
-    const displayUserCards = formationUserArr.map((user) => {
-        return <UserCard key={`${user.token.username}card`} user={user} formation={formation} currentUser={currentUser} patchCurrentUser={patchCurrentUser} />
+    const formationOwner = userData.find((el) => el.id === formation.admin);
+    console.log(formationUserArr)
+    const displayUserCards = formationUserArr.map((el) => {
+        return <FormationUserCard
+            key={`${el.token.username}card`}
+            user={el}
+            formation={formation}
+            currentUser={currentUser}
+            patchCurrentUser={patchCurrentUser}
+            patchUser={patchUser}
+        />;
     });
 
-    const displayOwnerCard = <UserCard key={`${formationOwner.token.username}card`} user={formationOwner} formation={formation} currentUser={currentUser} patchCurrentUser={patchCurrentUser} />;
+    const displayOwnerCard = <FormationUserCard
+        key={`${formationOwner.token.username}card`}
+        user={formationOwner}
+        formation={formation}
+        currentUser={currentUser}
+        patchCurrentUser={patchCurrentUser}
+    />;
 
     if (currentUser.id === formation.admin) {
         return (

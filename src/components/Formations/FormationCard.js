@@ -34,7 +34,7 @@ function FormationCard({ currentUser, formation }) {
                 </div>
             </div>
         );
-    }
+        }
 };
 
 export default FormationCard;

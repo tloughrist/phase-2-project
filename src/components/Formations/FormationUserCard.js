@@ -1,37 +1,39 @@
-import React, { useReducer } from "react";
+import React from "react";
 
-function UserCard({ currentUser, user, formationId, currentFormation, patchCurrentUser }) {
+function FormationUserCard({ currentUser, user, formation, patchCurrentUser, patchUser }) {
 
-    const userFormationObjArr = user.formations.filter((formation) => formation.id === formationId);
-
-    const userFormationObj = userFormationObjArr[0];
+    const userFormation = user.formations.find((el) => el.id === formation.id);
 
     const informationDisplay = [];
 
-    if (userFormationObj.pronouns) {
+    if (userFormation.pronouns) {
         informationDisplay.push(<p key={`${user.token.username}pronouns`}><b>Pronouns:</b> {user.pronouns}</p>)
     }
-    if (userFormationObj.email) {
+    if (userFormation.email) {
         informationDisplay.push(<p key={`${user.token.username}email`}><b>Email:</b> {user.email}</p>)
     }
-    if (userFormationObj.phone) {
+    if (userFormation.phone) {
         informationDisplay.push(<p key={`${user.token.username}phone`}><b>Phone:</b> {user.phone}</p>)
     }
-    if (userFormationObj.address) {
+    if (userFormation.address) {
         informationDisplay.push(<p key={`${user.token.username}address`}><b>Address:</b> {user.address}</p>)
     }
-    if (userFormationObj.notes) {
+    if (userFormation.notes) {
         informationDisplay.push(<p key={`${user.token.username}notes`}><b>Notes:</b> {user.notes}</p>)
     }
 
-    function handleRemoveUser() {
-        const sansCurrentUserFormationsArr = currentUser.formations.fiter((formation) => formation.id !== formationId);
-        const sansCurrentFormationArr = currentFormation.users.filter((formationUser) => formationUser !== user.id);
-        const newCurrentUserFormationsArr = [...sansCurrentUserFormationsArr, ...sansCurrentFormationArr];
+    function handleRemoveUser(e) {
+        const sansCurrentUserFormationsArr = currentUser.formations.filter((el) => el.id !== formation.id);
+        const sansCurrentFormationArr = formation.users.filter((el) => el !== user.id);
+        formation.users = sansCurrentFormationArr;
+        const newCurrentUserFormationsArr = [...sansCurrentUserFormationsArr, formation];
         patchCurrentUser({formations: newCurrentUserFormationsArr});
+        const sansUserFormationsArr = user.formations.filter((el) => el.id !== formation.id);
+        patchUser(user.id, {formations: sansUserFormationsArr});
+        //return e.target.parentNode.parentNode.parentNode.remove();
     };
 
-    if (currentUser.id === currentFormation.admin) {
+    if (currentUser.id === formation.admin) {
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
@@ -55,7 +57,6 @@ function UserCard({ currentUser, user, formationId, currentFormation, patchCurre
             </div>
         );
     }
-    
 };
 
-export default UserCard;
+export default FormationUserCard;

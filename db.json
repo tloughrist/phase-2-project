@@ -14,33 +14,8 @@
       "notes": "Married to Kathryn Loughrist",
       "id": 1,
       "dob": "1982-07-20",
+      "invitations": [],
       "formations": [
-        {
-          "name": "Close Friends",
-          "color": "#27917c",
-          "image": "/inFormation.png",
-          "id": 0.9218557801228213,
-          "pronouns": true,
-          "email": true,
-          "phone": true,
-          "address": true,
-          "notes": true,
-          "admin": 1,
-          "users": []
-        },
-        {
-          "name": "Collegues",
-          "color": "#87589d",
-          "image": "/inFormation.png",
-          "id": 0.5785924237673199,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": []
-        },
         {
           "name": "Flatiron Contacts",
           "color": "#c8f05c",
@@ -66,6 +41,45 @@
           "notes": false,
           "admin": 1,
           "users": []
+        },
+        {
+          "name": "Writers Block",
+          "color": "#664270",
+          "image": "https://cdn1.epicgames.com/ue/product/Screenshot/vintage-typewriter1080-1920x1080-dba2ed3fc0f4ca6061d37885dfdd9edc.jpg?resize=1&w=1920",
+          "id": 0.2873600366504825,
+          "owner": "Octavia Butler (obutler)",
+          "admin": 9,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false
+        },
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": true,
+          "notes": true,
+          "admin": 1,
+          "users": []
+        },
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": []
         }
       ]
     },
@@ -81,6 +95,7 @@
       "phone": "555-555-5555",
       "address": "123 Rue Fake, Paris",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 2,
       "dob": "1913-11-07"
@@ -97,6 +112,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Strasse, Vienna",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 3,
       "dob": "1856-05-06"
@@ -113,6 +129,7 @@
       "phone": "555-555-5555",
       "address": "123 Rue Fake, Paris",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 4,
       "dob": "1908-01-09"
@@ -129,6 +146,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Berkeley",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 5,
       "dob": "1956-02-24"
@@ -145,6 +163,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Cambridge",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 6,
       "dob": "1889-04-26"
@@ -161,6 +180,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Cambridge",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 7,
       "dob": "1872-05-18"
@@ -177,6 +197,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, New York City",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 8,
       "dob": "1960-12-22"
@@ -193,6 +214,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Lake Forest Park",
       "notes": "",
+      "invitations": [],
       "formations": [
         {
           "name": "Writers Block",
@@ -205,7 +227,9 @@
           "address": false,
           "notes": false,
           "admin": 9,
-          "users": []
+          "users": [
+            1
+          ]
         }
       ],
       "id": 9,
@@ -223,6 +247,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Providence",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 10,
       "dob": "1924-09-12"
@@ -239,6 +264,7 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Portland",
       "notes": "",
+      "invitations": [],
       "formations": [],
       "id": 11,
       "dob": "1929-10-21"

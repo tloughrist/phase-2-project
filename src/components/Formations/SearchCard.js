@@ -1,10 +1,12 @@
 import React, { useReducer } from "react";
 
-function SearchCard({ currentUser, user }) {
+function SearchCard({ currentUser, user, sendInvite }) {
 
     function handleInvite(e) {
         e.preventDefault();
-        console.log("unwritten");
+        const selectedFormationArr = currentUser.formations.filter((formation) => formation.id == e.target.formationinvite.value)
+        const selectedFormation = selectedFormationArr[0];
+        return sendInvite(selectedFormation, user, currentUser);
     };
 
     const formations = currentUser.formations.map((formation) => {
@@ -20,7 +22,7 @@ function SearchCard({ currentUser, user }) {
             </div>
             <form onSubmit={handleInvite}>
                 <p>Invite user to join...</p>
-                <select>
+                <select name="formationinvite">
                     {formations}
                 </select>
                 <input type="submit" />

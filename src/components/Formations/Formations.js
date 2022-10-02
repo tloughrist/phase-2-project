@@ -10,7 +10,7 @@ import FormationInfo from "./FormationInfo.js";
 import FormationSettings from "./FormationSettings.js";
 import Users from "./Users.js";
 
-function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData }) {
+function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser }) {
 
     const [searchValue, setSearchValue] = useState("");
     
@@ -21,7 +21,13 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
         const formationUsers = currentUser.formations.map((formation) => {
             return (
                 <Route key={`${formation.id}users`} path={`/formations/${formation.id}/users`}>
-                    <FormationUsers currentUser={currentUser} userData={userData} formation={formation} patchCurrentUser={patchCurrentUser} />
+                    <FormationUsers
+                        currentUser={currentUser}
+                        userData={userData}
+                        formation={formation}
+                        patchCurrentUser={patchCurrentUser}
+                        patchUser={patchUser}
+                    />
                 </Route> 
             );
         });
@@ -65,16 +71,26 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                 <FormationBar getSearchValue={getSearchValue} />
                 <Switch>
                     <Route path="/formations/invitations">
-                        <Invitations />
+                        <Invitations
+                            currentUser={currentUser}
+                            rejectInvitation={rejectInvitation}
+                            acceptInvitation={acceptInvitation}
+                        />
                     </Route>
                     <Route path="/formations/newformation">
-                        <NewFormation currentUser={currentUser} patchCurrentUser={patchCurrentUser} updateCurrentUser={updateCurrentUser} userData={userData} />
+                        <NewFormation
+                            currentUser={currentUser}
+                            patchCurrentUser={patchCurrentUser}
+                            updateCurrentUser={updateCurrentUser}
+                            userData={userData}
+                        />
                     </Route>
                     <Route path="/formations/users">
                         <Users
                             userData={userData}
                             currentUser={currentUser}
                             searchValue={searchValue}
+                            sendInvite={sendInvite}
                         />
                     </Route>
                     {formationUsers}

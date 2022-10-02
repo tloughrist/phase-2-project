@@ -87,7 +87,39 @@ function App() {
     function updateCurrentUser(userObj) {
         updateUserData(userObj)
         return setCurrentUser(userObj);
-    }
+    };
+
+    function sendInvite(formationObj, user, sender) {
+        const formationSubscriberObj = {
+            name: formationObj.name,
+            color: formationObj.color,
+            image: formationObj.image,
+            id: formationObj.id,
+            owner: `${sender.name} (${sender.token.username})`,
+            admin: sender.id
+        };
+        const sansInvitations = user.invitations.filter((invitation) => invitation.id !== formationObj.id);
+        const newInvitationsArr = [...sansInvitations, formationSubscriberObj]
+        return patchUser(user.id, {invitations: newInvitationsArr});
+    };
+
+    function rejectInvitation(invitationId) {
+        const sansCurrentUserInvitations = currentUser.invitations.filter((invitation) => invitation.id !== invitationId);
+        return patchCurrentUser({invitations: sansCurrentUserInvitations});
+    };
+
+    function acceptInvitation(newFormationObj) {
+        const newCurrentUserFormations = [...currentUser.formations, newFormationObj];
+        patchCurrentUser({formations: newCurrentUserFormations});
+        const sansCurrentUserInvitations = currentUser.invitations.filter((invitation) => invitation.id !== newFormationObj.id);
+        patchCurrentUser({invitations: sansCurrentUserInvitations});
+        const sender = userData.find((user) => user.id === newFormationObj.admin);
+        const sansSenderFormations = sender.formations.filter((formation) => formation.id !== newFormationObj.id);
+        const senderCurrentFormation = sender.formations.find((formation) => formation.id === newFormationObj.id);
+        senderCurrentFormation.users = [...senderCurrentFormation.users, currentUser.id];
+        const newSenderFormationsArr = [...sansSenderFormations, senderCurrentFormation];
+        return patchUser(sender.id, {formations: newSenderFormationsArr});
+    };
 
     return (
         <div>
@@ -111,6 +143,10 @@ function App() {
                         updateCurrentUser={updateCurrentUser}
                         userData={userData}
                         updateUserData={updateUserData}
+                        sendInvite={sendInvite}
+                        rejectInvitation={rejectInvitation}
+                        acceptInvitation={acceptInvitation}
+                        patchUser={patchUser}
                     />
                 </Route>
                 <Route path="/personalinfo">

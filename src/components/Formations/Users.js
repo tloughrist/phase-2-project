@@ -1,8 +1,7 @@
 import React from "react";
 import SearchCard from "./SearchCard";
 
-
-function Users({ searchValue, currentUser, userData }) {
+function Users({ searchValue, currentUser, userData, sendInvite }) {
 
     const displayedUsers = userData.filter((user) => {
         return user.token.username.toLowerCase().includes(searchValue) || user.name.toLowerCase().includes(searchValue);
@@ -10,7 +9,7 @@ function Users({ searchValue, currentUser, userData }) {
 
     const userDisplay = displayedUsers.map((user) => {
         if (user.id !== currentUser.id) {
-            return <SearchCard key={`${user.token.username}searchcard`} currentUser={currentUser} user={user} />
+            return <SearchCard key={`${user.token.username}searchcard`} currentUser={currentUser} user={user} sendInvite={sendInvite} />
         } else {
             return;
         }
