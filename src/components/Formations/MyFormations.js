@@ -1,14 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormationCard from "./FormationCard.js"
 
-function MyFormations({ currentUser, searchValue }) {
+function MyFormations({ currentUser, searchValue, userData, patchCurrentUser,isLoaded }) {
 
-    let displayFormations = <h2>No formations yet.</h2>
+    const displayFormations = currentUser.formations.map((el1) => <FormationCard key={el1.id} formation={el1} currentUser={currentUser} userData={userData}/>)
 
-    if (currentUser.formations.length > 0) {
-        displayFormations = currentUser.formations.map((el) => <FormationCard key={el.id} formation={el} currentUser={currentUser} />);
-    }
-    
     return (
         <div>
             <h1>My Formations</h1>

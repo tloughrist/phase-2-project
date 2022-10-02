@@ -31,7 +31,7 @@ function PersonalInfo({ currentUser, token, patchCurrentUser }) {
                         <p><b>Email:</b> {currentUser.email}</p>
                         <p><b>Phone:</b> {currentUser.phone}</p>
                         <p><b>Address:</b> {currentUser.address}</p>
-                        <p><b>Public Notes:</b> {currentUser.notes}</p>
+                        <p><b>Notes:</b> {currentUser.notes}</p>
                     </div>
                 </div>
                 <form className="form-card" id="myuserform" onSubmit={handleMyInfoSubmit} >

@@ -25,6 +25,15 @@ function App() {
     Promise.all([initialLoad])
     .then(() => getToken());
 
+    useEffect(() => {
+        if (currentUser) {
+            removeInvalidFormations();
+            return removeInvalidInvitations();
+        } else {
+            return console.log("not yet")
+        }
+    }, [token])
+
     function getToken() {
         const tokenString = sessionStorage.getItem('token');
         const userToken = JSON.parse(tokenString);
@@ -46,6 +55,33 @@ function App() {
         sessionStorage.setItem('token', JSON.stringify(userObj.token));
         setToken("valid");
         return history.push("/personalinfo");
+    };
+
+    function removeInvalidFormations() {
+        if (currentUser.formations.length > 0) {
+            const validFormations = currentUser.formations.filter((el1) => {
+                const formationOwner = userData.find((el2) => el2.id === el1.admin);
+                const ownerFormationIdArr = formationOwner.formations.map((el2) => el2.id);
+                return ownerFormationIdArr.includes(el1.id);
+            })
+            return patchCurrentUser({formations: validFormations});
+        } else {
+            return;
+        }
+    };
+
+    function removeInvalidInvitations() {
+        if (currentUser.invitations.length > 0) {
+            const validInvitations = currentUser.invitations.filter((el1) => {
+                const formationOwner = userData.find((el2) => el2.id === el1.admin);
+                const ownerFormationIdArr = formationOwner.formations.map((el2) => el2.id);
+                return ownerFormationIdArr.includes(el1.id);
+            })
+            console.log(validInvitations);
+            return patchCurrentUser({invitations: validInvitations});
+        } else {
+            return;
+        }
     };
 
     function logout() {
@@ -157,6 +193,7 @@ function App() {
                         rejectInvitation={rejectInvitation}
                         acceptInvitation={acceptInvitation}
                         patchUser={patchUser}
+                        isLoaded={isLoaded}
                     />
                 </Route>
                 <Route path="/personalinfo">

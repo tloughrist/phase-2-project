@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import MyFormations from "./MyFormations.js";
 import NewFormation from "./NewFormation.js";
@@ -10,10 +10,9 @@ import FormationInfo from "./FormationInfo.js";
 import FormationSettings from "./FormationSettings.js";
 import Users from "./Users.js";
 
-function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser }) {
+function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser, isLoaded }) {
 
     const [searchValue, setSearchValue] = useState("");
-    
     const history = useHistory();
 
     if (token === "valid") {
@@ -101,6 +100,9 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                         <MyFormations
                             currentUser={currentUser}
                             searchValue={searchValue}
+                            userData={userData}
+                            patchCurrentUser={patchCurrentUser}
+                            isLoaded={isLoaded}
                         />
                     </Route>
                 </Switch>

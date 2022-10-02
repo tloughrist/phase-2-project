@@ -6,8 +6,7 @@ function Login({ userData, login }) {
         e.preventDefault();
         const username = e.target.username.value;
         const password = e.target.password.value;
-        const userMatchArr = userData.filter((user) => user.token.username === username);
-        const userMatch = userMatchArr[0];
+        const userMatch = userData.find((el) => el.token.username === username);
         userMatch.token.password === password ? login(userMatch) : alert("Sorry, incorrect login information");
     };
     
