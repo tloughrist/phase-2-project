@@ -1,7 +1,6 @@
-import e from "cors";
 import React, {useState} from "react";
 
-function InvitationCard({ invitation, acceptInvitation, rejectInvitation }) {
+function InvitationCard({ currentUser, invitation, acceptInvitation, rejectInvitation }) {
     
     const [pronouns, setPronouns] = useState(false);
     const [email, setEmail] = useState(false);
@@ -23,12 +22,10 @@ function InvitationCard({ invitation, acceptInvitation, rejectInvitation }) {
             address: address,
             notes: notes
         };
-        acceptInvitation(newFormationObj);
-        return e.target.parentNode.parentNode.remove();
+        return acceptInvitation(newFormationObj);
     };
 
     function handleReject() {
-        e.target.parentNode.parentNode.remove();
         return rejectInvitation(invitation.id);
     };
 

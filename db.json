@@ -17,32 +17,6 @@
       "invitations": [],
       "formations": [
         {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": []
-        },
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "pronouns": false,
-          "email": true,
-          "phone": true,
-          "address": true,
-          "notes": false,
-          "admin": 1,
-          "users": []
-        },
-        {
           "name": "Writers Block",
           "color": "#664270",
           "image": "https://cdn1.epicgames.com/ue/product/Screenshot/vintage-typewriter1080-1920x1080-dba2ed3fc0f4ca6061d37885dfdd9edc.jpg?resize=1&w=1920",
@@ -56,17 +30,20 @@
           "notes": false
         },
         {
-          "name": "Close Friends",
-          "color": "#27917c",
-          "image": "/inFormation.png",
-          "id": 0.9218557801228213,
-          "pronouns": true,
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "pronouns": false,
           "email": true,
           "phone": true,
           "address": true,
-          "notes": true,
+          "notes": false,
           "admin": 1,
-          "users": []
+          "users": [
+            2,
+            3
+          ]
         },
         {
           "name": "Collegues",
@@ -80,6 +57,38 @@
           "notes": false,
           "admin": 1,
           "users": []
+        },
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": true,
+          "notes": true,
+          "admin": 1,
+          "users": [
+            2,
+            3
+          ]
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            2,
+            3
+          ]
         }
       ]
     },
@@ -96,7 +105,47 @@
       "address": "123 Rue Fake, Paris",
       "notes": "",
       "invitations": [],
-      "formations": [],
+      "formations": [
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": true,
+          "email": false,
+          "phone": false,
+          "address": false,
+          "notes": false
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false
+        },
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
+        }
+      ],
       "id": 2,
       "dob": "1913-11-07"
     },
@@ -113,7 +162,47 @@
       "address": "123 Fake Strasse, Vienna",
       "notes": "",
       "invitations": [],
-      "formations": [],
+      "formations": [
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": false,
+          "phone": false,
+          "address": true,
+          "notes": true
+        },
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
+        }
+      ],
       "id": 3,
       "dob": "1856-05-06"
     },
@@ -208,7 +297,7 @@
         "password": "proxy"
       },
       "name": "Octavia Butler",
-      "pronouns": "she / he",
+      "pronouns": "she / her",
       "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Butler_signing.jpg/220px-Butler_signing.jpg",
       "email": "afro@futurism.com",
       "phone": "555-555-5555",

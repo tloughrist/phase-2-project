@@ -6,7 +6,7 @@ function MyFormations({ currentUser, searchValue }) {
     let displayFormations = <h2>No formations yet.</h2>
 
     if (currentUser.formations.length > 0) {
-        displayFormations = currentUser.formations.map((formation) => <FormationCard key={formation.id} formation={formation} currentUser={currentUser} />);
+        displayFormations = currentUser.formations.map((el) => <FormationCard key={el.id} formation={el} currentUser={currentUser} />);
     }
     
     return (

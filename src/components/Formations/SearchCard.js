@@ -9,8 +9,10 @@ function SearchCard({ currentUser, user, sendInvite }) {
         return sendInvite(selectedFormation, user, currentUser);
     };
 
-    const formations = currentUser.formations.map((formation) => {
-        return <option key={`${formation.id}option`} value={formation.id}>{formation.name}</option>
+    const formations = currentUser.formations.map((el) => {
+        if (el.admin === currentUser.id) {
+            return <option key={`${el.id}option`} value={el.id}>{el.name}</option>
+        }
     });
 
     return (

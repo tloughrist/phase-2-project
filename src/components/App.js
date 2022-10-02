@@ -80,7 +80,7 @@ function App() {
     };
     
     function updateUserData(userObj) {
-        const userDataSans = userData.filter((user) => user.id !==userObj.id);
+        const userDataSans = userData.filter((el) => el.id !==userObj.id);
         return setUserData([...userDataSans, userObj]);
     };
 
@@ -98,24 +98,34 @@ function App() {
             owner: `${sender.name} (${sender.token.username})`,
             admin: sender.id
         };
-        const sansInvitations = user.invitations.filter((invitation) => invitation.id !== formationObj.id);
+        const sansInvitations = user.invitations.filter((el) => el.id !== formationObj.id);
         const newInvitationsArr = [...sansInvitations, formationSubscriberObj]
         return patchUser(user.id, {invitations: newInvitationsArr});
     };
 
     function rejectInvitation(invitationId) {
-        const sansCurrentUserInvitations = currentUser.invitations.filter((invitation) => invitation.id !== invitationId);
+        const sansCurrentUserInvitations = currentUser.invitations.filter((el) => el.id !== invitationId);
         return patchCurrentUser({invitations: sansCurrentUserInvitations});
     };
 
     function acceptInvitation(newFormationObj) {
-        const newCurrentUserFormations = [...currentUser.formations, newFormationObj];
-        patchCurrentUser({formations: newCurrentUserFormations});
-        const sansCurrentUserInvitations = currentUser.invitations.filter((invitation) => invitation.id !== newFormationObj.id);
-        patchCurrentUser({invitations: sansCurrentUserInvitations});
-        const sender = userData.find((user) => user.id === newFormationObj.admin);
-        const sansSenderFormations = sender.formations.filter((formation) => formation.id !== newFormationObj.id);
-        const senderCurrentFormation = sender.formations.find((formation) => formation.id === newFormationObj.id);
+        return handleSenderAccept(newFormationObj)
+        .then(() => handleCurrentUserAccept(newFormationObj));
+    };
+
+    function handleCurrentUserAccept(newFormationObj) {
+        const sansCurrentUserInvitations = currentUser.invitations.filter((el) => el.id !== newFormationObj.id);
+        return patchCurrentUser({invitations: sansCurrentUserInvitations})
+        .then(() => {
+            const newCurrentUserFormations = [...currentUser.formations, newFormationObj];
+            return patchCurrentUser({formations: newCurrentUserFormations})
+        });
+    };
+
+    function handleSenderAccept(newFormationObj) {
+        const sender = userData.find((el) => el.id === newFormationObj.admin);
+        const sansSenderFormations = sender.formations.filter((el) => el.id !== newFormationObj.id);
+        const senderCurrentFormation = sender.formations.find((el) => el.id === newFormationObj.id);
         senderCurrentFormation.users = [...senderCurrentFormation.users, currentUser.id];
         const newSenderFormationsArr = [...sansSenderFormations, senderCurrentFormation];
         return patchUser(sender.id, {formations: newSenderFormationsArr});

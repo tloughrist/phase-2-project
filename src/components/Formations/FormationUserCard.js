@@ -27,10 +27,11 @@ function FormationUserCard({ currentUser, user, formation, patchCurrentUser, pat
         const sansCurrentFormationArr = formation.users.filter((el) => el !== user.id);
         formation.users = sansCurrentFormationArr;
         const newCurrentUserFormationsArr = [...sansCurrentUserFormationsArr, formation];
-        patchCurrentUser({formations: newCurrentUserFormationsArr});
-        const sansUserFormationsArr = user.formations.filter((el) => el.id !== formation.id);
-        patchUser(user.id, {formations: sansUserFormationsArr});
-        //return e.target.parentNode.parentNode.parentNode.remove();
+        return patchCurrentUser({formations: newCurrentUserFormationsArr})
+        .then(() => {
+            const sansUserFormationsArr = user.formations.filter((el) => el.id !== formation.id);
+            patchUser(user.id, {formations: sansUserFormationsArr});
+        });
     };
 
     if (currentUser.id === formation.admin) {
