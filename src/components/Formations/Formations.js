@@ -4,53 +4,58 @@ import MyFormations from "./MyFormations.js";
 import NewFormation from "./NewFormation.js";
 import FormationBar from "./FormationBar.js";
 import Invitations from "./Invitations.js";
-import FormationRequests from "./FormationRequests.js";
+import Requests from "./Requests.js";
 import FormationUsers from "./FormationUsers.js";
 import FormationInfo from "./FormationInfo.js";
 import FormationSettings from "./FormationSettings.js";
 import Users from "./Users.js";
 
-function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser, isLoaded }) {
+function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser, isLoaded, sendRequest, acceptRequest, rejectRequest, leaveFormation}) {
 
     const [searchValue, setSearchValue] = useState("");
     const history = useHistory();
 
     if (token === "valid") {
 
-        const formationUsers = currentUser.formations.map((formation) => {
+        const formationUsers = currentUser.formations.map((el) => {
             return (
-                <Route key={`${formation.id}users`} path={`/formations/${formation.id}/users`}>
+                <Route key={`${el.id}users`} path={`/formations/${el.id}/users`}>
                     <FormationUsers
                         currentUser={currentUser}
                         userData={userData}
-                        formation={formation}
+                        formation={el}
                         patchCurrentUser={patchCurrentUser}
                         patchUser={patchUser}
+                        isLoaded={isLoaded}
                     />
                 </Route> 
             );
         });
 
-        const formationInfo = currentUser.formations.map((formation) => {
+        const formationInfo = currentUser.formations.map((el) => {
             return (
-                <Route key={`${formation.id}info`} path={`/formations/${formation.id}/info`}>
-                    <FormationInfo currentUser={currentUser} formation={formation} token={token} patchCurrentUser={patchCurrentUser} />
+                <Route key={`${el.id}info`} path={`/formations/${el.id}/info`}>
+                    <FormationInfo
+                        currentUser={currentUser}
+                        formation={el}
+                        token={token}
+                        patchCurrentUser={patchCurrentUser}
+                    />
                 </Route> 
             );
         });
 
-        const formationSettings = currentUser.formations.map((formation) => {
+        const formationSettings = currentUser.formations.map((el) => {
             return (
-                <Route key={`${formation.id}settings`} path={`/formations/${formation.id}/settings`}>
-                    <FormationSettings currentUser={currentUser} formation={formation} patchCurrentUser={patchCurrentUser} updateCurrentUser={updateCurrentUser} userData={userData} updateUserData={updateUserData} />
-                </Route> 
-            );
-        });
-
-        const formationRequests = currentUser.formations.map((formation) => {
-            return (
-                <Route key={`${formation.id}requests`} path={`/formations/${formation.id}/requests`}>
-                    <FormationRequests currentUser={currentUser} formation={formation} patchCurrentUser={patchCurrentUser} updateCurrentUser={updateCurrentUser} />
+                <Route key={`${el.id}settings`} path={`/formations/${el.id}/settings`}>
+                    <FormationSettings
+                        currentUser={currentUser}
+                        formation={el}
+                        patchCurrentUser={patchCurrentUser}
+                        updateCurrentUser={updateCurrentUser}
+                        userData={userData}
+                        updateUserData={updateUserData}
+                    />
                 </Route> 
             );
         });
@@ -76,6 +81,14 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                             acceptInvitation={acceptInvitation}
                         />
                     </Route>
+                    <Route path="/formations/requests">
+                        <Requests
+                            currentUser={currentUser}
+                            userData={userData}
+                            acceptRequest={acceptRequest}
+                            rejectRequest={rejectRequest}
+                        />
+                    </Route>
                     <Route path="/formations/newformation">
                         <NewFormation
                             currentUser={currentUser}
@@ -90,11 +103,11 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                             currentUser={currentUser}
                             searchValue={searchValue}
                             sendInvite={sendInvite}
+                            sendRequest={sendRequest}
                         />
                     </Route>
                     {formationUsers}
                     {formationInfo}
-                    {formationRequests}
                     {formationSettings}
                     <Route path="/formations">
                         <MyFormations
@@ -103,6 +116,7 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                             userData={userData}
                             patchCurrentUser={patchCurrentUser}
                             isLoaded={isLoaded}
+                            leaveFormation={leaveFormation}
                         />
                     </Route>
                 </Switch>

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function InvitationCard({ currentUser, invitation, acceptInvitation, rejectInvitation }) {
+function InvitationCard({ invitation, acceptInvitation, rejectInvitation }) {
     
     const [pronouns, setPronouns] = useState(false);
     const [email, setEmail] = useState(false);

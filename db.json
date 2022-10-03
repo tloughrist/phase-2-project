@@ -15,49 +15,8 @@
       "id": 1,
       "dob": "1982-07-20",
       "invitations": [],
+      "requests": [],
       "formations": [
-        {
-          "name": "Writers Block",
-          "color": "#664270",
-          "image": "https://cdn1.epicgames.com/ue/product/Screenshot/vintage-typewriter1080-1920x1080-dba2ed3fc0f4ca6061d37885dfdd9edc.jpg?resize=1&w=1920",
-          "id": 0.2873600366504825,
-          "owner": "Octavia Butler (obutler)",
-          "admin": 9,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false
-        },
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "pronouns": false,
-          "email": true,
-          "phone": true,
-          "address": true,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            2,
-            3
-          ]
-        },
-        {
-          "name": "Collegues",
-          "color": "#87589d",
-          "image": "/inFormation.png",
-          "id": 0.5785924237673199,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": []
-        },
         {
           "name": "Close Friends",
           "color": "#27917c",
@@ -89,6 +48,36 @@
             2,
             3
           ]
+        },
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "pronouns": false,
+          "email": true,
+          "phone": true,
+          "address": true,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            3
+          ]
+        },
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            8
+          ]
         }
       ]
     },
@@ -105,20 +94,8 @@
       "address": "123 Rue Fake, Paris",
       "notes": "",
       "invitations": [],
+      "requests": [],
       "formations": [
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": true,
-          "email": false,
-          "phone": false,
-          "address": false,
-          "notes": false
-        },
         {
           "name": "Flatiron Contacts",
           "color": "#c8f05c",
@@ -162,6 +139,7 @@
       "address": "123 Fake Strasse, Vienna",
       "notes": "",
       "invitations": [],
+      "requests": [],
       "formations": [
         {
           "name": "Family",
@@ -219,6 +197,7 @@
       "address": "123 Rue Fake, Paris",
       "notes": "",
       "invitations": [],
+      "requests": [],
       "formations": [],
       "id": 4,
       "dob": "1908-01-09"
@@ -235,7 +214,17 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Berkeley",
       "notes": "",
-      "invitations": [],
+      "invitations": [
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ],
+      "requests": [],
       "formations": [],
       "id": 5,
       "dob": "1956-02-24"
@@ -252,7 +241,17 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Cambridge",
       "notes": "",
-      "invitations": [],
+      "invitations": [
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ],
+      "requests": [],
       "formations": [],
       "id": 6,
       "dob": "1889-04-26"
@@ -269,7 +268,17 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Cambridge",
       "notes": "",
-      "invitations": [],
+      "invitations": [
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ],
+      "requests": [],
       "formations": [],
       "id": 7,
       "dob": "1872-05-18"
@@ -286,8 +295,32 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, New York City",
       "notes": "",
-      "invitations": [],
-      "formations": [],
+      "invitations": [
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ],
+      "requests": [],
+      "formations": [
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": false,
+          "phone": false,
+          "address": false,
+          "notes": false
+        }
+      ],
       "id": 8,
       "dob": "1960-12-22"
     },
@@ -304,6 +337,7 @@
       "address": "123 Fake Street, Lake Forest Park",
       "notes": "",
       "invitations": [],
+      "requests": [],
       "formations": [
         {
           "name": "Writers Block",
@@ -316,9 +350,7 @@
           "address": false,
           "notes": false,
           "admin": 9,
-          "users": [
-            1
-          ]
+          "users": []
         }
       ],
       "id": 9,
@@ -337,6 +369,7 @@
       "address": "123 Fake Street, Providence",
       "notes": "",
       "invitations": [],
+      "requests": [],
       "formations": [],
       "id": 10,
       "dob": "1924-09-12"
@@ -354,6 +387,7 @@
       "address": "123 Fake Street, Portland",
       "notes": "",
       "invitations": [],
+      "requests": [],
       "formations": [],
       "id": 11,
       "dob": "1929-10-21"

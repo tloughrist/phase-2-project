@@ -34,7 +34,7 @@ function FormationInfo({ currentUser, formation, patchCurrentUser }) {
             default:
                 break;
         }
-        const sansFormations = currentUser.formations.filter((formationObj) => formationObj.id !== formation.id);
+        const sansFormations = currentUser.formations.filter((el) => el.id !== formation.id);
         const newFormationsObj = [...sansFormations, formation];
         return patchCurrentUser({formations: newFormationsObj});
     };

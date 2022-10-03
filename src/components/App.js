@@ -30,7 +30,7 @@ function App() {
             removeInvalidFormations();
             return removeInvalidInvitations();
         } else {
-            return console.log("not yet")
+            return;
         }
     }, [token])
 
@@ -39,7 +39,7 @@ function App() {
         const userToken = JSON.parse(tokenString);
         if (userData) {
             if (userToken) {
-                const returningUser = userData.filter((user) => user.token.username === userToken.username && user.token.password === userToken.password);
+                const returningUser = userData.filter((el) => el.token.username === userToken.username && el.token.password === userToken.password);
                 setCurrentUser(returningUser[0]);
                 return returningUser.length > 0 ? setToken("valid") : setToken("invalid");
             } else {
@@ -77,7 +77,6 @@ function App() {
                 const ownerFormationIdArr = formationOwner.formations.map((el2) => el2.id);
                 return ownerFormationIdArr.includes(el1.id);
             })
-            console.log(validInvitations);
             return patchCurrentUser({invitations: validInvitations});
         } else {
             return;
@@ -145,11 +144,11 @@ function App() {
     };
 
     function acceptInvitation(newFormationObj) {
-        return handleSenderAccept(newFormationObj)
-        .then(() => handleCurrentUserAccept(newFormationObj));
+        return handleSenderAcceptInvite(newFormationObj)
+        .then(() => handleCurrentUserAcceptInvite(newFormationObj));
     };
 
-    function handleCurrentUserAccept(newFormationObj) {
+    function handleCurrentUserAcceptInvite(newFormationObj) {
         const sansCurrentUserInvitations = currentUser.invitations.filter((el) => el.id !== newFormationObj.id);
         return patchCurrentUser({invitations: sansCurrentUserInvitations})
         .then(() => {
@@ -158,13 +157,73 @@ function App() {
         });
     };
 
-    function handleSenderAccept(newFormationObj) {
+    function handleSenderAcceptInvite(newFormationObj) {
         const sender = userData.find((el) => el.id === newFormationObj.admin);
         const sansSenderFormations = sender.formations.filter((el) => el.id !== newFormationObj.id);
         const senderCurrentFormation = sender.formations.find((el) => el.id === newFormationObj.id);
         senderCurrentFormation.users = [...senderCurrentFormation.users, currentUser.id];
         const newSenderFormationsArr = [...sansSenderFormations, senderCurrentFormation];
         return patchUser(sender.id, {formations: newSenderFormationsArr});
+    };
+
+    function sendRequest(formationObj, user, sender) {
+        const formationRequestObj = {
+            name: formationObj.name,
+            color: formationObj.color,
+            id: formationObj.id,
+            owner: `${user.name} (${user.token.username})`,
+            image: formationObj.image,
+            admin: user.id,
+            supplicant: sender.id
+        };
+        const sansRequests = user.requests.filter((el) => el.id !== formationObj.id);
+        const newRequestsArr = [...sansRequests, formationRequestObj]
+        return patchUser(user.id, {requests: newRequestsArr});
+    };
+
+    function rejectRequest(requestId) {
+        const sansCurrentUserRequests = currentUser.requests.filter((el) => el.id !== requestId);
+        return patchCurrentUser({requests: sansCurrentUserRequests});
+    };
+
+    function acceptRequest(newFormationObj, supplicant) {
+        return handleSenderAcceptRequest(newFormationObj, supplicant)
+        .then(() => handleCurrentUserAcceptRequest(newFormationObj, supplicant));
+    };
+
+    function handleCurrentUserAcceptRequest(newFormationObj, supplicant) {
+        const sansCurrentUserRequests = currentUser.requests.filter((el) => el.id !== newFormationObj.id);
+        const sansCurrentUserFormations = currentUser.formations.filter((el) => el.id !== newFormationObj.id);
+        const modifiedFormationObj = currentUser.formations.find((el) => el.id === newFormationObj.id)
+        modifiedFormationObj.users = [...modifiedFormationObj.users, supplicant];
+        const newFormationsArr = [...sansCurrentUserFormations, modifiedFormationObj];
+        return patchCurrentUser({requests: sansCurrentUserRequests, formations: newFormationsArr});
+    };
+
+    function handleSenderAcceptRequest(newFormationObj, supplicant) {
+        const sender = userData.find((el) => el.id === supplicant);
+        const newSenderFormationsArr = [...sender.formations, newFormationObj];
+        return patchUser(supplicant, {formations: newSenderFormationsArr});
+    };
+
+    function leaveFormation(formation) {
+        return handleOwnerLeave(formation)
+        .then(() => handleCurrentUserLeave(formation));
+    };
+
+    function handleOwnerLeave(formation) {
+        const owner = userData.find((el) => el.id === formation.admin);
+        const sansOwnerFormations = owner.formations.filter((el) => el.id !== formation.id);
+        const ownerFormation = owner.formations.find((el) => el.id === formation.id);
+        const sansOwnerFormUsers = ownerFormation.users.filter((el) => el !== currentUser.id);
+        ownerFormation.users = sansOwnerFormUsers;
+        const newOwnerFormationsArr = [...sansOwnerFormations, ownerFormation];
+        return patchUser(owner.id, {formations: newOwnerFormationsArr});
+    };  
+
+    function handleCurrentUserLeave(formation) {
+        const sansCurrentUserFormations = currentUser.formations.filter((el) => el.id !== formation.id);
+        return patchCurrentUser({formations: sansCurrentUserFormations});
     };
 
     return (
@@ -194,6 +253,10 @@ function App() {
                         acceptInvitation={acceptInvitation}
                         patchUser={patchUser}
                         isLoaded={isLoaded}
+                        sendRequest={sendRequest}
+                        rejectRequest={rejectRequest}
+                        acceptRequest={acceptRequest}
+                        leaveFormation={leaveFormation}
                     />
                 </Route>
                 <Route path="/personalinfo">

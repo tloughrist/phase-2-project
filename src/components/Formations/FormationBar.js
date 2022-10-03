@@ -29,6 +29,7 @@ function FormationBar({ getSearchValue }) {
             <NavLink className="navlink" to={"/formations/users"}>Users</NavLink>
             <NavLink className="navlink" to={"/formations/newformation"}>New Formation</NavLink>
             <NavLink className="navlink" to={"/formations/invitations"}>Invitations</NavLink>
+            <NavLink className="navlink" to={`/formations/requests`}>Requests</NavLink>
             <input onChange={handleSearch} type="text" placeholder="search..." />
             <select onChange={handleModeChange}>
                 <option value="myformations">My Formations</option>

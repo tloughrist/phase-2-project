@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
 import FormationCard from "./FormationCard.js"
 
-function MyFormations({ currentUser, searchValue, userData, patchCurrentUser,isLoaded }) {
+function MyFormations({ currentUser, userData, leaveFormation }) {
 
-    const displayFormations = currentUser.formations.map((el1) => <FormationCard key={el1.id} formation={el1} currentUser={currentUser} userData={userData}/>)
+    const displayFormations = currentUser.formations.map((el) =>
+    <FormationCard
+        key={el.id}
+        formation={el}
+        currentUser={currentUser}
+        userData={userData}
+        leaveFormation={leaveFormation}
+    />)
 
     return (
         <div>

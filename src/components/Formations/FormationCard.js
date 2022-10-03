@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function FormationCard({ currentUser, formation, userData }) {
+function FormationCard({ currentUser, formation, userData, leaveFormation }) {
 
     function handleLeaveFormation() {
-        console.log("unwritten")
+        return leaveFormation(formation);
     };
 
     if (currentUser.id === formation.admin) {
@@ -15,7 +15,6 @@ function FormationCard({ currentUser, formation, userData }) {
                 <div>
                     <NavLink className="navlink" to={`/formations/${formation.id}/users`}>Users</NavLink>
                     <NavLink className="navlink" to={`/formations/${formation.id}/info`}>Shared Information</NavLink>
-                    <NavLink className="navlink" to={`/formations/${formation.id}/requests`}>Requests</NavLink>
                     <NavLink className="navlink" to={`/formations/${formation.id}/settings`}>Settings</NavLink>
                 </div>
             </div>

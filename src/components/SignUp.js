@@ -16,7 +16,8 @@ function SignUp({ userData, login, updateUserData }) {
             address: "",
             notes: "",
             invitations: [],
-            formations: []
+            formations: [],
+            requests: []
         };
         const userMatch = userData === undefined ? [] : userData.filter((user) => user.token.username === username);
         if (userMatch.length > 0) {

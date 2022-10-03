@@ -11,7 +11,7 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
 
     function handleFormationCreation(e) {
         e.preventDefault();
-        const formationIdArr = userData.map((user) => user.formations.map((formation) => formation.uniqueid));
+        const formationIdArr = userData.map((el1) => el.formations.map((el2) => el2.uniqueid));
         let formationId = (Math.random() + Math.random());
         while(formationIdArr.includes(formationId)) {
             formationId = (Math.random() + Math.random());
