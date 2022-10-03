@@ -22,9 +22,11 @@ function Users({ searchValue, currentUser, userData, sendInvite, sendRequest }) 
     });
 
     return (
-        <div id="formation-array-container">
+        <div className="display-body">
             <h1>Users</h1>
-            {userDisplay}
+            <div className="display-container">
+                {userDisplay}
+            </div>
         </div>
     );
 };

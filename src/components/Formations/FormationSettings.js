@@ -22,19 +22,21 @@ function FormationSettings({ currentUser, formation, patchCurrentUser }) {
     };
 
     return (
-        <div id="formation-array-container">
+        <div className="display-body">
             <h1>Settings for {formation.name}</h1>
-            <form onSubmit={handleFormationChange}>
-                <label htmlFor="formationname">Formation Name</label>
-                <input onChange={e => setFormationName(e.target.value)} type="text" name="formationname" defaultValue={formationName}/>
-                <label htmlFor="formationcolor">Formation Color</label>
-                <input onChange={e => setFormationColor(e.target.value)}type="color" name="formationcolor" defaultValue={formationColor}/>
-                <label htmlFor="formationimage">Formation Image</label>
-                <input onChange={e => setFormationImage(e.target.value)}type="url" name="formationimage" placeholder="image url" />
-                <input type="submit" />
-            </form>
-            <div>
-                <button onClick={handleDelFormation}>Delete Formation</button>
+            <div className="display-container">
+                <form onSubmit={handleFormationChange}>
+                    <label htmlFor="formationname">Formation Name</label>
+                    <input onChange={e => setFormationName(e.target.value)} type="text" name="formationname" defaultValue={formationName}/>
+                    <label htmlFor="formationcolor">Formation Color</label>
+                    <input onChange={e => setFormationColor(e.target.value)}type="color" name="formationcolor" defaultValue={formationColor}/>
+                    <label htmlFor="formationimage">Formation Image</label>
+                    <input onChange={e => setFormationImage(e.target.value)}type="url" name="formationimage" placeholder="image url" />
+                    <input type="submit" />
+                </form>
+                <div>
+                    <button onClick={handleDelFormation}>Delete Formation</button>
+                </div>
             </div>
         </div>
     );

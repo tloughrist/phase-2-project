@@ -11,7 +11,7 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
     function handleRequest(e) {
         e.preventDefault();
         const selectedFormation = user.formations.find((el) => el.id == e.target.formationrequest.value);
-        return sendRequest(selectedFormation, user, currentUser);
+    return sendRequest(selectedFormation, user, currentUser);
     };
 
     const yourFormations = currentUser.formations.map((el) => {
@@ -41,14 +41,14 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
                     <h3>{user.name}</h3>
                     <p><b>{user.token.username}</b></p>
                 </div>
-                <form onSubmit={handleInvite}>
+                <form className="card-form" onSubmit={handleInvite}>
                     <p>Invite user to join...</p>
                     <select name="formationinvite">
                         {yourFormations}
                     </select>
                     <input type="submit" />
                 </form>
-                <form onSubmit={handleRequest}>
+                <form className="card-form" onSubmit={handleRequest}>
                     <p>Request to join...</p>
                     <select name="formationrequest">
                         {theirFormations}
@@ -65,7 +65,7 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
                     <h3>{user.name}</h3>
                     <p><b>{user.token.username}</b></p>
                 </div>
-                <form onSubmit={handleInvite}>
+                <form className="card-form" onSubmit={handleInvite}>
                     <p>Invite user to join...</p>
                     <select name="formationinvite">
                         {yourFormations}
@@ -82,7 +82,7 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
                     <h3>{user.name}</h3>
                     <p><b>{user.token.username}</b></p>
                 </div>
-                <form onSubmit={handleRequest}>
+                <form className="card-form" onSubmit={handleRequest}>
                     <p>Request to join...</p>
                     <select name="formationrequest">
                         {theirFormations}

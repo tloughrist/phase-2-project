@@ -70,57 +70,58 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
         };
     
         return (
-            <div className="display-container">
-                <h1>Formations</h1>
+            <>
                 <FormationBar getSearchValue={getSearchValue} />
-                <Switch>
-                    <Route path="/formations/invitations">
-                        <Invitations
-                            currentUser={currentUser}
-                            rejectInvitation={rejectInvitation}
-                            acceptInvitation={acceptInvitation}
-                        />
-                    </Route>
-                    <Route path="/formations/requests">
-                        <Requests
-                            currentUser={currentUser}
-                            userData={userData}
-                            acceptRequest={acceptRequest}
-                            rejectRequest={rejectRequest}
-                        />
-                    </Route>
-                    <Route path="/formations/newformation">
-                        <NewFormation
-                            currentUser={currentUser}
-                            patchCurrentUser={patchCurrentUser}
-                            updateCurrentUser={updateCurrentUser}
-                            userData={userData}
-                        />
-                    </Route>
-                    <Route path="/formations/users">
-                        <Users
-                            userData={userData}
-                            currentUser={currentUser}
-                            searchValue={searchValue}
-                            sendInvite={sendInvite}
-                            sendRequest={sendRequest}
-                        />
-                    </Route>
-                    {formationUsers}
-                    {formationInfo}
-                    {formationSettings}
-                    <Route path="/formations">
-                        <MyFormations
-                            currentUser={currentUser}
-                            searchValue={searchValue}
-                            userData={userData}
-                            patchCurrentUser={patchCurrentUser}
-                            isLoaded={isLoaded}
-                            leaveFormation={leaveFormation}
-                        />
-                    </Route>
-                </Switch>
-            </div>
+                <div className="display-container">
+                    <Switch>
+                        <Route path="/formations/invitations">
+                            <Invitations
+                                currentUser={currentUser}
+                                rejectInvitation={rejectInvitation}
+                                acceptInvitation={acceptInvitation}
+                            />
+                        </Route>
+                        <Route path="/formations/requests">
+                            <Requests
+                                currentUser={currentUser}
+                                userData={userData}
+                                acceptRequest={acceptRequest}
+                                rejectRequest={rejectRequest}
+                            />
+                        </Route>
+                        <Route path="/formations/newformation">
+                            <NewFormation
+                                currentUser={currentUser}
+                                patchCurrentUser={patchCurrentUser}
+                                updateCurrentUser={updateCurrentUser}
+                                userData={userData}
+                            />
+                        </Route>
+                        <Route path="/formations/users">
+                            <Users
+                                userData={userData}
+                                currentUser={currentUser}
+                                searchValue={searchValue}
+                                sendInvite={sendInvite}
+                                sendRequest={sendRequest}
+                            />
+                        </Route>
+                        {formationUsers}
+                        {formationInfo}
+                        {formationSettings}
+                        <Route path="/formations">
+                            <MyFormations
+                                currentUser={currentUser}
+                                searchValue={searchValue}
+                                userData={userData}
+                                patchCurrentUser={patchCurrentUser}
+                                isLoaded={isLoaded}
+                                leaveFormation={leaveFormation}
+                            />
+                        </Route>
+                    </Switch>
+                </div>
+            </>
         );
     } else if (token === "invalid") {
         return <Redirect to="/login" />;

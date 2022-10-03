@@ -13,9 +13,9 @@ function MyFormations({ currentUser, userData, leaveFormation }) {
     />)
 
     return (
-        <div>
+        <div className="display-body">
             <h1>My Formations</h1>
-            <div id="formation-array-container">
+            <div className="display-container" id="formation-array-container">
                 {displayFormations}
             </div>
         </div>

@@ -34,22 +34,6 @@
           ]
         },
         {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            2,
-            3
-          ]
-        },
-        {
           "name": "Family",
           "color": "#d87518",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
@@ -77,6 +61,22 @@
           "admin": 1,
           "users": [
             8
+          ]
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
+          "id": 0.8673541620903231,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            2,
+            3
           ]
         }
       ]

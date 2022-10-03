@@ -4,7 +4,7 @@ import FormationUserCard from "./FormationUserCard";
 function FormationUsers({ currentUser, userData, formation, patchCurrentUser, patchUser, isLoaded }) {
 
     if (isLoaded) {
-        
+
         if (currentUser.id === formation.admin) {
         
             const formationUserArr = userData.filter((el) => formation.users.includes(el.id));
@@ -21,9 +21,11 @@ function FormationUsers({ currentUser, userData, formation, patchCurrentUser, pa
             });
     
             return (
-                <div id="formation-array-container">
+                <div>
                     <h1>Users in {formation.name}</h1>
-                    {displayUserCards}
+                    <div className="display-container" id="formation-array-container">
+                        {displayUserCards}
+                    </div>
                 </div>
             );
         } else {
@@ -39,15 +41,18 @@ function FormationUsers({ currentUser, userData, formation, patchCurrentUser, pa
             />;
     
             return (
-                <div id="formation-array-container">
+                <div className="display-body">
                     <h1>Owner of {formation.name}</h1>
-                    {displayOwnerCard}
+                    <div className="display-container">
+                        {displayOwnerCard}
+                    </div>
                 </div>
+                
             );
         } 
     } else {
         return (
-            <div id="formation-array-container">
+            <div>
                 <h1>Loading...</h1>
             </div>
         );
