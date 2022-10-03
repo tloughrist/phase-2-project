@@ -70,9 +70,9 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
         };
     
         return (
-            <>
+            <div className="formations-main">
                 <FormationBar getSearchValue={getSearchValue} />
-                <div className="display-container">
+                <div>
                     <Switch>
                         <Route path="/formations/invitations">
                             <Invitations
@@ -121,7 +121,7 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                         </Route>
                     </Switch>
                 </div>
-            </>
+            </div>
         );
     } else if (token === "invalid") {
         return <Redirect to="/login" />;
