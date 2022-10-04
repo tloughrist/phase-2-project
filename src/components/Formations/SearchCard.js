@@ -37,58 +37,64 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
-                <div className="userinfo">
-                    <h3>{user.name}</h3>
-                    <p><b>{user.token.username}</b></p>
+                <div className="inset-card">
+                    <div className="userinfo">
+                        <h3>{user.name}</h3>
+                        <p><b>{user.token.username}</b></p>
+                    </div>
+                    <form className="card-form" onSubmit={handleInvite}>
+                        <p>Invite user to join...</p>
+                        <select name="formationinvite">
+                            {yourFormations}
+                        </select>
+                        <input type="submit" />
+                    </form>
+                    <form className="card-form" onSubmit={handleRequest}>
+                        <p>Request to join...</p>
+                        <select name="formationrequest">
+                            {theirFormations}
+                        </select>
+                        <input type="submit" />
+                    </form>
                 </div>
-                <form className="card-form" onSubmit={handleInvite}>
-                    <p>Invite user to join...</p>
-                    <select name="formationinvite">
-                        {yourFormations}
-                    </select>
-                    <input type="submit" />
-                </form>
-                <form className="card-form" onSubmit={handleRequest}>
-                    <p>Request to join...</p>
-                    <select name="formationrequest">
-                        {theirFormations}
-                    </select>
-                    <input type="submit" />
-                </form>
             </div>
         );
     } else if (currentUserOwns) {
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
-                <div className="userinfo">
-                    <h3>{user.name}</h3>
-                    <p><b>{user.token.username}</b></p>
+                <div className="inset-card">
+                    <div className="userinfo">
+                        <h3>{user.name}</h3>
+                        <p><b>{user.token.username}</b></p>
+                    </div>
+                    <form className="card-form" onSubmit={handleInvite}>
+                        <p>Invite user to join...</p>
+                        <select name="formationinvite">
+                            {yourFormations}
+                        </select>
+                        <input type="submit" />
+                    </form>
                 </div>
-                <form className="card-form" onSubmit={handleInvite}>
-                    <p>Invite user to join...</p>
-                    <select name="formationinvite">
-                        {yourFormations}
-                    </select>
-                    <input type="submit" />
-                </form>
             </div>
         );
     } else if (userOwns) {
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
-                <div className="userinfo">
-                    <h3>{user.name}</h3>
-                    <p><b>{user.token.username}</b></p>
+                <div className="inset-card">
+                    <div className="userinfo">
+                        <h3>{user.name}</h3>
+                        <p><b>{user.token.username}</b></p>
+                    </div>
+                    <form className="card-form" onSubmit={handleRequest}>
+                        <p>Request to join...</p>
+                        <select name="formationrequest">
+                            {theirFormations}
+                        </select>
+                        <input type="submit" />
+                    </form>
                 </div>
-                <form className="card-form" onSubmit={handleRequest}>
-                    <p>Request to join...</p>
-                    <select name="formationrequest">
-                        {theirFormations}
-                    </select>
-                    <input type="submit" />
-                </form>
             </div>
         );
     } else {

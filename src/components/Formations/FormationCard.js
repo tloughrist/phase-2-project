@@ -11,11 +11,13 @@ function FormationCard({ currentUser, formation, userData, leaveFormation }) {
         return (
             <div className="formation-card" style={{ background: `${formation.color}` }}>
                 <img className="formation-image" src={formation.image} alt={`${formation.name} picture`} style={{ background: "rgb(200, 200, 200)" }} />
-                <h2>{formation.name}</h2>
-                <div className="formation-buttons">
-                    <NavLink className="navlink" to={`/formations/${formation.id}/users`}>Users</NavLink>
-                    <NavLink className="navlink" to={`/formations/${formation.id}/info`}>Shared Information</NavLink>
-                    <NavLink className="navlink" to={`/formations/${formation.id}/settings`}>Settings</NavLink>
+                <div className="inset-card">
+                    <h2>{formation.name}</h2>
+                    <div className="formation-buttons">
+                        <NavLink className="navlink" to={`/formations/${formation.id}/users`}>Users</NavLink>
+                        <NavLink className="navlink" to={`/formations/${formation.id}/info`}>Shared Information</NavLink>
+                        <NavLink className="navlink" to={`/formations/${formation.id}/settings`}>Settings</NavLink>
+                    </div>
                 </div>
             </div>
         );
@@ -27,12 +29,14 @@ function FormationCard({ currentUser, formation, userData, leaveFormation }) {
         return (
             <div className="formation-card" style={{ background: `${ownerCopyFormation.color}` }}>
                 <img className="formation-image" src={ownerCopyFormation.image} alt={`${ownerCopyFormation.name} picture`} style={{ background: "rgb(200, 200, 200)" }} />
-                <h2>{ownerCopyFormation.name}</h2>
-                <h3>Owned by: {owner.name} ({owner.token.username})</h3>
-                <div className="formation-buttons">
-                    <NavLink className="navlink" to={`/formations/${formation.id}/users`}>Owner Info</NavLink>
-                    <NavLink className="navlink" to={`/formations/${formation.id}/info`}>Shared Information</NavLink>
-                    <button className="navlink" onClick={handleLeaveFormation}>Leave Formation</button>
+                <div className="inset-card">
+                    <h2>{ownerCopyFormation.name}</h2>
+                    <h3>Owned by: {owner.name} ({owner.token.username})</h3>
+                    <div className="formation-buttons">
+                        <NavLink className="navlink" to={`/formations/${formation.id}/users`}>Owner Info</NavLink>
+                        <NavLink className="navlink" to={`/formations/${formation.id}/info`}>Shared Information</NavLink>
+                        <button className="navlink" onClick={handleLeaveFormation}>Leave Formation</button>
+                    </div>
                 </div>
             </div>
         );
