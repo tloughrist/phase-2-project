@@ -40,7 +40,7 @@ function FormationInfo({ currentUser, formation, patchCurrentUser }) {
     };
 
     return (
-        <div className="display-body">
+        <div className="display-body form-card">
             <h1>Shared Information for {formation.name}</h1>
             <div>
                 <p><b>Pronouns</b></p>

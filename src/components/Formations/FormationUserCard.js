@@ -38,7 +38,7 @@ function FormationUserCard({ currentUser, user, formation, patchCurrentUser, pat
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
-                <div className="userinfo">
+                <div className="userinfo inset-card">
                     <h3>{user.name}</h3>
                     {informationDisplay}
                     <div>
@@ -51,7 +51,7 @@ function FormationUserCard({ currentUser, user, formation, patchCurrentUser, pat
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
-                <div className="userinfo">
+                <div className="userinfo inset-card">
                     <h3>{user.name}</h3>
                     {informationDisplay}
                 </div>

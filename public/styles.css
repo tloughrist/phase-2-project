@@ -109,7 +109,8 @@ hr {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: row;
+    align-content: center;
+    flex-direction: column;
     padding: 1rem;
 }
 
@@ -163,13 +164,15 @@ hr {
 
 .inset-card {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
-    padding: 1rem;
     margin: 1rem;
     background: white;
+    flex-direction: column;
+    padding: 1rem;
+    align-content: center;
 }
 
 .form-card:hover {
@@ -218,6 +221,8 @@ hr {
     margin-right: 10px;
     margin-top: 10px;
     text-decoration: none;
+    align-content: center;
+    justify-content: center;
 }
 
 .user-card {
