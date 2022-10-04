@@ -11,12 +11,20 @@ function MyFormations({ currentUser, userData, leaveFormation }) {
         userData={userData}
         leaveFormation={leaveFormation}
     />)
-
-    return (
-        <div className="display-container" id="formation-array-container">
-            {displayFormations}
-        </div>
-    );
+    if (currentUser.formations.length > 0) {
+        return (
+            <div className="display-container" id="formation-array-container">
+                {displayFormations}
+            </div>
+        );
+    } else {
+        return (
+            <div className="display-container" id="formation-array-container">
+                <h3>No formations at this time.</h3>
+            </div>
+        );
+    }
+    
 };
 
 export default MyFormations;

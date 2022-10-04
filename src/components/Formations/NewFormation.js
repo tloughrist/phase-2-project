@@ -39,8 +39,8 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
 
     return (
         <div className="display-container">
-            <form id="newformation-form" onSubmit={handleFormationCreation}>
-                <div className="display-body">
+            <form className="form-card" onSubmit={handleFormationCreation}>
+                <div className="display-body" style={{ background: "white" }}>
                     <input className="form-element" name="name" type="text" placeholder="formation name" />
                     <label className="form-label" htmlFor="color">Select Formation Color</label>
                     <input className="form-element" name="color" type="color" defaultValue="#ffffff"/>

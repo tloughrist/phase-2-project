@@ -15,7 +15,17 @@
       "id": 1,
       "dob": "1982-07-20",
       "invitations": [],
-      "requests": [],
+      "requests": [
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "id": 0.7232350154015408,
+          "owner": "Tim Loughrist (tloughrist)",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "admin": 1,
+          "supplicant": 7
+        }
+      ],
       "formations": [
         {
           "name": "Close Friends",
@@ -190,7 +200,35 @@
         }
       ],
       "id": 2,
-      "dob": "1913-11-07"
+      "dob": "1913-11-07",
+      "formationType": [
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false
+        },
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
+        }
+      ]
     },
     {
       "token": {
@@ -235,7 +273,35 @@
         }
       ],
       "id": 3,
-      "dob": "1856-05-06"
+      "dob": "1856-05-06",
+      "formationType": [
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": false,
+          "phone": false,
+          "address": true,
+          "notes": true
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
+        }
+      ]
     },
     {
       "token": {
@@ -262,7 +328,17 @@
       "requests": [],
       "formations": [],
       "id": 4,
-      "dob": "1908-01-09"
+      "dob": "1908-01-09",
+      "formationType": [
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ]
     },
     {
       "token": {
@@ -357,7 +433,17 @@
       "requests": [],
       "formations": [],
       "id": 7,
-      "dob": "1872-05-18"
+      "dob": "1872-05-18",
+      "formationType": [
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ]
     },
     {
       "token": {
@@ -413,7 +499,17 @@
       "address": "123 Fake Street, Lake Forest Park",
       "notes": "",
       "invitations": [],
-      "requests": [],
+      "requests": [
+        {
+          "name": "Writers Block",
+          "color": "#664270",
+          "id": 0.2873600366504825,
+          "owner": "Octavia Butler (obutler)",
+          "image": "https://cdn1.epicgames.com/ue/product/Screenshot/vintage-typewriter1080-1920x1080-dba2ed3fc0f4ca6061d37885dfdd9edc.jpg?resize=1&w=1920",
+          "admin": 9,
+          "supplicant": 4
+        }
+      ],
       "formations": [
         {
           "name": "Writers Block",

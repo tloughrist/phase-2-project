@@ -41,11 +41,9 @@ function FormationUsers({ currentUser, userData, formation, patchCurrentUser, pa
             />;
     
             return (
-                <div className="display-container">
+                <div className="display-body">
                     <h1>Owner of {formation.name}</h1>
-                    <div className="display-container">
-                        {displayOwnerCard}
-                    </div>
+                    {displayOwnerCard}
                 </div>
             );
         }

@@ -27,12 +27,14 @@ function RequestCard({ request, userData, acceptRequest, rejectRequest }) {
 
     return (
         <div style={{ background: `${request.color}` }} >
-            <div>
-                <h3>{supplicant.name} ({supplicant.token.username}) wants to join {request.name}</h3>
-            </div>
-            <div>
-                <button onClick={handleAccept}>Accept</button>
-                <button onClick={handleReject}>Reject</button>
+            <div className="form-card">
+                <div>
+                    <h3>{supplicant.name} ({supplicant.token.username}) wants to join {request.name}</h3>
+                </div>
+                <div align="center">
+                    <button onClick={handleAccept}>Accept</button>
+                    <button onClick={handleReject}>Reject</button>
+                </div>
             </div>
         </div>
     );

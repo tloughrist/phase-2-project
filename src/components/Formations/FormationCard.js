@@ -32,9 +32,7 @@ function FormationCard({ currentUser, formation, userData, leaveFormation }) {
                 <div className="formation-buttons">
                     <NavLink className="navlink" to={`/formations/${formation.id}/users`}>Owner Info</NavLink>
                     <NavLink className="navlink" to={`/formations/${formation.id}/info`}>Shared Information</NavLink>
-                </div>
-                <div>
-                    <button onClick={handleLeaveFormation}>Leave Formation</button>
+                    <button className="navlink" onClick={handleLeaveFormation}>Leave Formation</button>
                 </div>
             </div>
         );
