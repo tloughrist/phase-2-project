@@ -6,12 +6,9 @@ function Requests({ currentUser, userData, acceptRequest, rejectRequest }) {
     
     if (currentUser.requests.length == 0) {
         return (
-            <div className="display-body">
-                <h1>Requests to Join Formations</h1>
-                <div className="display-container">
-                    <h3>No requests at this time.</h3>
-                </div>
-            </div>  
+            <div className="display-container">
+                <h3>No requests at this time.</h3>
+            </div>
         );
     } else {
 
@@ -26,12 +23,9 @@ function Requests({ currentUser, userData, acceptRequest, rejectRequest }) {
         />);
 
         return (
-            <div className="display-body">
-                <h1>Requests to Join Formations</h1>
-                <div className="display-container">
-                    {requestDisplay}
-                </div>
-            </div> 
+            <div className="display-container">
+                {requestDisplay}
+            </div>
         );
     }    
 };

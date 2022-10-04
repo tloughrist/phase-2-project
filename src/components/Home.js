@@ -2,8 +2,12 @@ import React from "react";
 
 function Home({ isLoaded }) {
     return (
-        <div>
-            <h1>Home</h1>
+        <div className="display-container">
+            <div>
+                <h1>Welcome to inFormation!</h1>
+                <h2>This is an app to help people stay in contact with one another.</h2>
+                <h2>By creating or joining formations, you'll be able to keep track of whatever information your contacts want to share with you.</h2> <h2>Likewise, you have control over what information you share with others.</h2>
+            </div>
         </div>
     );
 };

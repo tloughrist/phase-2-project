@@ -39,19 +39,18 @@ function SignUp({ userData, login, updateUserData }) {
     };
 
     return(
-        <div className="login-wrapper">
-            <h1>Sign Up for inFormation</h1>
+        <div className="display-container">
             <form onSubmit={handleSubmit}>
-                <label>
+                <label className="form-label">
                     <p>Username</p>
                     <input type="text" name="username" />
                 </label>
-                <label>
+                <label className="form-label">
                     <p>Password</p>
-                    <input type="password" name="password" />
+                    <input className="form-element" type="password" name="password" />
                 </label>
                     <div>
-                    <button type="submit">Submit</button>
+                    <button className="form-element" type="submit">Sign-up</button>
                 </div>
             </form>
         </div>

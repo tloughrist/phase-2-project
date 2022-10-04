@@ -9,7 +9,7 @@
       "pronouns": "he / him",
       "pic": "https://timloughrist.files.wordpress.com/2022/06/about_me_pic.png",
       "email": "tim.loughrist@gmail.com",
-      "phone": "555-555-5566",
+      "phone": "555-555-5678",
       "address": "123 Fake Street, Florence",
       "notes": "Married to Kathryn Loughrist",
       "id": 1,
@@ -30,7 +30,7 @@
           "admin": 1,
           "users": [
             2,
-            3
+            5
           ]
         },
         {
@@ -49,6 +49,22 @@
           ]
         },
         {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
+          "id": 0.8673541620903231,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            2,
+            3
+          ]
+        },
+        {
           "name": "Collegues",
           "color": "#87589d",
           "image": "/inFormation.png",
@@ -60,7 +76,41 @@
           "notes": false,
           "admin": 1,
           "users": [
-            8
+            8,
+            9
+          ]
+        }
+      ],
+      "formationType": [
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": true,
+          "notes": true,
+          "admin": 1,
+          "users": [
+            2,
+            5
+          ]
+        },
+        {
+          "name": "Family",
+          "color": "#d87518",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
+          "id": 0.7232350154015408,
+          "pronouns": false,
+          "email": true,
+          "phone": true,
+          "address": true,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            3
           ]
         },
         {
@@ -77,6 +127,22 @@
           "users": [
             2,
             3
+          ]
+        },
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            8,
+            9
           ]
         }
       ]
@@ -155,19 +221,6 @@
           "notes": true
         },
         {
-          "name": "Close Friends",
-          "color": "#27917c",
-          "image": "/inFormation.png",
-          "id": 0.9218557801228213,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": true,
-          "email": true,
-          "phone": true,
-          "address": false,
-          "notes": false
-        },
-        {
           "name": "Flatiron Contacts",
           "color": "#c8f05c",
           "image": "/inFormation.png",
@@ -196,7 +249,16 @@
       "phone": "555-555-5555",
       "address": "123 Rue Fake, Paris",
       "notes": "",
-      "invitations": [],
+      "invitations": [
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ],
       "requests": [],
       "formations": [],
       "id": 4,
@@ -225,7 +287,21 @@
         }
       ],
       "requests": [],
-      "formations": [],
+      "formations": [
+        {
+          "name": "Close Friends",
+          "color": "#27917c",
+          "image": "/inFormation.png",
+          "id": 0.9218557801228213,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": false,
+          "email": false,
+          "phone": false,
+          "address": false,
+          "notes": false
+        }
+      ],
       "id": 5,
       "dob": "1956-02-24"
     },
@@ -351,6 +427,19 @@
           "notes": false,
           "admin": 9,
           "users": []
+        },
+        {
+          "name": "Collegues",
+          "color": "#87589d",
+          "image": "/inFormation.png",
+          "id": 0.5785924237673199,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
         }
       ],
       "id": 9,

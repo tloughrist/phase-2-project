@@ -8,15 +8,13 @@ import Requests from "./Requests.js";
 import FormationUsers from "./FormationUsers.js";
 import FormationInfo from "./FormationInfo.js";
 import FormationSettings from "./FormationSettings.js";
-import Users from "./Users.js";
+import SearchUsers from "./SearchUsers.js";
 
 function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser, isLoaded, sendRequest, acceptRequest, rejectRequest, leaveFormation}) {
 
-    const [searchValue, setSearchValue] = useState("");
     const history = useHistory();
 
-    if (token === "valid") {
-
+    if (token === "valid" && userData) {
         const formationUsers = currentUser.formations.map((el) => {
             return (
                 <Route key={`${el.id}users`} path={`/formations/${el.id}/users`}>
@@ -59,19 +57,10 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                 </Route> 
             );
         });
-
-        function getSearchValue(mode, value) {
-            setSearchValue(value);
-            if (mode === "formation") {
-                return history.push("/formations");
-            } else if (mode === "user") {
-                return history.push("/formations/users")
-            }
-        };
     
         return (
             <div className="formations-main">
-                <FormationBar getSearchValue={getSearchValue} />
+                <FormationBar />
                 <div>
                     <Switch>
                         <Route path="/formations/invitations">
@@ -98,10 +87,9 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                             />
                         </Route>
                         <Route path="/formations/users">
-                            <Users
+                            <SearchUsers
                                 userData={userData}
                                 currentUser={currentUser}
-                                searchValue={searchValue}
                                 sendInvite={sendInvite}
                                 sendRequest={sendRequest}
                             />
@@ -112,7 +100,6 @@ function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, u
                         <Route path="/formations">
                             <MyFormations
                                 currentUser={currentUser}
-                                searchValue={searchValue}
                                 userData={userData}
                                 patchCurrentUser={patchCurrentUser}
                                 isLoaded={isLoaded}

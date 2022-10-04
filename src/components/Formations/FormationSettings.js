@@ -24,18 +24,18 @@ function FormationSettings({ currentUser, formation, patchCurrentUser }) {
     return (
         <div className="display-body">
             <h1>Settings for {formation.name}</h1>
-            <div className="display-container">
-                <form onSubmit={handleFormationChange}>
-                    <label htmlFor="formationname">Formation Name</label>
-                    <input onChange={e => setFormationName(e.target.value)} type="text" name="formationname" defaultValue={formationName}/>
-                    <label htmlFor="formationcolor">Formation Color</label>
-                    <input onChange={e => setFormationColor(e.target.value)}type="color" name="formationcolor" defaultValue={formationColor}/>
-                    <label htmlFor="formationimage">Formation Image</label>
-                    <input onChange={e => setFormationImage(e.target.value)}type="url" name="formationimage" placeholder="image url" />
-                    <input type="submit" />
+            <div>
+                <form className="display-body" onSubmit={handleFormationChange}>
+                    <label className="form-label" htmlFor="formationname">Formation Name</label>
+                    <input className="form-element" onChange={e => setFormationName(e.target.value)} type="text" name="formationname" defaultValue={formationName}/>
+                    <label className="form-label" htmlFor="formationcolor">Formation Color</label>
+                    <input className="form-element" onChange={e => setFormationColor(e.target.value)}type="color" name="formationcolor" defaultValue={formationColor}/>
+                    <label className="form-label" htmlFor="formationimage">Formation Image</label>
+                    <input className="form-element" onChange={e => setFormationImage(e.target.value)}type="url" name="formationimage" placeholder="image url" />
+                    <input className="form-element" type="submit" />
                 </form>
                 <div>
-                    <button onClick={handleDelFormation}>Delete Formation</button>
+                    <button className="form-element" onClick={handleDelFormation}>Delete Formation</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FormationCard from "./FormationCard.js"
 
 function MyFormations({ currentUser, userData, leaveFormation }) {
@@ -13,11 +13,8 @@ function MyFormations({ currentUser, userData, leaveFormation }) {
     />)
 
     return (
-        <div className="display-body">
-            <h1>My Formations</h1>
-            <div className="display-container" id="formation-array-container">
-                {displayFormations}
-            </div>
+        <div className="display-container" id="formation-array-container">
+            {displayFormations}
         </div>
     );
 };

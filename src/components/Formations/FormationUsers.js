@@ -21,7 +21,7 @@ function FormationUsers({ currentUser, userData, formation, patchCurrentUser, pa
             });
     
             return (
-                <div>
+                <div className="display-body">
                     <h1>Users in {formation.name}</h1>
                     <div className="display-container" id="formation-array-container">
                         {displayUserCards}
@@ -41,15 +41,14 @@ function FormationUsers({ currentUser, userData, formation, patchCurrentUser, pa
             />;
     
             return (
-                <div className="display-body">
+                <div className="display-container">
                     <h1>Owner of {formation.name}</h1>
                     <div className="display-container">
                         {displayOwnerCard}
                     </div>
                 </div>
-                
             );
-        } 
+        }
     } else {
         return (
             <div>

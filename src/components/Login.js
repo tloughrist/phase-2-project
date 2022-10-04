@@ -11,8 +11,7 @@ function Login({ userData, login }) {
     };
     
     return(
-        <div className="login-wrapper">
-            <h1>Please Login</h1>
+        <div className="display-container">
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Username</p>
@@ -20,10 +19,10 @@ function Login({ userData, login }) {
                 </label>
                 <label>
                     <p>Password</p>
-                    <input type="password" name="password" />
+                    <input className="form-element" type="password" name="password" />
                 </label>
                 <div>
-                    <button type="submit">Login</button>
+                    <button className="form-element" type="submit">Login</button>
                 </div>
             </form>
         </div>

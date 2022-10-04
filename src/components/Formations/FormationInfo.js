@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function FormationInfo({ currentUser, formation, patchCurrentUser }) {
 
@@ -42,7 +42,7 @@ function FormationInfo({ currentUser, formation, patchCurrentUser }) {
     return (
         <div className="display-body">
             <h1>Shared Information for {formation.name}</h1>
-            <div className="display-container">
+            <div>
                 <p><b>Pronouns</b></p>
                 <div>
                     <input

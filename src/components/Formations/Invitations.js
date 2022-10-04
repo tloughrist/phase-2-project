@@ -5,9 +5,8 @@ function Invitations({ currentUser, rejectInvitation, acceptInvitation }) {
 
     if (currentUser.invitations.length == 0) {
         return (
-            <div id="formation-array-container">
-                <h1>Invitations to Join Formations</h1>
-                <h3>No invitations at this time.</h3>
+            <div className="display-container">
+                 <h3>No invitations at this time.</h3>
             </div>
         );
     } else {
@@ -20,8 +19,7 @@ function Invitations({ currentUser, rejectInvitation, acceptInvitation }) {
         />);
 
         return (
-            <div id="formation-array-container">
-                <h1>Invitations to Join Formations</h1>
+            <div className="display-container">
                 {invitationDisplay}
             </div>
         );
