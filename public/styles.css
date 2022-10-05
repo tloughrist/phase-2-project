@@ -114,7 +114,10 @@ hr {
     justify-content: center;
     align-content: center;
     flex-direction: column;
+    text-align: center;
     padding: 1rem;
+    background: rgb(222, 222, 222);
+    border-radius: 5px;
 }
 
 .formation-card {
@@ -228,6 +231,10 @@ hr {
     justify-content: center;
 }
 
+.navlink:hover {
+    background: rgb(117, 175, 130);
+}
+
 .user-card {
     display: flex;
     flex-direction: column;
@@ -262,6 +269,6 @@ hr {
 .userinfo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    text-align: center;
     padding: 1rem;
 }
