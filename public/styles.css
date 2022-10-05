@@ -3,6 +3,10 @@ body {
     font-family: sans-serif;
 }
 
+h2 {
+    text-align: center;
+}
+
 hr {
     width: 100%;
     margin-top: 20px;
@@ -107,7 +111,6 @@ hr {
 
 .formation-buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     flex-direction: column;
@@ -232,7 +235,6 @@ hr {
     transition: 0.3s;
     border-radius: 5px;
     width: 300px;
-    padding: 1rem;
     margin: 1rem;
     background: rgb(117, 175, 130);
 }

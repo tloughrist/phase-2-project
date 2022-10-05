@@ -23,7 +23,7 @@ function PersonalInfo({ currentUser, token, patchCurrentUser }) {
             <div className="display-container">
                 <div className="user-card">
                     <img src={currentUser.pic} className="user-image" alt={`${currentUser.name} picture`} />
-                    <div className="userinfo">
+                    <div className="userinfo inset-card">
                         <h3>{currentUser.name}</h3>
                         <p><b>Username:</b> {currentUser.token.username}</p>
                         <p><b>Pronouns:</b> {currentUser.pronouns}</p>

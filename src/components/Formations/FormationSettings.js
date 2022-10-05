@@ -24,8 +24,8 @@ function FormationSettings({ currentUser, formation, patchCurrentUser }) {
     return (
         <div className="display-body">
             <h1>Settings for {formation.name}</h1>
-            <div>
-                <form className="display-body" onSubmit={handleFormationChange}>
+            <div className="inset-card">
+                <form className="display-body" onSubmit={handleFormationChange} style={{ background: "white" }}>
                     <label className="form-label" htmlFor="formationname">Formation Name</label>
                     <input className="form-element" onChange={e => setFormationName(e.target.value)} type="text" name="formationname" defaultValue={formationName}/>
                     <label className="form-label" htmlFor="formationcolor">Formation Color</label>
