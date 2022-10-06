@@ -231,8 +231,12 @@ hr {
     justify-content: center;
 }
 
-.navlink:hover {
+.navlink-active {
     background: rgb(117, 175, 130);
+}
+
+.navlink:hover {
+    background: rgb(206, 240, 213);
 }
 
 .user-card {
