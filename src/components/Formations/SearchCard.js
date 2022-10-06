@@ -101,7 +101,7 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
         return (
             <div className="user-card">
                 <img className="user-image" src={user.pic} alt={`${user.token.username} picture`} />
-                <div className="userinfo">
+                <div className="inset-card">
                     <h3>{user.name}</h3>
                     <p><b>{user.token.username}</b></p>
                 </div>
