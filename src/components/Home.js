@@ -1,6 +1,6 @@
 import React from "react";
 
-function Home({ isLoaded }) {
+function Home() {
     return (
         <div className="display-container">
             <div>

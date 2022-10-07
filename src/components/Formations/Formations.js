@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import MyFormations from "./MyFormations.js";
 import NewFormation from "./NewFormation.js";
