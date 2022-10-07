@@ -13,8 +13,6 @@ The project is currently in beta and I'd appreciate any feedback!
 
 Click the image above to watch a video demonstrating the app.
 
-A demo is available [HERE](https://information-contact-updater.herokuapp.com/).
-
 ## Installation
 The current version of the app simulates a server for storing user information using [JSON-server](https://www.npmjs.com/package/json-server).
 
