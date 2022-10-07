@@ -163,9 +163,10 @@
         },
         {
           "name": "Game Night",
-          "color": "#a13030",
-          "image": "/inFormation.png",
-          "id": 0.8523507288386469,
+          "color": "#912222",
+          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
+          "id": 1.1638296508023052,
+          "dob": false,
           "pronouns": false,
           "email": false,
           "phone": false,
