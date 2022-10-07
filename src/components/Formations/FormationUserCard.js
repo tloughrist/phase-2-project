@@ -6,6 +6,9 @@ function FormationUserCard({ currentUser, user, formation, patchCurrentUser, pat
 
     const informationDisplay = [];
 
+    if (userFormation.dob) {
+        informationDisplay.push(<p key={`${user.token.username}dob`}><b>Date of Birth:</b> {user.dob}</p>)
+    }
     if (userFormation.pronouns) {
         informationDisplay.push(<p key={`${user.token.username}pronouns`}><b>Pronouns:</b> {user.pronouns}</p>)
     }

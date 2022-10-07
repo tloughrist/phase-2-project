@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function NewFormation({ currentUser, patchCurrentUser, userData }) {
     
+    const [dob, setDob] = useState(false);
     const [pronouns, setPronouns] = useState(false);
     const [email, setEmail] = useState(false);
     const [phone, setPhone] = useState(false);
@@ -23,6 +24,7 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
             color: formationColor,
             image: formationImage,
             id: formationId,
+            dob: dob,
             pronouns: pronouns,
             email: email,
             phone: phone,
@@ -48,6 +50,10 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
                 </div>
                 <div>
                     <h3>What would you like to share with this formation?</h3>
+                    <div>
+                        <p><b>Date of Birth</b></p>
+                        <input className="form-element" onChange={e => setDob(!dob)} type="checkbox" />
+                    </div>
                     <div>
                         <p><b>Pronouns</b></p>
                         <input className="form-element" onChange={e => setPronouns(!pronouns)} type="checkbox" />

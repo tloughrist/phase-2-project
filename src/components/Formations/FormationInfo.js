@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function FormationInfo({ currentUser, formation, patchCurrentUser }) {
 
+    const [dobShared, setDobShared] = useState(formation.pronouns);
     const [pronounsShared, setPronounsShared] = useState(formation.pronouns);
     const [emailShared, setEmailShared] = useState(formation.email);
     const [phoneShared, setPhoneShared] = useState(formation.phone);
@@ -11,27 +12,29 @@ function FormationInfo({ currentUser, formation, patchCurrentUser }) {
     function handleInfoChange(e) {
         const info = e.target.name;
         switch(info) {
+            case "dob":
+                setDobShared(!dobShared);
+                formation[info] = !dobShared;
+                break;
             case "pronouns":
                 setPronounsShared(!pronounsShared);
-                formation[info] = !pronounsShared
+                formation[info] = !pronounsShared;
                 break;
             case "email":
                 setEmailShared(!emailShared);
-                formation[info] = !emailShared
+                formation[info] = !emailShared;
                 break;
             case "phone":
                 setPhoneShared(!phoneShared);
-                formation[info] = !phoneShared
+                formation[info] = !phoneShared;
                 break;
             case "address":
                 setAddressShared(!addressShared);
-                formation[info] = !addressShared
+                formation[info] = !addressShared;
                 break;
             case "notes":
                 setNotesShared(!notesShared);
-                formation[info] = !notesShared
-                break;
-            default:
+                formation[info] = !notesShared;
                 break;
         }
         const sansFormations = currentUser.formations.filter((el) => el.id !== formation.id);
@@ -42,6 +45,29 @@ function FormationInfo({ currentUser, formation, patchCurrentUser }) {
     return (
         <div className="display-body form-card">
             <h1>Shared Information for {formation.name}</h1>
+            <div>
+                <p><b>Date of Birth</b></p>
+                <div>
+                    <input
+                        type="radio"
+                        id="dobshared"
+                        name="dob"
+                        value="shared"
+                        checked={dobShared ? "checked" : ""}
+                        onChange={handleInfoChange}
+                    />
+                    <label htmlFor="dobshared">Shared</label>
+                    <input
+                        type="radio"
+                        id="dobunshared"
+                        name="dob"
+                        value="unshared"
+                        checked={dobShared ? "" : "checked"}
+                        onChange={handleInfoChange}
+                    />
+                    <label htmlFor="dobunshared">Unshared</label>
+                </div>
+            </div>
             <div>
                 <p><b>Pronouns</b></p>
                 <div>
