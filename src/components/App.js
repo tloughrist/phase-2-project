@@ -132,8 +132,16 @@ function App() {
     };
 
     function handleCurrentUserAcceptInvite(newFormationObj) {
-        currentUser.invitations = currentUser.invitations.filter((el) => el.id !== newFormationObj.id);
-        currentUser.formations = [...currentUser.formations, newFormationObj];
+        setCurrentUser((prevUser)=> {
+            const invitations = prevUser.invitations.filter((el) => el.id !== newFormationObj.id);
+            const formations = [...prevUser.formations, newFormationObj];
+            return {
+                ...prevUser,
+                invitations,
+                formations
+            };
+        });
+        
         return patchCurrentUser({invitations: currentUser.invitations, formations: currentUser.formations});
     };
 

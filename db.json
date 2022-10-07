@@ -34,22 +34,6 @@
           ]
         },
         {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
-          "id": 0.8673541620903231,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            2,
-            3
-          ]
-        },
-        {
           "name": "Collegues",
           "color": "#87589d",
           "image": "/inFormation.png",
@@ -93,7 +77,24 @@
           "address": false,
           "notes": false,
           "admin": 1,
-          "users": []
+          "users": [
+            8
+          ]
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
+          "id": 0.8673541620903231,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            3
+          ]
         }
       ],
       "formationType": [
@@ -114,22 +115,6 @@
           ]
         },
         {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
-          "id": 0.8673541620903231,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            2,
-            3
-          ]
-        },
-        {
           "name": "Collegues",
           "color": "#87589d",
           "image": "/inFormation.png",
@@ -174,6 +159,21 @@
           "notes": false,
           "admin": 1,
           "users": []
+        },
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
+          "id": 0.8673541620903231,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": [
+            3
+          ]
         }
       ]
     },
@@ -192,19 +192,6 @@
       "invitations": [],
       "requests": [],
       "formations": [
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": false,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false
-        },
         {
           "name": "Close Friends",
           "color": "#27917c",
@@ -525,10 +512,42 @@
           "phone": false,
           "address": false,
           "notes": false
+        },
+        {
+          "name": "Game Night",
+          "color": "#912222",
+          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
+          "id": 1.1638296508023052,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1,
+          "dob": true,
+          "pronouns": true,
+          "email": false,
+          "phone": false,
+          "address": false,
+          "notes": false
         }
       ],
       "id": 8,
-      "dob": "1960-12-22"
+      "dob": "1960-12-22",
+      "formationType": [
+        {
+          "name": "Flatiron Contacts",
+          "color": "#c8f05c",
+          "image": "/inFormation.png",
+          "id": 0.8673541620903231,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        },
+        {
+          "name": "Game Night",
+          "color": "#912222",
+          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
+          "id": 1.1638296508023052,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
+        }
+      ]
     },
     {
       "token": {
