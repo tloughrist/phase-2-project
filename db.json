@@ -18,9 +18,23 @@
       "requests": [],
       "formations": [
         {
+          "name": "Flatiron Contacts",
+          "color": "#5eaad9",
+          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
+          "id": 1.1928151156175535,
+          "dob": false,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 1,
+          "users": []
+        },
+        {
           "name": "Close Friends",
-          "color": "#27917c",
-          "image": "/inFormation.png",
+          "color": "#8f427e",
+          "image": "https://variety.com/wp-content/uploads/2022/08/TSDFRIE_NB044.jpg?w=681&h=383&crop=1",
           "id": 0.9218557801228213,
           "pronouns": true,
           "email": true,
@@ -35,8 +49,8 @@
         },
         {
           "name": "Collegues",
-          "color": "#87589d",
-          "image": "/inFormation.png",
+          "color": "#ca722b",
+          "image": "https://cdn.theatlantic.com/thumbor/vY7I4JusxMxrKBzoAyv4oFgGL-8=/236x0:3792x2000/1440x810/media/img/2020/10/21/Dwight_comop/original.jpg",
           "id": 0.5785924237673199,
           "pronouns": true,
           "email": true,
@@ -166,17 +180,8 @@
       "email": "nonbinary@genderstudies.com",
       "phone": "555-555-5555",
       "address": "123 Fake Street, Berkeley",
-      "notes": "",
-      "invitations": [
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        }
-      ],
+      "notes": "l love chocolate.",
+      "invitations": [],
       "requests": [],
       "formations": [
         {
@@ -186,11 +191,12 @@
           "id": 0.9218557801228213,
           "owner": "Tim Loughrist (tloughrist)",
           "admin": 1,
-          "pronouns": false,
-          "email": false,
-          "phone": false,
-          "address": false,
-          "notes": false
+          "pronouns": true,
+          "email": true,
+          "phone": true,
+          "address": true,
+          "notes": true,
+          "dob": true
         }
       ],
       "id": 5,
