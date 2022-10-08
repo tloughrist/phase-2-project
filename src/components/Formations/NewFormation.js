@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function NewFormation({ currentUser, patchCurrentUser, userData }) {
     
@@ -8,6 +9,8 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
     const [phone, setPhone] = useState(false);
     const [address, setAddress] = useState(false);
     const [notes, setNotes] = useState(false);
+
+    const history = useHistory();
 
     function handleFormationCreation(e) {
         e.preventDefault();
@@ -36,7 +39,7 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
         const formationsArr = [...currentUser.formations, newFormationObj];
         return patchCurrentUser({formations: formationsArr})
         .then(() => e.target.reset())
-        .then(() => alert("New Formation Created"));
+        .then(() => history.push("/formations"));
     };
 
     return (

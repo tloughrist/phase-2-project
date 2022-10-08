@@ -15,6 +15,7 @@ function PersonalInfo({ currentUser, token, patchCurrentUser }) {
             address: e.target.address.value,
             notes: e.target.addnotes.value
         };
+        alert("Information updated");
         return patchCurrentUser(newUserObj);
     };
 
