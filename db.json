@@ -48,132 +48,6 @@
             8,
             9
           ]
-        },
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "pronouns": false,
-          "email": true,
-          "phone": true,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            3,
-            7
-          ]
-        },
-        {
-          "name": "Game Night",
-          "color": "#912222",
-          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
-          "id": 1.1638296508023052,
-          "dob": false,
-          "pronouns": false,
-          "email": false,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            8
-          ]
-        },
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
-          "id": 0.8673541620903231,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            3
-          ]
-        }
-      ],
-      "formationType": [
-        {
-          "name": "Close Friends",
-          "color": "#27917c",
-          "image": "/inFormation.png",
-          "id": 0.9218557801228213,
-          "pronouns": true,
-          "email": true,
-          "phone": true,
-          "address": true,
-          "notes": true,
-          "admin": 1,
-          "users": [
-            2,
-            5
-          ]
-        },
-        {
-          "name": "Collegues",
-          "color": "#87589d",
-          "image": "/inFormation.png",
-          "id": 0.5785924237673199,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            8,
-            9
-          ]
-        },
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "pronouns": false,
-          "email": true,
-          "phone": true,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            3,
-            7
-          ]
-        },
-        {
-          "name": "Game Night",
-          "color": "#912222",
-          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
-          "id": 1.1638296508023052,
-          "dob": false,
-          "pronouns": false,
-          "email": false,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": []
-        },
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook",
-          "id": 0.8673541620903231,
-          "pronouns": true,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false,
-          "admin": 1,
-          "users": [
-            3
-          ]
         }
       ]
     },
@@ -207,35 +81,7 @@
         }
       ],
       "id": 2,
-      "dob": "1913-11-07",
-      "formationType": [
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": false,
-          "email": true,
-          "phone": false,
-          "address": false,
-          "notes": false
-        },
-        {
-          "name": "Close Friends",
-          "color": "#27917c",
-          "image": "/inFormation.png",
-          "id": 0.9218557801228213,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": true,
-          "email": true,
-          "phone": true,
-          "address": false,
-          "notes": false
-        }
-      ]
+      "dob": "1913-11-07"
     },
     {
       "token": {
@@ -280,35 +126,7 @@
         }
       ],
       "id": 3,
-      "dob": "1856-05-06",
-      "formationType": [
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": false,
-          "email": false,
-          "phone": false,
-          "address": true,
-          "notes": true
-        },
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "pronouns": false,
-          "email": true,
-          "phone": true,
-          "address": false,
-          "notes": false
-        }
-      ]
+      "dob": "1856-05-06"
     },
     {
       "token": {
@@ -335,17 +153,7 @@
       "requests": [],
       "formations": [],
       "id": 4,
-      "dob": "1908-01-09",
-      "formationType": [
-        {
-          "name": "Collegues",
-          "color": "#87589d",
-          "image": "/inFormation.png",
-          "id": 0.5785924237673199,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        }
-      ]
+      "dob": "1908-01-09"
     },
     {
       "token": {
@@ -413,17 +221,7 @@
       "requests": [],
       "formations": [],
       "id": 6,
-      "dob": "1889-04-26",
-      "formationType": [
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        }
-      ]
+      "dob": "1889-04-26"
     },
     {
       "token": {
@@ -464,17 +262,7 @@
         }
       ],
       "id": 7,
-      "dob": "1872-05-18",
-      "formationType": [
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        }
-      ]
+      "dob": "1872-05-18"
     },
     {
       "token": {
@@ -512,42 +300,10 @@
           "phone": false,
           "address": false,
           "notes": false
-        },
-        {
-          "name": "Game Night",
-          "color": "#912222",
-          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
-          "id": 1.1638296508023052,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1,
-          "dob": true,
-          "pronouns": true,
-          "email": false,
-          "phone": false,
-          "address": false,
-          "notes": false
         }
       ],
       "id": 8,
-      "dob": "1960-12-22",
-      "formationType": [
-        {
-          "name": "Flatiron Contacts",
-          "color": "#c8f05c",
-          "image": "/inFormation.png",
-          "id": 0.8673541620903231,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        },
-        {
-          "name": "Game Night",
-          "color": "#912222",
-          "image": "https://s3-ap-northeast-1.amazonaws.com/psh-ex-ftnikkei-3937bb4/images/0/2/4/0/38150420-1-eng-GB/%E3%80%8C%E3%82%AB%E3%82%BF%E3%83%B3%E3%80%8D%E4%BF%AF%E7%9E%B0%E3%82%AB%E3%83%83%E3%83%88.jpg",
-          "id": 1.1638296508023052,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        }
-      ]
+      "dob": "1960-12-22"
     },
     {
       "token": {
@@ -636,7 +392,22 @@
       "notes": "",
       "invitations": [],
       "requests": [],
-      "formations": [],
+      "formations": [
+        {
+          "name": "Writers Circle",
+          "color": "#0e5d04",
+          "image": "https://www.thepencompany.com/blog/wp-content/uploads/bigstock-Fountain-Pen-On-Paper-With-Ink-344587678-1-1024x683.jpg",
+          "id": 1.2114556438709816,
+          "dob": false,
+          "pronouns": true,
+          "email": true,
+          "phone": false,
+          "address": false,
+          "notes": false,
+          "admin": 11,
+          "users": []
+        }
+      ],
       "id": 11,
       "dob": "1929-10-21"
     }

@@ -16,15 +16,15 @@ function App() {
 
     const history = useHistory();
 
-    useEffect(() => {
-        return fetch("http://localhost:3000/users")
-        .then((response) => response.json())
-        .then((data) => {
-            setUserData(data);
-            getToken(data);
-        })
-        .then(() => setIsLoaded(true));            
-    }, []);
+    useEffect(() => loadInit(), []);
+
+    async function loadInit() {
+        const response = await fetch("http://localhost:3000/users");
+        const data = await response.json();
+        setUserData(data);
+        getToken(data);
+        return setIsLoaded(true);
+    };
 
     useEffect(() => {
         if (currentUser) {
@@ -55,13 +55,14 @@ function App() {
     };
 
     function removeInvalidFormations(formationType) {
-        if (currentUser[formationType].length > 0) {
-            const validFormations = currentUser[formationType].filter((el1) => {
+        const toBeChecked = formationType === "formations" ? currentUser.formations : currentUser.invitations;
+        if (toBeChecked.length > 0) {
+            const validFormations = toBeChecked.filter((el1) => {
                 const formationOwner = userData.find((el2) => el2.id === el1.admin);
                 const ownerFormationIdArr = formationOwner.formations.map((el2) => el2.id);
                 return ownerFormationIdArr.includes(el1.id);
             })
-            return patchCurrentUser({formationType: validFormations});
+            return formationType === "formations" ? patchCurrentUser({formations: validFormations}) : patchCurrentUser({invitations: validFormations});
         } else {
             return;
         }
@@ -74,28 +75,28 @@ function App() {
         return history.push("/");
     };
 
-    function patchCurrentUser(patchObj) {
-        return fetch(`http://localhost:3000/users/${currentUser.id}`, {
+    async function patchCurrentUser(patchObj) {
+        const response = await fetch(`http://localhost:3000/users/${currentUser.id}`, {
                 method: 'PATCH',
                 headers: {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(patchObj)
-            })
-        .then((response) => response.json())
-        .then((data) => updateCurrentUser(data));
+            });
+        const data = await response.json();
+        return updateCurrentUser(data);
     };
 
-    function patchUser(userId, patchObj) {
-        return fetch(`http://localhost:3000/users/${userId}`, {
+    async function patchUser(userId, patchObj) {
+        const response = await fetch(`http://localhost:3000/users/${userId}`, {
                 method: 'PATCH',
                 headers: {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(patchObj)
-            })
-        .then((response) => response.json())
-        .then((data) => updateUserData(data));
+            });
+        const data = await response.json();
+        return updateUserData(data);
     };
     
     function updateUserData(userObj) {
@@ -117,13 +118,13 @@ function App() {
             owner: `${sender.name} (${sender.token.username})`,
             admin: sender.id
         };
-        user.invitations = [...user.invitations, formationSubscriberObj]
-        return patchUser(user.id, {invitations: user.invitations});
+        const addInvitations = [...user.invitations, formationSubscriberObj]
+        return patchUser(user.id, {invitations: addInvitations});
     };
 
     function rejectInvitation(invitationId) {
-        currentUser.invitations = currentUser.invitations.filter((el) => el.id !== invitationId);
-        return patchCurrentUser({invitations: currentUser.invitations});
+        const sansInvitations = currentUser.invitations.filter((el) => el.id !== invitationId);
+        return patchCurrentUser({invitations: sansInvitations});
     };
 
     function acceptInvitation(newFormationObj) {
@@ -132,17 +133,11 @@ function App() {
     };
 
     function handleCurrentUserAcceptInvite(newFormationObj) {
-        setCurrentUser((prevUser)=> {
-            const invitations = prevUser.invitations.filter((el) => el.id !== newFormationObj.id);
-            const formations = [...prevUser.formations, newFormationObj];
-            return {
-                ...prevUser,
-                invitations,
-                formations
-            };
-        });
-        
-        return patchCurrentUser({invitations: currentUser.invitations, formations: currentUser.formations});
+        const userPlaceHolder = {...currentUser};
+        userPlaceHolder.invitations = userPlaceHolder.invitations.filter((el) => el.id !== newFormationObj.id);
+        userPlaceHolder.formations = [...userPlaceHolder.formations, newFormationObj];
+        //setCurrentUser(userPlaceHolder);
+        return patchCurrentUser(userPlaceHolder);
     };
 
     function handleSenderAcceptInvite(newFormationObj) {
@@ -162,14 +157,14 @@ function App() {
             admin: user.id,
             supplicant: sender.id
         };
-        user.requests = user.requests.filter((el) => el.id !== formationObj.id);
-        user.requests = [...user.requests, formationRequestObj]
-        return patchUser(user.id, {requests: user.requests});
+        const sansRequests = user.requests.filter((el) => el.id !== formationObj.id);
+        const addRequests = [...sansRequests, formationRequestObj]
+        return patchUser(user.id, {requests: addRequests});
     };
 
     function rejectRequest(requestId) {
-        currentUser.requests = currentUser.requests.filter((el) => el.id !== requestId);
-        return patchCurrentUser({requests: currentUser.requests});
+        const sansRequests = currentUser.requests.filter((el) => el.id !== requestId);
+        return patchCurrentUser({requests: sansRequests});
     };
 
     function acceptRequest(newFormationObj, supplicant) {
@@ -178,10 +173,12 @@ function App() {
     };
 
     function handleCurrentUserAcceptRequest(newFormationObj, supplicant) {
-        currentUser.requests = currentUser.requests.filter((el) => el.id !== newFormationObj.id);
-        const modifiedFormationObj = currentUser.formations.find((el) => el.id === newFormationObj.id)
+        const sansRequests = currentUser.requests.filter((el) => el.id !== newFormationObj.id);
+        const sansFormations = currentUser.formations.filter((el) => el.id !== newFormationObj.id);
+        const modifiedFormationObj = currentUser.formations.find((el) => el.id === newFormationObj.id);
         modifiedFormationObj.users = [...modifiedFormationObj.users, supplicant];
-        return patchCurrentUser({requests: currentUser.requests, formations: currentUser.formations});
+        const addFormations = [...sansFormations, modifiedFormationObj];
+        return patchCurrentUser({requests: sansRequests, formations: addFormations});
     };
 
     function handleSenderAcceptRequest(newFormationObj, supplicant) {
@@ -203,8 +200,8 @@ function App() {
     };  
 
     function handleCurrentUserLeave(formation) {
-        currentUser.formations = currentUser.formations.filter((el) => el.id !== formation.id);
-        return patchCurrentUser({formations: currentUser.formations});
+        const sansFormations = currentUser.formations.filter((el) => el.id !== formation.id);
+        return patchCurrentUser({formations: sansFormations});
     };
 
     return (

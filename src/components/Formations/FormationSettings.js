@@ -18,7 +18,8 @@ function FormationSettings({ currentUser, formation, patchCurrentUser }) {
 
     function handleDelFormation() {
         const sansFormations = currentUser.formations.filter((el) => el.id !== formation.id);
-        return patchCurrentUser({formations: sansFormations});
+        const sansRequests = currentUser.requests.filter((el) => el.id !== formation.id);
+        return patchCurrentUser({formations: sansFormations, requests: sansRequests});
     };
 
     return (
