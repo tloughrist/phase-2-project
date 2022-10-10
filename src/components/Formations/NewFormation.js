@@ -10,6 +10,10 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
     const [address, setAddress] = useState(false);
     const [notes, setNotes] = useState(false);
 
+    const [formationName, setFormationName] = useState();
+    const [formationColor, setFormationColor] = useState();
+    const [formationImage, setFormationImage] = useState("/inFormation.png");
+
     const history = useHistory();
 
     function handleFormationCreation(e) {
@@ -19,9 +23,6 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
         while(formationIdArr.includes(formationId)) {
             formationId = (Math.random() + Math.random());
         };
-        const formationName = e.target.name.value;
-        const formationColor = e.target.color.value;
-        const formationImage = e.target.image.value ? e.target.image.value : "/inFormation.png";
         const newFormationObj = {
             name: formationName,
             color: formationColor,
@@ -46,10 +47,10 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
         <div className="display-container">
             <form className="form-card" onSubmit={handleFormationCreation}>
                 <div className="display-body" style={{ background: "white" }}>
-                    <input className="form-element" name="name" type="text" placeholder="formation name" />
+                    <input className="form-element" name="name" type="text" placeholder="formation name" onChange={e => setFormationName(e.target.value)}/>
                     <label className="form-label" htmlFor="color">Select Formation Color</label>
-                    <input className="form-element" name="color" type="color" defaultValue="#ffffff"/>
-                    <input className="form-element" name="image" type="url" placeholder="image url" />
+                    <input className="form-element" name="color" type="color" defaultValue="#ffffff" onChange={e => setFormationColor(e.target.value)}/>
+                    <input className="form-element" name="image" type="url" placeholder="image url" onChange={e => setFormationPic(e.target.value)}/>
                 </div>
                 <div>
                     <h3>What would you like to share with this formation?</h3>
