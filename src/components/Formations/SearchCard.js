@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
 
+    const [invite, setInvite] = useState();
+    const [request, setRequest] = useState();
+
     function handleInvite(e) {
         e.preventDefault();
-        const selectedFormation = currentUser.formations.find((el) => el.id == e.target.formationinvite.value);
+        const selectedFormation = currentUser.formations.find((el) => el.id == invite);
         return sendInvite(selectedFormation, user, currentUser);
     };
 
     function handleRequest(e) {
         e.preventDefault();
-        const selectedFormation = user.formations.find((el) => el.id == e.target.formationrequest.value);
+        const selectedFormation = user.formations.find((el) => el.id == request);
     return sendRequest(selectedFormation, user, currentUser);
     };
 
@@ -44,12 +47,12 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
                     </div>
                     <form className="card-form" onSubmit={handleInvite}>
                         <p>Invite user to join...</p>
-                        <select name="formationinvite">
+                        <select name="formationinvite" onChange={e => setInvite(e.target.value)}>
                             {yourFormations}
                         </select>
                         <input type="submit" />
                     </form>
-                    <form className="card-form" onSubmit={handleRequest}>
+                    <form className="card-form" onSubmit={handleRequest} onChange={e => setRequest(e.target.value)}>
                         <p>Request to join...</p>
                         <select name="formationrequest">
                             {theirFormations}
@@ -70,7 +73,7 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
                     </div>
                     <form className="card-form" onSubmit={handleInvite}>
                         <p>Invite user to join...</p>
-                        <select name="formationinvite">
+                        <select name="formationinvite" onChange={e => setInvite(e.target.value)}>
                             {yourFormations}
                         </select>
                         <input type="submit" />
@@ -89,7 +92,7 @@ function SearchCard({ currentUser, user, sendInvite, sendRequest }) {
                     </div>
                     <form className="card-form" onSubmit={handleRequest}>
                         <p>Request to join...</p>
-                        <select name="formationrequest">
+                        <select name="formationrequest" onChange={e => setRequest(e.target.value)}>
                             {theirFormations}
                         </select>
                         <input type="submit" />

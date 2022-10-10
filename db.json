@@ -237,6 +237,14 @@
           "id": 0.7232350154015408,
           "owner": "Tim Loughrist (tloughrist)",
           "admin": 1
+        },
+        {
+          "name": "Game Night",
+          "color": "#516061",
+          "image": "https://www.catan.com/sites/default/files/2021-07/CATAN-junior_board_EN.jpg",
+          "id": 1.4751615626683945,
+          "owner": "Tim Loughrist (tloughrist)",
+          "admin": 1
         }
       ],
       "requests": [],
