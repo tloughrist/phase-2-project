@@ -118,7 +118,8 @@ function App() {
             owner: `${sender.name} (${sender.token.username})`,
             admin: sender.id
         };
-        const addInvitations = [...user.invitations, formationSubscriberObj]
+        const addInvitations = [...user.invitations, formationSubscriberObj];
+        alert("Invitation sent");
         return patchUser(user.id, {invitations: addInvitations});
     };
 
@@ -136,7 +137,6 @@ function App() {
         const userPlaceHolder = {...currentUser};
         userPlaceHolder.invitations = userPlaceHolder.invitations.filter((el) => el.id !== newFormationObj.id);
         userPlaceHolder.formations = [...userPlaceHolder.formations, newFormationObj];
-        //setCurrentUser(userPlaceHolder);
         return patchCurrentUser(userPlaceHolder);
     };
 
@@ -158,7 +158,8 @@ function App() {
             supplicant: sender.id
         };
         const sansRequests = user.requests.filter((el) => el.id !== formationObj.id);
-        const addRequests = [...sansRequests, formationRequestObj]
+        const addRequests = [...sansRequests, formationRequestObj];
+        alert("Request sent");
         return patchUser(user.id, {requests: addRequests});
     };
 

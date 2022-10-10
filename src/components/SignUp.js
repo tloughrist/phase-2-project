@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SignUp({ userData, login, updateUserData }) {
 
-    function handleSubmit(e) {
+    const [password, setPassword] = useState();
+    const [username, setUsername] = useState();
+
+    async function handleSubmit(e) {
         e.preventDefault();
-        const username = e.target.username.value;
-        const password = e.target.password.value;
         const newUserObj = {
             token: {username: username, password: password},
             name: "",
@@ -20,21 +21,20 @@ function SignUp({ userData, login, updateUserData }) {
             requests: []
         };
         const userMatch = userData === undefined ? [] : userData.filter((user) => user.token.username === username);
+        
         if (userMatch.length > 0) {
             return alert("Sorry, username already in use");
         } else {
-            return fetch('http://localhost:3000/users', {
+            const response = await fetch('http://localhost:3000/users', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(newUserObj)
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                updateUserData(data);
-                return login(data);
             });
+            const data = await response.json();
+            updateUserData(data);
+            return login(data);
         }
     };
 
@@ -43,11 +43,20 @@ function SignUp({ userData, login, updateUserData }) {
             <form onSubmit={handleSubmit}>
                 <label className="form-label">
                     <p>Username</p>
-                    <input type="text" name="username" />
+                    <input
+                        type="text"
+                        name="username"
+                        onChange={e => setUsername(e.target.value)}
+                    />
                 </label>
                 <label className="form-label">
                     <p>Password</p>
-                    <input className="form-element" type="password" name="password" />
+                    <input
+                        className="form-element"
+                        type="password"
+                        name="password"
+                        onChange={e => setPassword(e.target.value)}
+                    />
                 </label>
                     <div>
                     <button className="form-element" type="submit">Sign-up</button>

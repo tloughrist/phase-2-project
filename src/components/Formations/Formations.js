@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import MyFormations from "./MyFormations.js";
 import NewFormation from "./NewFormation.js";
 import FormationBar from "./FormationBar.js";
@@ -11,8 +11,6 @@ import FormationSettings from "./FormationSettings.js";
 import SearchUsers from "./SearchUsers.js";
 
 function Formations({ token, currentUser, patchCurrentUser, updateCurrentUser, userData, updateUserData, sendInvite, rejectInvitation, acceptInvitation, patchUser, isLoaded, sendRequest, acceptRequest, rejectRequest, leaveFormation}) {
-
-    const history = useHistory();
 
     if (token === "valid" && userData) {
         const formationUsers = currentUser.formations.map((el) => {
