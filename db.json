@@ -43,7 +43,9 @@
           "address": true,
           "notes": false,
           "admin": 1,
-          "users": []
+          "users": [
+            6
+          ]
         },
         {
           "name": "Close Friends",
@@ -229,26 +231,24 @@
       "phone": "555-555-5555",
       "address": "123 Fake Street, Cambridge",
       "notes": "",
-      "invitations": [
-        {
-          "name": "Family",
-          "color": "#d87518",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg/220px-Sly_and_the_Family_Stone_%281968_publicity_photo%29.jpg",
-          "id": 0.7232350154015408,
-          "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
-        },
+      "invitations": [],
+      "requests": [],
+      "formations": [
         {
           "name": "Game Night",
           "color": "#516061",
           "image": "https://www.catan.com/sites/default/files/2021-07/CATAN-junior_board_EN.jpg",
           "id": 1.4751615626683945,
           "owner": "Tim Loughrist (tloughrist)",
-          "admin": 1
+          "admin": 1,
+          "dob": false,
+          "pronouns": false,
+          "email": true,
+          "phone": true,
+          "address": false,
+          "notes": false
         }
       ],
-      "requests": [],
-      "formations": [],
       "id": 6,
       "dob": "1889-04-26"
     },

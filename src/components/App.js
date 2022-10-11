@@ -128,9 +128,9 @@ function App() {
         return patchCurrentUser({invitations: sansInvitations});
     };
 
-    function acceptInvitation(newFormationObj) {
-        return handleSenderAcceptInvite(newFormationObj)
-        .then(() => handleCurrentUserAcceptInvite(newFormationObj));
+    async function acceptInvitation(newFormationObj) {
+        await handleSenderAcceptInvite(newFormationObj);
+        return handleCurrentUserAcceptInvite(newFormationObj);
     };
 
     function handleCurrentUserAcceptInvite(newFormationObj) {
@@ -168,9 +168,9 @@ function App() {
         return patchCurrentUser({requests: sansRequests});
     };
 
-    function acceptRequest(newFormationObj, supplicant) {
-        return handleSenderAcceptRequest(newFormationObj, supplicant)
-        .then(() => handleCurrentUserAcceptRequest(newFormationObj, supplicant));
+    async function acceptRequest(newFormationObj, supplicant) {
+        await handleSenderAcceptRequest(newFormationObj, supplicant);
+        return handleCurrentUserAcceptRequest(newFormationObj, supplicant);
     };
 
     function handleCurrentUserAcceptRequest(newFormationObj, supplicant) {
@@ -188,9 +188,9 @@ function App() {
         return patchUser(supplicant, {formations: sender.formations});
     };
 
-    function leaveFormation(formation) {
-        return handleOwnerLeave(formation)
-        .then(() => handleCurrentUserLeave(formation));
+    async function leaveFormation(formation) {
+        await handleOwnerLeave(formation);
+        return handleCurrentUserLeave(formation);
     };
 
     function handleOwnerLeave(formation) {

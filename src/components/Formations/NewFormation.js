@@ -50,7 +50,7 @@ function NewFormation({ currentUser, patchCurrentUser, userData }) {
                     <input className="form-element" name="name" type="text" placeholder="formation name" onChange={e => setFormationName(e.target.value)}/>
                     <label className="form-label" htmlFor="color">Select Formation Color</label>
                     <input className="form-element" name="color" type="color" defaultValue="#ffffff" onChange={e => setFormationColor(e.target.value)}/>
-                    <input className="form-element" name="image" type="url" placeholder="image url" onChange={e => setFormationPic(e.target.value)}/>
+                    <input className="form-element" name="image" type="url" placeholder="image url" onChange={e => setFormationImage(e.target.value)}/>
                 </div>
                 <div>
                     <h3>What would you like to share with this formation?</h3>
