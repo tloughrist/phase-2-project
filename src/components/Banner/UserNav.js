@@ -9,7 +9,7 @@ function UserNav({ logout }) {
             </div>
             <div className="navbar">
                 <NavLink to="/" exact className={useLocation().pathname === "/" ? "navlink navlink-active" : "navlink"}>Home</NavLink>
-                <NavLink to="/formations" exact className={useLocation().pathname === "/formations" ? "navlink navlink-active" : "navlink"}>Formations</NavLink>
+                <NavLink to="/formations" exact className={useLocation().pathname.includes("/formations") ? "navlink navlink-active" : "navlink"}>Formations</NavLink>
                 <NavLink to="/personalinfo" exact className={useLocation().pathname === "/personalinfo" ? "navlink navlink-active" : "navlink"}>Personal Information</NavLink>
                 <button onClick={e => logout()} className="navlink">Logout</button>
             </div>
