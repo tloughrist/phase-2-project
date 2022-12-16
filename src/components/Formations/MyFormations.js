@@ -11,6 +11,7 @@ function MyFormations({ currentUser, userData, leaveFormation }) {
         userData={userData}
         leaveFormation={leaveFormation}
     />)
+    
     if (currentUser.formations.length > 0) {
         return (
             <div className="display-container" id="formation-array-container">
